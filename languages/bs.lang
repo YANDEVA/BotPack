@@ -1,0 +1,107 @@
+# CEBUANO(BISAYA) LANGUAGE
+# After changed, you have to restart the bot to use.
+# Put the # character at the beginning of each sentence if you don't want the code to run those lines. 
+# Thanks to Yan Maglinte for Cebuano(Bisaya) Translation
+# Added more text by Yan Maglinte! Some may not be visible from other files if they don't have this file.
+
+# mirai.js 
+
+mirai.errorFormat=Dalformed module!
+mirai.nameExist=Ang ngalan sa module susama sa laing module!
+mirai.notFoundLanguage=Module %1 dili mosuporta sa imong lengguwahe
+mirai.notFoundPackage=Dili makit-an ang package %1 nga suporta para sa module %2, pag-install...
+mirai.cantInstallPackage=Dili ma-install ang package %1 para sa module %2, sayop: %3
+mirai.loadedPackage=Malamposong na-install ang tibuok pakete para sa module %1
+mirai.loadedConfig=Malamposong na-install ang config para sa module %1
+mirai.cantLoadConfig=Dili ma-install ang config sa module %1, sayop: %2
+mirai.cantOnload=Dili malunsad ang setup sa module %1, sayop: %1
+mirai.successLoadModule=Malamposong na-install nga module %1
+mirai.failLoadModule=Dili ma-install ang module %1, sayup: %2
+mirai.finishLoadModule=Malamposong na-install ang %1 module nga mga sugo ug %2 nga mga panghitabo sa module
+mirai.foundPathAppstate=Nakita nga file appstate
+mirai.notFoundPathAppstate=Dili makit-an ang file appstate
+mirai.checkListGban=Pagsusi sa listahan sa global ban...
+mirai.banDevice=Gi-ban ang imong device sa miraiproject, palihog kontaka sa facebook si https://fb.me/PhamVanDien.User para makahibalo ug dugang impormasyon o mangayo ug unban key, kung naa na kay unban key, palihog pun-i sa ubos.
+mirai.keyNotSameFormat=Sayop nga pormat, ang kodigo kinahanglang adunay 6 ka numero.
+mirai.codeInputExpired=Ang imong code sayop o wala na kabuhi.
+mirai.unbanDeviceSuccess=Ang imong galamiton gi-unban na karon, palihog pagsugod pag-usab aron magamit.
+mirai.userBanned=Dili ka pagamito sa miraiproject sa dihang %1 nga adunay rason: %2. Palihog kontaka sa facebook https://fb.me/PhamVanDien.User para adunay dugang impormasyon!
+mirai.finishCheckListGban=Gicheck ang GLOBAL BAN sa mga nga nalista na na ban
+mirai.handleListenError=handleListene nahitabo pipila ka wala damha nga sayop, sayop : %1
+mirai.warningSourceCode=NADETEKTA NGA NAUSAB ANG STRUKTURA SA SOURCE CODE , UNDANGI SA NAH KARON!
+mirai.refreshListen=Gi-refresh ang handleListener...
+mirai.successConnectDatabase=Malamposong na konekta sa database!
+mirai.failConnectDatabase=Napakyas sa pagkonektar sa database, sayop: %1
+
+# includes/listen.js
+
+listen.startLoadEnvironment=Ipadayon ang pagkarga sa environment variable ...
+listen.loadedEnvironmentThread=Malamposong nakarga ang thread environment variable
+listen.loadedEnvironmentUser=Malamposong nakarga ang variable sa environment sa user
+listen.successLoadEnvironment=Malamposong nakarga ang variable sa palibot
+listen.failLoadEnvironment=Dili makarga ang variable sa palibot, mao ni ang sayop: %1
+
+# includes/controller/currencies.js
+
+currencies.needObjectOrArray=Kinahanglan usa ka Array o usa ka Butang o kanang parehas
+currencies.needObject=Kinahanglan nga usa ka butang
+currencies.needNumber= Kinahanglan nga numero
+
+# includes/controller/threads.js
+
+threads.needObjectOrArray=Kinahanglan usa ka Array o usa ka butang o kanang parehas
+threads.needObject=Kinahanglan nga usa ka butang
+
+# includes/controller/users.js
+
+users.needObjectOrArray=Kinahanglang usa ka Array o usa ka butang o kanang parehas
+users.needObject=Kinahanglan nga usa ka butang
+
+# includes/handle/handleCommand.js
+
+handleCommand.userBanned=Dili ka makagamit sa bot!\n%1\n%2
+handleCommand.threadBanned=Ang imong thread dili makagamit sa bot!\n%1\n%2
+handleCommand.commandNotExist=Ang sugo nga imong gigamit wala, kana ba "%1" o dili?
+handleCommand.commandThreadBanned=Ang imong hilo dili makagamit ug command "%1"
+handleCommand.commandUserBanned=Dili ka makagamit sa command "%1"
+handleCommand.threadNotAllowNSFW=Ang imong hilo dili tugotan sa paggamit sa mga command sa NSFW
+handleCommand.cantGetInfoThread=Dili makuha ang impormasyon sa imong hilo, sayop: %1
+handleCommand.permissionNotEnough=Wala kay permiso sa paggamit sa command "%1"
+handleCommand.cantSetMessageReaction=Adunay pipila ka wala damha nga sayop sa setMessageReaction, sayop: %1
+handleCommand.executeCommand=[ %1 ] Gigamit nga sugo: %2 sa user: %3 sa thread: %4 | Apil ang mga argumento: %5 | Panahon sa pagproseso: %6ms
+handleCommand.commandError=Adunay pipila ka wala damha nga sayop sa paggamit sa command %1, imong sayop: %2
+handleCommand.notMatched=⚠Kini nga command wala magkinahanglan ug prefix aron magsugod.
+handleCommand.noPrefix=Kini nga command walay command config "usePrefix" property
+handleCommand.commandNotFound=Ang command nga imong gipangita kay wala.
+
+# includes/handle/handleCommandEvent.js
+
+handleCommandEvent.moduleError=Adunay pipila ka wala damha nga sayop sa paggamit sa command %1, imong sayop: %2
+
+# includes/handle/handleCreateDatabase.js
+
+handleCreateDatabase.newThread=bag-ong thread: %1
+handleCreateDatabase.newUser=bag-ong user %1
+
+# includes/handle/handleEvent.js
+
+handleEvent.executeEvent=[ %1 ] Ang event gi-activate: %2 sa thread: %3 | Panahon sa pagproseso: %4ms
+handleEvent.eventError=Adunay pipila ka sayop sa dihang nagpatuman sa event %1, sayop: %12
+
+# includes/handle/handleReaction.js
+
+handleReaction.missingValue=Nawala ang value sa imong problem
+handleReaction.executeError=Adunay sayop sa pagtubag sa imong problema, sayop: %1
+
+# includes/handle/handleReply.js
+
+handleReply.missingValue=Kulang ug value sa pag responde sa imong problem
+handleReply.executeError=Nagkaproblema sa pag responde, error: %1
+
+# includes/handle/handleSchedule.js
+
+handleSchedule.exectuteError=Adunay usa ka sayop sa dihang eskedyul sa module %1, sayop: %2
+
+# utils/index.js
+
+utils.throwError=[!] Dili husto ang syntax nga sugo nga imong gigamit, palihog gamita ang %1help %2 para sa dugang detalye sa paggamit

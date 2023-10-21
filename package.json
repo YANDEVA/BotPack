@@ -1,0 +1,62 @@
+{
+  "name": "botpack",
+  "version": "1.5.1",
+  "description": "A Simple BotPack for starting a Messenger chatbot.",
+  "main": "index.js",
+  "keywords": [
+    "Facebook",
+    "Messenger",
+    "SpermLord",
+    "CatalizCS",
+    "Disme-Bot",
+    "usePrefix",
+    "D-Jukie",
+    "Yan Maglinte"
+  ],
+  "license": "GPL-3.0",
+  "author": "Yan Maglinte",
+  "dependencies": {
+    "@distube/ytdl-core": "^4.13.2",
+    "aes-js": "^3.1.2",
+    "axios": "^1.5.0",
+    "bluebird": "^3.7.2",
+    "chalk": "^4.1.2",
+    "cheerio": "^1.0.0-rc.12",
+    "child_process": "^1.0.2",
+    "cloudscraper": "^4.6.0",
+    "express": "^4.18.2",
+    "form-data": "^4.0.0",
+    "fs": "^0.0.1-security",
+    "fs-extra": "^11.1.1",
+    "googlethis": "^1.8.0",
+    "gradient-string": "^2.0.2",
+    "https-proxy-agent": "^7.0.2",
+    "jimp": "^0.22.10",
+    "lyrics-finder": "^21.7.0",
+    "moment": "^2.29.4",
+    "moment-timezone": "^0.5.43",
+    "mqtt": "^4.3.7",
+    "node-cron": "^3.0.2",
+    "npmlog": "^7.0.1",
+    "openai": "^4.11.0",
+    "pastebin-api": "^6.1.0",
+    "path": "^0.12.7",
+    "request": "^2.88.2",
+    "simple-youtube-api": "^5.2.1",
+    "string-similarity": "^4.0.4",
+    "uuid": "^9.0.1",
+    "websocket-stream": "^5.5.2",
+    "youtube-search-api": "^1.2.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/YANDEVA/BotPack.git"
+  },
+  "bugs": {
+    "url": "https://github.com/YANDEVA/BotPack/issues"
+  },
+  "homepage": "https://github.com/YANDEVA/BotPack#readme"
+}

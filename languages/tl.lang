@@ -1,0 +1,108 @@
+# FILIPINO LANGUAGE
+# If you want to move down the line, please use \n. e.g: SpermLord\nCatalizcs.
+# After changed, you have to restart the bot to use.
+# Put the # character at the beginning of each sentence if you don't want the code to run those lines. 
+# Thanks to Yan Maglinte for the translation to Tagalog!
+# Added more text by Yan Maglinte! Some may not be visible from other files and might run to errors, if they don't have this file.
+
+# mirai.js 
+
+mirai.errorFormat=Maling nabuong module!
+mirai.nameExist=Ang pangalan ng module ay katulad ng isa pang module!
+mirai.notFoundLanguage=Module %1 ay hindi sumusuporta sa iyong wika
+mirai.notFoundPackage=Hindi mahanap ang package %1 suporta para sa module %2, pag-install...
+mirai.cantInstallPackage=Hindi ma-install ang package %1 para sa module %2, error: %3
+mirai.loadedPackage=Matagumpay na na-install ang buong pakete para sa module %1
+mirai.loadedConfig=Matagumpay na na-install ang config para sa module %1
+mirai.cantLoadConfig=Hindi ma-install ang config ng module %1, error: %2
+mirai.cantOnload=Hindi mailunsad ang setup ng module %1, error: %1
+mirai.successLoadModule=Matagumpay na na-install ang module %1
+mirai.failLoadModule=Hindi ma-install ang module %1, error: %2
+mirai.finishLoadModule=Matagumpay na na-install ang %1 module command at %2 module event
+mirai.foundPathAppstate=Nakahanap ng file appstate
+mirai.notFoundPathAppstate=Hindi mahanap ang file appstate
+mirai.checkListGban=Tinitingnan ang listahan ng pandaigdigang pagbabawal...
+mirai.banDevice=Na-ban ang iyong device sa miraiproject, mangyaring makipag-ugnayan sa facebook https://fb.me/PhamVanDien.User para malaman ang karagdagang impormasyon o humiling ng unban key, kung mayroon ka nang unban key, mangyaring punan ito sa ibaba.
+mirai.keyNotSameFormat=Maling format, ang code ay dapat maglaman ng 6 na numero.
+mirai.codeInputExpired=Mali o luma na ang iyong code.
+mirai.unbanDeviceSuccess=Ang iyong device ay na-unban ngayon, mangyaring simulan muli upang magamit.
+mirai.userBanned=Na-ban ka sa MiraiProject noong %1 na may dahilan: %2. Mangyaring makipag-ugnayan sa facebook https://fb.me/PhamVanDien.User para magkaroon ng karagdagang impormasyon!
+mirai.finishCheckListGban=Sinuri ang listahan ng pandaigdigang pagbabawal
+mirai.handleListenError=handleListene ay naganap ng ilang hindi inaasahang errorr, error : %1
+mirai.warningSourceCode=NA-DETECTED NA ANG STRUCTURE NG SOURCE CODE AY BINAGO , TUMIGIL NGAYON!
+mirai.refreshListen=Na-refresh ang handleListener...
+mirai.successConnectDatabase=Matagumpay na nakakonekta sa database!
+mirai.failConnectDatabase=Nabigong kumonekta sa database, error: %1
+
+# includes/listen.js
+
+listen.startLoadEnvironment=Magpatuloy upang i-load ang variable ng kapaligiran ...
+listen.loadedEnvironmentThread=Matagumpay na na-load ang variable ng environment ng thread
+listen.loadedEnvironmentUser=Matagumpay na na-load ang variable ng environment ng user
+listen.successLoadEnvironment=Matagumpay na na-load ang variable ng kapaligiran
+listen.failLoadEnvironment=Hindi ma-load ang variable ng kapaligiran, error: %1
+
+# includes/controller/currencies.js
+
+currencies.needObjectOrArray=Kailangang maging isang Array o isang Bagay o maaaring pareho
+currencies.needObject=Kailangang maging isang Bagay
+currencies.needNumber= Kailangang isang numero
+
+# includes/controller/threads.js
+
+ threads.needObjectOrArray=Kailangang maging isang Array o isang Bagay o maaaring pareho
+threads.needObject=Kailangang maging isang Bagay
+
+# includes/controller/users.js
+
+users.needObjectOrArray=Kailangang maging isang Array o isang Bagay o maaaring pareho
+users.needObject=Kailangang maging isang Bagay
+
+# includes/handle/handleCommand.js
+
+handleCommand.userBanned=Hindi mo magagamit ang bot!\n%1\n%2
+handleCommand.threadBanned=Hindi nagagamit ng iyong thread ang bot!\n%1\n%2
+handleCommand.commandNotExist=Ang utos na iyong ginamit ay hindi umiiral, "%1" ba iyon o hindi?
+handleCommand.commandThreadBanned=Hindi nagagamit ng iyong thread ang command na "%1"
+handleCommand.commandUserBanned=Hindi mo magagamit ang command na "%1"
+handleCommand.threadNotAllowNSFW=Ang iyong thread ay hindi pinapayagang gumamit ng mga NSFW command
+handleCommand.cantGetInfoThread=Hindi makuha ang impormasyon ng iyong thread, error: %1
+handleCommand.permissionNotEnough=Wala kang pahintulot na gumamit ng command na "%1"
+handleCommand.cantSetMessageReaction=Nagkakaroon ng ilang hindi inaasahang error sa setMessageReaction, error: %1
+handleCommand.executeCommand=[ %1 ] Utos na ginamit: %2 ng user: %3 sa thread: %4 | Kasama ang mga arg: %5 | Oras ng pagpoproseso: %6ms
+handleCommand.commandError=Nagkakaroon ng ilang hindi inaasahang error kapag gumagamit ng command na %1, error: %2
+handleCommand.notMatched=⚠Ang command na ito ay hindi nangangailangan ng prefix para magsimula.
+handleCommand.noPrefix=Ang command na ito ay walang command config na "usePrefix" property
+handleCommand.commandNotFound=Ang utos na iyong ginamit ay hindi umiiral.
+
+# includes/handle/handleCommandEvent.js
+
+handleCommandEvent.moduleError=Nagkakaroon ng ilang hindi inaasahang error kapag gumagamit ng command na %1, error: %2
+
+# includes/handle/handleCreateDatabase.js
+
+handleCreateDatabase.newThread=new thread: %1
+handleCreateDatabase.newUser=bagong user %1
+
+# includes/handle/handleEvent.js
+
+handleEvent.executeEvent=[ %1 ] Naisagawa ang kaganapan: %2 sa thread: %3 | Oras ng pagpoproseso: %4ms
+handleEvent.eventError=Nagkakaroon ng ilang error kapag nagsasagawa ng kaganapan %1, error: %12
+
+# includes/handle/handleReaction.js
+
+handleReaction.missingValue=Nawawalang halaga upang tumugon sa iyong problema
+handleReaction.executeError=Nagkakaroon ng ilang error sa pagtugon sa iyong problema, error: %1
+
+# includes/handle/handleReply.js
+
+handleReply.missingValue=Nawawalang halaga upang tumugon sa iyong problema
+handleReply.executeError=Nagkakaroon ng ilang error sa pagtugon sa iyong problema, error: %1
+
+# includes/handle/handleSchedule.js
+
+handleSchedule.exectuteError=Nagkakaroon ng ilang error kapag naka-iskedyul sa module %1, error: %2
+
+# utils/index.js
+
+utils.throwError=[!] Ang command na iyong ginagamit ay hindi tama ang syntax, mangyaring gamitin ang %1help %2 para sa higit pang mga detalye ng paggamit

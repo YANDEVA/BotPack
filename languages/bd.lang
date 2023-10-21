@@ -1,0 +1,108 @@
+# BENGALI LANGUAGE (বাংলা ভাষা)
+# আপনি যদি লাইনের নিচে যেতে চান, দয়া করে \n ব্যবহার করুন। যেমন: SpermLord\nCatalizcs.
+# পরিবর্তন করার পরে, আপনাকে ব্যবহার করার জন্য বটটি পুনরায় চালু করতে হবে।
+# প্রতিটি বাক্যের শুরুতে # অক্ষরটি রাখুন যদি আপনি কোডটি সেই লাইনগুলি চালাতে না চান।
+# Thanks to Yan Maglinte for Bengali Translation!
+# ইয়ান ম্যাগলিন্টে আরও পাঠ্য যোগ করেছেন! এই ফাইলটি না থাকলে কিছু অন্য ফাইল থেকে দৃশ্যমান নাও হতে পারে৷
+
+# mirai.js 
+
+mirai.errorFormat=বিকৃত মডিউল!
+mirai.nameExist=মডিউলের নাম অন্য মডিউলের মতো!
+mirai.notFoundLanguage=মডিউল %1 আপনার ভাষা সমর্থন করে না
+mirai.notFoundPackage=মডিউল %2 এর জন্য প্যাকেজ %1 সমর্থন পাওয়া যাচ্ছে না, ইনস্টল করা হচ্ছে...
+mirai.cantInstallPackage=মডিউল %2 এর জন্য প্যাকেজ %1 ইনস্টল করা যাচ্ছে না, ত্রুটি: %3
+mirai.loadedPackage=মডিউল %1 এর জন্য সম্পূর্ণ প্যাকেজ সফলভাবে ইনস্টল করা হয়েছে
+mirai.loadedConfig=মডিউল %1 এর জন্য সফলভাবে কনফিগারেশন ইনস্টল করা হয়েছে
+mirai.cantLoadConfig=মডিউল %1 এর কনফিগারেশন ইনস্টল করা যাচ্ছে না, ত্রুটি: %2
+mirai.cantOnload=মডিউল %1 সেটআপ চালু করা যাচ্ছে না, ত্রুটি: %1
+mirai.successLoadModule=সফলভাবে ইনস্টল করা মডিউল %1
+mirai.failLoadModule=মডিউল %1 ইনস্টল করা যাচ্ছে না, ত্রুটি: %2
+mirai.finishLoadModule= %1 মডিউল কমান্ড এবং %2 মডিউল ইভেন্ট সফলভাবে ইনস্টল করা হয়েছে
+mirai.foundPathAppstate=ফাইল অ্যাপস্টেট
+mirai.notFoundPathAppstate=ফাইল অ্যাপস্টেট খুঁজে পাচ্ছি না
+mirai.checkListGban=বিশ্বব্যাপী নিষিদ্ধ তালিকা চেক করা হচ্ছে...
+mirai.banDevice=আপনার ডিভাইসটি miraiproject থেকে নিষিদ্ধ করা হয়েছে, অনুগ্রহ করে Facebook-এ যোগাযোগ করুন https://fb.me/PhamVanDien.User আরও তথ্য জানতে বা আনব্যান কী জানতে চাইলে, আপনার যদি ইতিমধ্যেই আনব্যান কী থাকে, তাহলে অনুগ্রহ করে নীচে তা পূরণ করুন।
+mirai.keyNotSameFormat=ভুল বিন্যাস, কোডে অবশ্যই 6 নম্বর থাকতে হবে।
+mirai.codeInputExpired=আপনার কোডটি ভুল বা পুরানো।
+mirai.unbanDeviceSuccess=আপনার ডিভাইস এখন নিষিদ্ধ, অনুগ্রহ করে পুনরায় ব্যবহার করতে শুরু করুন।
+mirai.userBanned=আপনাকে miraiproject থেকে নিষিদ্ধ করা হয়েছিল যখন %1 কারণ সহ: %2। আরও তথ্যের জন্য Facebook https://fb.me/PhamVanDien.User-এ যোগাযোগ করুন!
+mirai.finishCheckListGban=চেক করা বিশ্বব্যাপী নিষিদ্ধ তালিকা
+mirai.handleListenError=handleListene কিছু অপ্রত্যাশিত ত্রুটি ঘটেছে, ত্রুটি: %1
+mirai.warningSourceCode=শনাক্ত করা হয়েছে যে সোর্স কোডের কাঠামো পরিবর্তন করা হয়েছে, এখনই থামুন!
+mirai.refreshListen=রিফ্রেশ করা হ্যান্ডেল লিসেনার...
+mirai.successConnectDatabase=ডাটাবেসের সাথে সফলভাবে সংযুক্ত!
+mirai.failConnectDatabase=ডাটাবেসের সাথে সংযোগ করতে ব্যর্থ, ত্রুটি: %1
+
+# includes/listen.js
+
+listen.startLoadEnvironment=এনভায়রনমেন্ট ভেরিয়েবল লোড করতে এগিয়ে যান...
+listen.loadedEnvironmentThread=লোড করা থ্রেড এনভায়রনমেন্ট ভেরিয়েবল সফলভাবে
+listen.loadedEnvironmentUser=ইউজার এনভায়রনমেন্ট ভেরিয়েবল সফলভাবে লোড হয়েছে
+listen.successLoadEnvironment=পরিবেশ ভেরিয়েবল সফলভাবে লোড হয়েছে
+listen.failLoadEnvironment=পরিবেশ ভেরিয়েবল লোড করা যাচ্ছে না, ত্রুটি: %1
+
+# includes/controller/currencies.js
+
+currencies.needObjectOrArray=একটি অ্যারে বা একটি অবজেক্ট বা উভয়ই হতে হবে
+currencies.needObject=একটি বস্তু হতে হবে
+currencies.needNumber= একটি সংখ্যা হতে হবে
+
+# includes/controller/threads.js
+
+threads.needObjectOrArray=একটি অ্যারে বা একটি অবজেক্ট বা উভয়ই হতে হবে
+threads.needObject=একটি বস্তু হতে হবে
+
+# includes/controller/users.js
+
+user.needObjectOrArray=একটি অ্যারে বা একটি অবজেক্ট বা উভয়ই হতে হবে
+user.needObject=একটি বস্তু হতে হবে
+
+# includes/handle/handleCommand.js
+
+handleCommand.userBanned=আপনি বট ব্যবহার করতে অক্ষম!\n%1\n%2
+handleCommand.threadBanned=আপনার থ্রেড বট ব্যবহার করতে অক্ষম!\n%1\n%2
+handleCommand.commandNotExist=আপনি যে কমান্ডটি ব্যবহার করেছেন সেটি বিদ্যমান নেই, সেটি কি "%1" নাকি?
+handleCommand.commandThreadBanned=আপনার থ্রেড "%1" কমান্ড ব্যবহার করতে অক্ষম
+handleCommand.commandUserBanned=আপনি "%1" কমান্ড ব্যবহার করতে অক্ষম
+handleCommand.threadNotAllowNSFW=আপনার থ্রেড NSFW কমান্ড ব্যবহার করার অনুমতি নেই
+handleCommand.cantGetInfoThread=আপনার থ্রেডের তথ্য পাওয়া যাচ্ছে না, ত্রুটি: %1
+handleCommand.permissionNotEnough=আপনার "%1" কমান্ড ব্যবহার করার কোনো অনুমতি নেই
+handleCommand.cantSetMessageReaction=setMessageReaction এ কিছু অপ্রত্যাশিত ত্রুটি, ত্রুটি: %1
+handleCommand.executeCommand=[ %1 ] কমান্ড ব্যবহৃত: %2 ব্যবহারকারী দ্বারা: %3 এ থ্রেড: %4 | Args অন্তর্ভুক্ত: %5 | প্রক্রিয়াকরণের সময়: %6ms
+handleCommand.commandError=কমান্ড %1 ব্যবহার করার সময় কিছু অপ্রত্যাশিত ত্রুটি হচ্ছে, ত্রুটি: %2
+handleCommand.notMatched=⚠এই কমান্ডের সাথে শুরু করার জন্য একটি উপসর্গের প্রয়োজন নেই।
+handleCommand.noPrefix=এই কমান্ডের কোনো কমান্ড কনফিগারেশন "usePrefix" বৈশিষ্ট্য নেই
+handleCommand.commandNotFound=আপনার ব্যবহৃত কমান্ডটি বিদ্যমান নেই।
+
+# includes/handle/handleCommandEvent.js
+
+handleCommandEvent.ModuleError=কমান্ড %1 ব্যবহার করার সময় কিছু অপ্রত্যাশিত ত্রুটি হচ্ছে, ত্রুটি: %2
+
+# includes/handle/handleCreateDatabase.js
+
+handleCreateDatabase.newThread=নতুন থ্রেড: %1
+handleCreateDatabase.newUser=নতুন ব্যবহারকারী %1
+
+# includes/handle/handleEvent.js
+
+handleEvent.executeEvent=[ %1 ] ইভেন্টটি চালানো হয়েছিল: থ্রেডে %2: %3 | প্রক্রিয়াকরণের সময়: %4ms
+handleEvent.eventError=ইভেন্ট %1 চালানোর সময় কিছু ত্রুটি হচ্ছে, ত্রুটি: %12
+
+# includes/handle/handleReaction.js
+
+handleReaction.missingValue=আপনার সমস্যার উত্তর দিতে অনুপস্থিত মান
+handleReaction.executeError=আপনার সমস্যার উত্তর দেওয়ার সময় কিছু ত্রুটি হচ্ছে, ত্রুটি: %1
+
+# includes/handle/handleReply.js
+
+handleReply.missingValue=আপনার সমস্যার উত্তর দিতে অনুপস্থিত মান
+handleReply.executeError=আপনার সমস্যার উত্তর দেওয়ার সময় কিছু ত্রুটি হচ্ছে, ত্রুটি: %1
+
+# includes/handle/handleSchedule.js
+
+handleSchedule.exectuteError=মডিউল %1 এ সময়সূচী করার সময় কিছু ত্রুটি হচ্ছে, ত্রুটি: %2
+
+# utils/index.js
+
+utils.throwError=[!] আপনি যে কমান্ডটি ব্যবহার করছেন সেটি সিনট্যাক্স সঠিক নয়, আরও ব্যবহারের বিবরণের জন্য অনুগ্রহ করে %1help %2 ব্যবহার করুন
