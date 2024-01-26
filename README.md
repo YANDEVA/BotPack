@@ -1,7 +1,7 @@
 <h1>BotPack🤖<sub><sub>v1.6.0🚀</sub><sub><sub><h6>- By Yan Maglinte</h6></sub></sub></sub>
   <img align="center" src="https://i.ibb.co/gMMvsYf/20240125-225244-0000.png"></a>
 
-Introduction</h1>
+<h5>Introduction</h5></h1>
 
 #### Join us in [ChatBot Community Ltd.](https://www.facebook.com/groups/178711334798450/?ref=share)🍪
 ###### If you encounter any issues or difficulties, don't hesitate to reach out and ask for assistance here. Our team is here to help you with any problems you may face.
