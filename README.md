@@ -10,6 +10,9 @@ Introduction</h1>
 [<img align="center" src="https://i.ibb.co/khSZZPL/IMG-20230730-074956.jpg">](https://www.facebook.com/groups/178711334798450/?ref=share)
 <h1></h1>
 
+<h1>BotPack🤖<sub><sub>v1.5.1🚀</sub><sub><sub><h6>- By Yan Maglinte</h6></sub></sub></sub>
+Introduction</h1>
+
 - Welcome to the [BotPack](https://replit.com/@YanMaglinte/BotPack)🌀 repository. This project is an unofficial bot file from the [Mirai](https://github.com/m1raibot/miraiv2) Repository, initially developed and maintained by [Phạm Văn Diện](https://github.com/D-Jukie/Disme-Bot.git), better known as [D-Jukie](https://github.com/D-Jukie). The base file for this project is sourced from the [Disme-Bot](https://github.com/D-Jukie/Disme-Bot.git) GitHub project.
 
 - [BotPack](https://replit.com/@YanMaglinte/BotPack)🌀 is a modified messenger bot file by [Yan Maglinte](https://replit.com/@YanMaglinte)🇵🇭. It is a refined version of the Mirai messenger bot, with some unique enhancements. 
