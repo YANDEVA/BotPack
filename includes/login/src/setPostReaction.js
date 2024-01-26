@@ -7,7 +7,7 @@
 "use strict";
 
 const utils = require("../utils");
-const log = require("npmlog");
+//const log = require("npmlog");
 
 function formatData(resData) {
 	return {
@@ -100,8 +100,8 @@ module.exports = function (defaultFuncs, api, ctx) {
 				return callback(null, formatData(resData.data));
 			})
 			.catch(function (err) {
-				log.error("setPostReaction", err);
-				return callback(err);
+				//log.error("setPostReaction", err);
+				//return callback(err);
 			});
 
 		return returnPromise;

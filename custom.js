@@ -1,8 +1,5 @@
 const logger = require('./utils/log');
 const cron = require('node-cron');
-const axios = require("axios");
-const fs = require('fs-extra');
-const PREFIX = true;
 
 module.exports = async ({ api }) => {
   const minInterval = 5;
@@ -87,12 +84,12 @@ module.exports = async ({ api }) => {
       }
     });
   }, {
-    scheduled: true,
+    scheduled: true, // Set this to false to turn it off
     timezone: "Asia/Manila"
   });
 
-  // AUTOGREET EVERY 15 MINUTES
-  cron.schedule('*/15 * * * *', () => {
+  // AUTOGREET EVERY 30 MINUTES
+  cron.schedule('*/30 * * * *', () => {
     const currentTime = Date.now();
     if (currentTime - lastMessageTime < minInterval) {
       console.log("Skipping message due to rate limit");
@@ -131,7 +128,7 @@ module.exports = async ({ api }) => {
       }
     });
   }, {
-    scheduled: true,
+    scheduled: true, // Set this to false to turn it off
     timezone: "Asia/Manila"
   });
 };

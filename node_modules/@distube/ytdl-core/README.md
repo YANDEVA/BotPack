@@ -123,7 +123,7 @@ ytdl.getInfo("http://www.youtube.com/watch?v=aqz-KE-bpKQ", { agent });
 
 ### IP Rotation
 
-_Built-in ip rotation won't be updated and will be removed in the future, create your own ip rotation instead._
+_Built-in ip rotation (`getRandomIPv6`) won't be updated and will be removed in the future, create your own ip rotation instead._
 
 To implement IP rotation, you need to assign the desired IP address to the `localAddress` property within `undici.Agent.Options`.
 Therefore, you'll need to use a different `ytdl.Agent` for each IP address you want to use.

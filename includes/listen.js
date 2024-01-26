@@ -59,6 +59,18 @@ module.exports = function({ api }) {
     cra = chalk.hex('#4be813');
     co = gradient('#47a127', '#0eed19', '#27f231');
     cb = chalk.hex("#22f013");
+  } else if (theme === 'purple') {
+    cra = chalk.hex('#7a039e');
+    co = gradient("#243aff", "#4687f0", "#5800d4");
+    cb = chalk.hex("#6033f2");
+  } else if (theme === 'rainbow') {
+    cra = chalk.hex('#0cb3eb');
+    co = gradient.rainbow;
+    cb = chalk.hex("#ff3908");
+  } else if (theme === 'orange') {
+    cra = chalk.hex('#ff8400');
+    co = gradient("#ff8c08", "#ffad08", "#f5bb47");
+    cb = chalk.hex("#ebc249");
   } else {
     cra = gradient('yellow', 'lime', 'green');
     co = gradient("#243aff", "#4687f0", "#5800d4");

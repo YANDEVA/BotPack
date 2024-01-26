@@ -8,7 +8,6 @@ const HttpsProxyAgent = require('https-proxy-agent');
 const EventEmitter = require('events');
 
 const identity = function () { };
-
 const topics = [
 	"/legacy_web",
 	"/webrtc",

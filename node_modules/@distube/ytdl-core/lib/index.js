@@ -4,7 +4,7 @@ const utils = require('./utils');
 const formatUtils = require('./format-utils');
 const urlUtils = require('./url-utils');
 const sig = require('./sig');
-const { request } = require('undici');
+const miniget = require('miniget');
 const m3u8stream = require('m3u8stream');
 const { parseTimestamp } = require('m3u8stream');
 const cookie = require('./cookie');
@@ -100,13 +100,25 @@ const downloadFromInfoCallback = (stream, info, options) => {
   };
 
   utils.applyDefaultHeaders(options);
-  utils.applyIPv6Rotations(options);
-  utils.applyDefaultAgent(options);
-  utils.applyOldLocalAddress(options);
+  if (options.IPv6Block) {
+    options.requestOptions = Object.assign({}, options.requestOptions, {
+      localAddress: utils.getRandomIPv6(options.IPv6Block),
+    });
+  }
+  if (options.agent) {
+    if (options.agent.jar) {
+      utils.setPropInsensitive(
+        options.requestOptions.headers, 'cookie', options.agent.jar.getCookieStringSync('https://www.youtube.com'),
+      );
+    }
+    if (options.agent.localAddress) {
+      options.requestOptions.localAddress = options.agent.localAddress;
+    }
+  }
 
   // Download the file in chunks, in this case the default is 10MB,
   // anything over this will cause youtube to throttle the download
-  const dlChunkSize = options.dlChunkSize || 1024 * 1024 * 10;
+  const dlChunkSize = typeof options.dlChunkSize === 'number' ? options.dlChunkSize : 1024 * 1024 * 10;
   let req;
   let shouldEnd = true;
 
@@ -151,21 +163,17 @@ const downloadFromInfoCallback = (stream, info, options) => {
         requestOptions.headers = Object.assign({}, requestOptions.headers, {
           Range: `bytes=${start}-${end || ''}`,
         });
-
-        request(format.url, requestOptions).then(({ body }) => {
-          body.on('data', ondata);
-          body.on('end', () => {
-            if (stream.destroyed) {
-              return;
-            }
-            if (end && end !== rangeEnd) {
-              start = end + 1;
-              end += dlChunkSize;
-              getNextChunk();
-            }
-          });
-          pipeAndSetEvents(body, stream, shouldEnd);
+        req = miniget(format.url, requestOptions);
+        req.on('data', ondata);
+        req.on('end', () => {
+          if (stream.destroyed) return;
+          if (end && end !== rangeEnd) {
+            start = end + 1;
+            end += dlChunkSize;
+            getNextChunk();
+          }
         });
+        pipeAndSetEvents(req, stream, shouldEnd);
       };
       getNextChunk();
     } else {
@@ -178,12 +186,13 @@ const downloadFromInfoCallback = (stream, info, options) => {
           Range: `bytes=${options.range.start || '0'}-${options.range.end || ''}`,
         });
       }
-      request(format.url, requestOptions).then(({ body, headers }) => {
+      req = miniget(format.url, requestOptions);
+      req.on('response', res => {
         if (stream.destroyed) return;
-        contentLength = contentLength || parseInt(headers['content-length']);
-        body.on('data', ondata);
-        pipeAndSetEvents(body, stream, shouldEnd);
+        contentLength = contentLength || parseInt(res.headers['content-length']);
       });
+      req.on('data', ondata);
+      pipeAndSetEvents(req, stream, shouldEnd);
     }
   }
 

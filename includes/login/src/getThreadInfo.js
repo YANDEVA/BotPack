@@ -21,7 +21,7 @@ function formatEventReminders(reminder) {
     secondsToNotifyBefore: reminder.seconds_to_notify_before,
     allowsRsvp: reminder.allows_rsvp,
     relatedEvent: reminder.related_event,
-    members: reminder.event_reminder_members.edges.map(function (member) {
+    members: reminder.event_reminder_members.edges.map(function(member) {
       return {
         memberID: member.node.id,
         state: member.guest_list_state.toLowerCase()
@@ -31,17 +31,28 @@ function formatEventReminders(reminder) {
 }
 
 function formatThreadGraphQLResponse(data) {
-  var messageThread = data.message_thread;
-	if (!messageThread) return {};
-	
-  var threadID = messageThread.thread_key.thread_fbid || messageThread.thread_key.other_user_id;
+  var messageThread = data.o0.data.message_thread;
+  var threadID = messageThread.thread_key.thread_fbid
+    ? messageThread.thread_key.thread_fbid
+    : messageThread.thread_key.other_user_id;
 
   // Remove me
   var lastM = messageThread.last_message;
-  var snippetID = lastM && lastM.nodes && lastM.nodes[0] && lastM.nodes[0].message_sender && lastM.nodes[0].message_sender.messaging_actor ? lastM.nodes[0].message_sender.messaging_actor.id : null;
-  var snippetText = lastM && lastM.nodes && lastM.nodes[0] ? lastM.nodes[0].snippet : null;
+  var snippetID =
+    lastM &&
+    lastM.nodes &&
+    lastM.nodes[0] &&
+    lastM.nodes[0].message_sender &&
+    lastM.nodes[0].message_sender.messaging_actor
+      ? lastM.nodes[0].message_sender.messaging_actor.id
+      : null;
+  var snippetText =
+    lastM && lastM.nodes && lastM.nodes[0] ? lastM.nodes[0].snippet : null;
   var lastR = messageThread.last_read_receipt;
-  var lastReadTimestamp = lastR && lastR.nodes && lastR.nodes[0] && lastR.nodes[0].timestamp_precise ? lastR.nodes[0].timestamp_precise : null;
+  var lastReadTimestamp =
+    lastR && lastR.nodes && lastR.nodes[0] && lastR.nodes[0].timestamp_precise
+      ? lastR.nodes[0].timestamp_precise
+      : null;
 
   return {
     threadID: threadID,
@@ -68,16 +79,27 @@ function formatThreadGraphQLResponse(data) {
     isArchived: messageThread.has_viewer_archived,
     folder: messageThread.folder,
     cannotReplyReason: messageThread.cannot_reply_reason,
-    eventReminders: messageThread.event_reminders ? messageThread.event_reminders.nodes.map(formatEventReminders) : null,
-    emoji: messageThread.customization_info ? messageThread.customization_info.emoji : null,
-    color: messageThread.customization_info && messageThread.customization_info.outgoing_bubble_color ? messageThread.customization_info.outgoing_bubble_color.slice(2) : null,
+    eventReminders: messageThread.event_reminders
+      ? messageThread.event_reminders.nodes.map(formatEventReminders)
+      : null,
+    emoji: messageThread.customization_info
+      ? messageThread.customization_info.emoji
+      : null,
+    color:
+      messageThread.customization_info &&
+      messageThread.customization_info.outgoing_bubble_color
+        ? messageThread.customization_info.outgoing_bubble_color.slice(2)
+        : null,
     nicknames:
       messageThread.customization_info &&
-        messageThread.customization_info.participant_customizations
-        ? messageThread.customization_info.participant_customizations.reduce(function (res, val) {
-          if (val.nickname) res[val.participant_id] = val.nickname;
-          return res;
-        }, {})
+      messageThread.customization_info.participant_customizations
+        ? messageThread.customization_info.participant_customizations.reduce(
+            function(res, val) {
+              if (val.nickname) res[val.participant_id] = val.nickname;
+              return res;
+            },
+            {}
+          )
         : {},
     adminIDs: messageThread.thread_admins,
     approvalMode: Boolean(messageThread.approval_mode),
@@ -107,81 +129,75 @@ function formatThreadGraphQLResponse(data) {
     hasEmailParticipant: false,
     readOnly: false,
     canReply: messageThread.cannot_reply_reason == null,
-    lastMessageTimestamp: messageThread.last_message ? messageThread.last_message.timestamp_precise : null,
+    lastMessageTimestamp: messageThread.last_message
+      ? messageThread.last_message.timestamp_precise
+      : null,
     lastMessageType: "message",
     lastReadTimestamp: lastReadTimestamp,
-    threadType: messageThread.thread_type == "GROUP" ? 2 : 1,
-    inviteLink: {
-			enable: messageThread.joinable_mode ? messageThread.joinable_mode.mode == 1 : false,
-			link: messageThread.joinable_mode ? messageThread.joinable_mode.link : null
-		}
+    threadType: messageThread.thread_type == "GROUP" ? 2 : 1
   };
 }
+// @YanMaglinte: I don't know what happens after changing some things
+// Probably this is to determine a group and not a  group
 
-module.exports = function (defaultFuncs, api, ctx) {
-  return function getThreadInfoGraphQL(threadIDs, callback) {
-		var cb;
-    var rtPromise = new Promise(function (resolve, reject) {
-      cb = function (error, data) {
-        data ? resolve(data) : reject(error);
-      }
+module.exports = function(defaultFuncs, api, ctx) {
+  return function getThreadInfoGraphQL(threadID, callback) {
+    var resolveFunc = function(){};
+    var rejectFunc = function(){};
+    var returnPromise = new Promise(function (resolve, reject) {
+      resolveFunc = resolve;
+      rejectFunc = reject;
     });
 
-		if (typeof callback == 'function') cb = callback;
-    if (Array.isArray(threadIDs) == false) threadIDs = [threadIDs];
+    if (utils.getType(callback) != "Function" && utils.getType(callback) != "AsyncFunction") {
+      callback = function (err, data) {
+        if (err) {
+          return rejectFunc(err);
+        }
+        resolveFunc(data);
+      };
+    }
 
-		var form = {};
-		// `queries` has to be a string. I couldn't tell from the dev console. This
-		// took me a really long time to figure out. I deserve a cookie for this.
-		threadIDs.map(function (t, i) {
-			form["o" + i] = {
-				doc_id: "3449967031715030",
-				query_params: {
-					id: t,
-					message_limit: 0,
-					load_messages: false,
-					load_read_receipts: false,
-					before: null
-				}
-			};
-		});
+    // `queries` has to be a string. I couldn't tell from the dev console. This
+    // took me a really long time to figure out. I deserve a cookie for this.
+    var form = {
+      queries: JSON.stringify({
+        o0: {
+          // This doc_id is valid as of July 20th, 2020
+          doc_id: "3449967031715030",
+          query_params: {
+            id: threadID,
+            message_limit: 0,
+            load_messages: false,
+            load_read_receipts: false,
+            before: null
+          }
+        }
+      }),
+      batch_name: "MessengerGraphQLThreadFetcher"
+    };
 
-		form = {
-			queries: JSON.stringify(form),
-			batch_name: "MessengerGraphQLThreadFetcher"
-		};
+    defaultFuncs
+      .post("https://www.facebook.com/api/graphqlbatch/", ctx.jar, form)
+      .then(utils.parseAndCheckLogin(ctx, defaultFuncs))
+      .then(function(resData) {
+        if (resData.error) {
+          throw resData;
+        }
+        // This returns us an array of things. The last one is the success /
+        // failure one.
+        // @TODO What do we do in this case?
+        if (resData[resData.length - 1].error_results !== 0) {
+          throw new Error("well darn there was an error_result");
+        }
 
-		defaultFuncs
-			.post("https://www.facebook.com/api/graphqlbatch/", ctx.jar, form)
-			.then(utils.parseAndCheckLogin(ctx, defaultFuncs))
-			.then(function (resData) {
-				if (resData.error) throw resData;
-				// This returns us an array of things. The last one is the success /
-				// failure one.
-				// @TODO What do we do in this case?
-				// if (resData[resData.length - 1].error_results !== 0) {
-				// 	throw resData[0].o0.errors[0];
-				// }
-				// if (!resData[0].o0.data.message_thread) {
-				// 	throw new Error("can't find this thread");
-				// }
-				const threadInfos = {};
-				for (let i = resData.length - 2; i >= 0; i--) {
-					const threadInfo = formatThreadGraphQLResponse(resData[i][Object.keys(resData[i])[0]].data);
-					threadInfos[threadInfo?.threadID || threadID[threadID.length - 1 - i]] = threadInfo;
-				}
-				if (Object.values(threadInfos).length == 1) {
-					cb(null, Object.values(threadInfos)[0]);
-				}
-				else {
-					cb(null, threadInfos);
-				}
-			})
-			.catch(function (err) {
-				log.error("getThreadInfoGraphQL", err);
-				return cb(err);
-			});
+        callback(null, formatThreadGraphQLResponse(resData[0]));
+      })
+      .catch(function(err) {
+        log.error("getThreadInfoGraphQL", err);
+        return callback(err);
+      });
 
-		return rtPromise;
-	};
+    return returnPromise;
+  };
 };

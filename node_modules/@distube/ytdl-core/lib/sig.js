@@ -176,11 +176,11 @@ const extractNTransformWithName = body => {
 };
 
 let nTransformWarning = false;
-// This is optional, so we can continue if it's not found, but it will bottleneck the download.
 const extractNTransform = body => {
   // Faster: extractNTransformFunc
   const nTransformFunc = getExtractFunctions([extractNTransformFunc, extractNTransformWithName], body);
   if (!nTransformFunc && !nTransformWarning) {
+    // This is optional, so we can continue if it's not found, but it will bottleneck the download.
     console.warn('\x1b[33mWARNING:\x1B[0m Could not parse n transform function.\n' +
       `Please report this issue with the "${
         utils.saveDebugFile('base.js', body)

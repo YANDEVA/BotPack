@@ -1,4 +1,4 @@
-hidden = [".config", "package-lock.json"]
+hidden = [".config", "package-lock.json", ".gitignore"]
 run = "node index.js"
 
 [[hints]]

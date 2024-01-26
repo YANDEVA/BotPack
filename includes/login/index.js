@@ -43,10 +43,22 @@ if (theme === 'blue') {
 } else if (theme === 'hacker') {
   cra = chalk.hex('#4be813');
   co = gradient('#47a127', '#0eed19', '#27f231');
+} else if (theme === 'purple') {
+  cra = chalk.hex("#7a039e");
+  co = gradient("#243aff", "#4687f0", "#5800d4");
+} else if (theme === 'rainbow') {
+  cra = chalk.hex('#0cb3eb');
+  co = gradient.rainbow;
+} else if (theme === 'orange') {
+  cra = chalk.hex('#ff8400');
+  co = gradient("#ff8c08", "#ffad08", "#f5bb47");
 } else {
   cra = gradient('yellow', 'lime', 'green');
   co = gradient("#243aff", "#4687f0", "#5800d4");
 };
+
+const { OpenTime } = require("./timekeep")
+OpenTime();
 
 var utils = require("./utils");
 var cheerio = require("cheerio");

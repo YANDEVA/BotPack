@@ -15,3 +15,5 @@ module.exports = function (http, api, ctx) {
       throw new Error(`moduleObj must be an object, not ` + utils.getType(moduleObj) + `!`);
   }
 }
+
+// Language: JavaScript

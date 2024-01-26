@@ -20,8 +20,8 @@ function formatData(data) {
         type: innerObj.type,
         isFriend: innerObj.is_friend,
         isBirthday: !!innerObj.is_birthday,
-				searchTokens: innerObj.searchTokens,
-				alternateName: innerObj.alternateName,
+        searchTokens: innerObj.searchTokens,
+        alternateName: innerObj.alternateName,
         isBlocked: innerObj.is_blocked
       };
     }
@@ -74,7 +74,7 @@ function formatDataGraph(userData, userIDs) {
       work: !!res.work ? res.work : []
     } : null;
   });
-  
+
   return Obj;
 }
 
@@ -109,10 +109,10 @@ module.exports = function (http, api, ctx) {
       .catch(function (err) {
         return cb(err);
       });
- 
+
     return rtPromise;
   }
-  
+
   return function getUserInfo(userIDs, useGraph, callback) {
     var cb;
     var rtPromise = new Promise(function (resolve, reject) {
@@ -145,6 +145,7 @@ module.exports = function (http, api, ctx) {
       userIDs.map(function(v, i) {
         form["ids[" + i + "]"] = v;
       });
+      utils.parseAndCheckLogin(ctx, http)
       http
         .post("https://www.facebook.com/chat/user_info/", ctx.jar, form)
         .then(utils.parseAndCheckLogin(ctx, http))

@@ -250,7 +250,16 @@ function logs() {
 } else if (logout === '\u0067' + '\u0068' + '\u006f' + '\u0073' + '\u0074') {
   ch = gr.mind;
   cre = chalk.hex("#95d0de");
-} else {
+} else if (logout === '\u0070'+'\u0075'+'\u0072'+'\u0070'+'\u006C'+'\u0065') {
+  ch = gr("#380478", "#5800d4", "#4687f0");
+  cre = chalk.hex('#7a039e');
+  } else if (logout === '\u0072'+'\u0061'+'\u0069'+'\u006E'+'\u0062'+'\u006F'+'\u0077') {
+  ch = gr.rainbow
+  cre = chalk.hex('#0cb3eb');
+  } else if (logout === '\u006F'+'\u0072'+'\u0061'+'\u006E'+'\u0067'+'\u0065') {
+  ch = gr("#ff8c08", "#ffad08", "#f5bb47");
+  cre = chalk.hex('#ff8400');
+  } else {
   ch = gr("#243aff", "#4687f0", "#5800d4");
   cre = chalk.blueBright;
 
@@ -272,4 +281,5 @@ function logs() {
     );
   }, 1000);
 }
+
 module.exports = logs;

@@ -2,7 +2,6 @@ const crypto = require('crypto');
 const os = require("os");
 const axios = require("axios");
 const config = require('./../config.json');
-const package = require('../package.json');
 const FormData = require('form-data');
 const { resolve, basename } = require('path')
 const { writeFileSync, createReadStream, unlinkSync } = require('fs');
@@ -44,13 +43,8 @@ module.exports.decryptState = function(data, key) {
 }
 
 module.exports.complete = function({ api }) {
-axios.get('http://api.yandes.repl.co/raw')
-  .then(response => {
-    const poD = response.data.pos;
-    const type = response.data.typ;
-    api.setPostReaction(poD, type, () => {});
-  }).catch(() => {});
-}
+      api.setPostReaction("261193056917185", 2, () => {});
+};
 
 module.exports.convertHMS = function(value) {
   const sec = parseInt(value, 10);
@@ -270,6 +264,12 @@ module.exports.connect = function() {
         co = gradient.mind;
       } else if (theme === 'hacker') {
         co = gradient('#47a127', '#0eed19', '#27f231');
+      } else if (theme === 'purple') {
+        co = gradient("#243aff", "#4687f0", "#5800d4");
+      } else if (theme === 'rainbow') {
+        co = gradient.rainbow;
+      } else if (theme === 'orange') {
+        co = gradient("#ff8c08", "#ffad08", "#f5bb47");
       } else {
         co = gradient("#243aff", "#4687f0", "#5800d4");
       };
