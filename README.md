@@ -1,7 +1,7 @@
 <h1>BotPack🤖<sub><sub>v1.6.0🚀</sub><sub><sub><h6>- By Yan Maglinte</h6></sub></sub></sub>
   <img align="center" src="https://i.ibb.co/gMMvsYf/20240125-225244-0000.png"></a>
 
-<h5>Introduction</h5></h1>
+<h3>Introduction</h3></h1>
 
 #### Join us in [ChatBot Community Ltd.](https://www.facebook.com/groups/178711334798450/?ref=share)🍪
 ###### If you encounter any issues or difficulties, don't hesitate to reach out and ask for assistance here. Our team is here to help you with any problems you may face.
@@ -9,9 +9,6 @@
 
 [<img align="center" src="https://i.ibb.co/khSZZPL/IMG-20230730-074956.jpg">](https://www.facebook.com/groups/178711334798450/?ref=share)
 <h1></h1>
-
-<h1>BotPack🤖<sub><sub>v1.5.1🚀</sub><sub><sub><h6>- By Yan Maglinte</h6></sub></sub></sub>
-Introduction</h1>
 
 - Welcome to the [BotPack](https://replit.com/@YanMaglinte/BotPack)🌀 repository. This project is an unofficial bot file from the [Mirai](https://github.com/m1raibot/miraiv2) Repository, initially developed and maintained by [Phạm Văn Diện](https://github.com/D-Jukie/Disme-Bot.git), better known as [D-Jukie](https://github.com/D-Jukie). The base file for this project is sourced from the [Disme-Bot](https://github.com/D-Jukie/Disme-Bot.git) GitHub project.
 
