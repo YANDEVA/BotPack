@@ -1,37 +1,7 @@
 # If you want to move down the line, please use \n. e.g: SpermLord\nCatalizcs.
 # After changed, you have to restart the bot to use.
 # Put the # character at the beginning of each sentence if you don't want the code to run those lines. 
-# Thanks to https://www.facebook.com/duong.than.net for translate to English!
 # Added more text by Yan Maglinte! Some may not be visible from other files if they don't have this file.
-
-# mirai.js 
-
-mirai.errorFormat=Malformed module!
-mirai.nameExist=Module's name is similar to another module!
-mirai.notFoundLanguage=Module %1 don't support your language
-mirai.notFoundPackage=Can't find package %1 support for module %2, installing...
-mirai.cantInstallPackage=Can't install package %1 for module %2, error: %3
-mirai.loadedPackage=Installed whole package successfully for module %1
-mirai.loadedConfig=Installed config successfully for module %1
-mirai.cantLoadConfig=Can't install config of module %1, error: %2
-mirai.cantOnload=Can't launch setup of module %1, error: %1
-mirai.successLoadModule=Successfully installed module %1
-mirai.failLoadModule=Can't install module %1, error: %2
-mirai.finishLoadModule=Installed %1 module commands and %2 module events successfully 
-mirai.foundPathAppstate=Found file appstate
-mirai.notFoundPathAppstate=Can't find file appstate
-mirai.checkListGban=Cheking global ban list...
-mirai.banDevice=Your device have been banned from miraiproject, please contact to facebook https://fb.me/PhamVanDien.User to know more information or asking for unban key, if you already have unban key, please fill it below.
-mirai.keyNotSameFormat=Wrong format, code must contain 6 number.
-mirai.codeInputExpired=Your code is wrong or out of date.
-mirai.unbanDeviceSuccess=Your device are unban now, please restart to use.
-mirai.userBanned=You had been banned from miraiproject when %1 with reason: %2. Please contact to facebook https://fb.me/PhamVanDien.User to have more information!
-mirai.finishCheckListGban=Checked global ban list
-mirai.handleListenError=handleListene has occurred some unexpected errorr, error : %1
-mirai.warningSourceCode=DETECTED THAT SOURCE CODE'S STRUCTURE HAD BEEN CHANGED , STOP NOW!
-mirai.refreshListen=Refreshed handleListener...
-mirai.successConnectDatabase=Connected to database successfully!
-mirai.failConnectDatabase=Failed to connect to database, error: %1
 
 # includes/listen.js
 
@@ -73,6 +43,7 @@ handleCommand.commandError=Having some unexpected error when using command %1, e
 handleCommand.notMatched=⚠This command does not require a prefix to start with.
 handleCommand.noPrefix=This command has no command config "usePrefix" property
 handleCommand.commandNotFound=The command you used doesn't exist.
+handleCommand.notFoundLanguage=The language you used was not found! Please make sure to check out the available languages
 
 # includes/handle/handleCommandEvent.js
 

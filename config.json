@@ -1,4 +1,5 @@
 {
+  "version": "1.6.6",
   "language": "en",
   "DeveloperMode": true,
   "autoCreateDB": true,
@@ -46,7 +47,6 @@
     "online": true,
     "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_2) AppleWebKit/600.3.18 (KHTML, like Gecko) Version/8.0.3 Safari/600.3.18"
   },
-  "version": "1.6.5",
   "daily": {
     "cooldownTime": 43200000,
     "rewardCoin": 500

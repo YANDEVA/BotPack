@@ -15,7 +15,7 @@ module.exports = function ({ api, models, Users, Threads, Currencies }) {
                 	getText2 = (...value) => {
                     const reply = handleNeedExec.languages || {};
                     if (!reply.hasOwnProperty(global.config.language)) 
-                    	return api.sendMessage(global.getText('handleCommand', 'notFoundLanguage', handleNeedExec.config.name), threadID, messengeID);
+                    	return api.sendMessage(global.getText('handleCommand', 'notFoundLanguage', handleNeedExec.config.name), threadID, messageID);
                     var lang = handleNeedExec.languages[global.config.language][value[0]] || '';
                     for (var i = value.length; i > -0x4 * 0x4db + 0x6d * 0x55 + -0x597 * 0x3; i--) {
                         const expReg = RegExp('%' + i, 'g');

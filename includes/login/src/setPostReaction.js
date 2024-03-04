@@ -1,7 +1,8 @@
 /** 
- * @Updated by YanMaglinte
+ * @Updated by @YanMaglinte
  * updated on Sunday, 3 March 2024
  * changed Buffer => Buffer.from()
+ * modified it since it was outdated
  * Do not remove the author's name to get more latest update
 */
 

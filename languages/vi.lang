@@ -5,35 +5,6 @@
 # Thanks to CatalizCS & Yan Maglinte for translate to Vietnamese!
 # Đã thêm văn bản khác của Yan Maglinte! Một số có thể không hiển thị từ các tệp khác nếu chúng không có tệp này.
 
-# mirai.js
-
-mirai.errorFormat=Module không đúng định dạng!
-mirai.nameExist=Tên module bị trùng với một module mang cùng tên khác!
-mirai.notFoundLanguage=Module %1 không hỗ trợ ngôn ngữ ngôn ngữ của bạn
-mirai.notFoundPackage=Không tìm thấy package %1 hỗ trợ cho module %2, tiến hành cài đặt...
-mirai.cantInstallPackage=Không thể cài đặt package %1 cho module %2, lỗi: %3
-mirai.loadedPackage=Đã tải thành công toàn bộ package cho module %1
-mirai.loadedConfig=Đã tải thành công config cho module %1
-mirai.cantLoadConfig=Không thể tải config của module %1, lỗi: %2
-mirai.cantOnload=Không thể khởi chạy setup của module %1, lỗi: %1
-mirai.successLoadModule=Đã tải thành công module %1
-mirai.failLoadModule=Không thể tải thành công module %1, lỗi: %2
-mirai.finishLoadModule=Đã tải thành công %1 module commands và %2 module events
-mirai.foundPathAppstate=Đã tìm thấy file appstate
-mirai.notFoundPathAppstate=Không tìm thấy file appstate
-mirai.checkListGban=Đang kiểm tra danh sách global ban...
-mirai.banDevice=Hiện tại thiết bị của bạn đã bị ban khỏi miraiproject, liên hệ tới facebook https://fb.me/PhamVanDien.User để biết thêm thông tin chi tiết hoặc xin key unban, nếu bạn đã có key unban hãy điền vào bên dưới!
-mirai.keyNotSameFormat=Dữ liệu bạn nhập phải là một dãy số bao gồm 6 chữ số!
-mirai.codeInputExpired=Code bạn nhập không trùng khớp hoặc đã hết hạn!
-mirai.unbanDeviceSuccess=Thiết bị của bạn đã được gỡ ban, hãy khởi động lại để có thể tiếp tục sử dụng
-mirai.userBanned=Bạn đã bị ban khỏi miraiproject vào lúc %1 với lý do: %2. Liên hệ tới facebook https://fb.me/PhamVanDien.User để biết thêm chi tiết!
-mirai.finishCheckListGban=Đã kiểm tra xong danh sách global ban
-mirai.handleListenError=handleListener đã xảy ra một số lỗi không mong muốn, lỗi: %1
-mirai.warningSourceCode=PHÁT HIỆN SOURCE CODE ĐÃ BỊ THAY ĐỔI CẤU TRÚC, HÃY DỪNG LẠI NGAY!
-mirai.refreshListen=Đã làm mới lại handleListener...
-mirai.successConnectDatabase=Kết nối đến cơ sở dữ liệu thành công
-mirai.failConnectDatabase=Kết nối đến cơ sở dữ liệu thất bại, lỗi: %1
-
 # includes/listen.js
 
 listen.startLoadEnvironment=Tiến hành khởi tạo biến môi trường...
@@ -75,6 +46,7 @@ handleCommand.commandError=Đã xảy ra lỗi không mong muốn trong khi th�
 handleCommand.notMatched=⚠Lệnh này không yêu cầu PREFIX để bắt đầu.
 handleCommand.noPrefix=Lệnh này không có thuộc tính command config "usePrefix"
 handleCommand.commandNotFound=Lệnh bạn đã sử dụng không tồn tại.
+handleCommand.notFoundLanguage=Không tìm thấy ngôn ngữ bạn sử dụng! Hãy đảm bảo kiểm tra các ngôn ngữ có sẵn
 
 # includes/handle/handleCommandEvent.js
 

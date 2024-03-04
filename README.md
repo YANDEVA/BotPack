@@ -1,19 +1,7 @@
-<h1>BotPack🤖<sub><sub>v1.6.5🚀</sub><sub><sub><h6>- By Yan Maglinte</h6></sub></sub></sub>
+<h1>BotPack🤖<sub><sub>v1.6.6🚀</sub><sub><sub><h6>- By Yan Maglinte</h6></sub></sub></sub>
   <img align="center" src="https://i.ibb.co/gMMvsYf/20240125-225244-0000.png"></a>
 
-<h2>What's new? (V1.6.5) 📦</h2></h1>
-
-- Added editMessage.js in the FCA.
-- Remove typ and read_receipt.
-- Shorten and simplified the codes.
-- Fix some issues related to the bot not being able to respond to someone.
-- Made some changes to the FCA.
-- Removed handleNotification.js since it was not in use.
-- Removed readline package. (You can now use BotPack and host it in render.com)
-- Removed Email and Password Method since it's useless anymore.
-- Bug fixed.
----
-<h3>Introduction</h3>
+<h3>Introduction</h3></h1>
 
 #### Join us in [ChatBot Community Ltd.](https://www.facebook.com/groups/178711334798450/?ref=share)🍪
 ###### If you encounter any issues or difficulties, don't hesitate to reach out and ask for assistance here. Our team is here to help you with any problems you may face.
@@ -21,6 +9,47 @@
 
 [<img align="center" src="https://i.ibb.co/khSZZPL/IMG-20230730-074956.jpg">](https://www.facebook.com/groups/178711334798450/?ref=share)
 <h1></h1>
+
+<details>
+  <summary>Bot Versions</summary>
+<h3>Minor Changes (V1.6.6) 📦</h3>
+
+- README.md modified
+- SetPostReaction problem fixed
+- Removed 'mirai' properties in the languages section since it wasn't used.
+
+<h3>What's new? (V1.6.5) 📦</h3>
+
+- Added editMessage.js in the FCA.
+- Remove typ and read_receipt.
+- Shorten and simplified the codes.
+- Fix some issues related to the bot not being able to respond.
+- Made some changes to the FCA.
+- Removed handleNotification.js since it was not in use.
+- Removed readline package. (You can now use BotPack and host it in render.com)
+- Removed Email and Password Method since it's not doing good anymore.
+- Bug fixed.
+</details>
+
+<details>
+  <summary>Languages</summary>
+  
+> - en = English-US 
+> - vi = Vietnamese 
+> - tl = Tagalog 
+> - cb = Bisaya/Cebuano
+> - bd = Bengali 
+> - ar = Arabic
+
+Go to your config.json and set it in the language property:
+```json
+{
+  "language": "en",
+}
+```
+</details>
+
+---
 
 - Welcome to the [BotPack](https://replit.com/@YanMaglinte/BotPack)🌀 repository. This project is an unofficial bot file from the [Mirai](https://github.com/m1raibot/miraiv2) Repository, initially developed and maintained by [Phạm Văn Diện](https://github.com/D-Jukie/Disme-Bot.git), better known as [D-Jukie](https://github.com/D-Jukie). The base file for this project is sourced from the [Disme-Bot](https://github.com/D-Jukie/Disme-Bot.git) GitHub project.
 
@@ -58,7 +87,10 @@
 
 > *Note: There is a risk of your account being banned after a certain period, so please ensure proper account management and handling!*
 ---
-<h2>Credits<sub><h6>Special thanks to the following fellows for making this modified project possible:</h6></sub></h2>
+
+<details>
+  <summary>Credits</summary>
+  <h2><sub><h6>Special thanks to the following fellows for making this modified project possible:</h6></sub></h2>
 
 > - 🔴SpermLord
 > - 🟡CatalizCS
@@ -66,3 +98,4 @@
 > - 🟠NTKhang03
 > - 🟣KhangGia1810
 > <h6>Updated on: March 4, 2024 (PST)<br>Creation Date: June 11, 2023</h6>
+</details>

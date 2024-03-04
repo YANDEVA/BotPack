@@ -5,35 +5,6 @@
 # شكراً لك، Yan Maglinte، على الترجمة العربية! يمكنك العثور على الترجمة في الرابط التالي: https://replit.com/@YanMaglinte
 # تمت إضافة المزيد من النص بواسطة Yan Maglinte! قد لا يكون البعض مرئيًا من الملفات الأخرى إذا لم يكن لديهم هذا الملف.
 
-# mirai.js
-
-mirai.errorFormat = وحدة نمطية غير صحيحة!
-mirai.nameExist = اسم الوحدة النمطية مشابه لوحدة نمطية أخرى!
-mirai.notFoundLanguage = الوحدة النمطية٪ 1 لا تدعم لغتك
-mirai.notFoundPackage = لا يمكن العثور على دعم الحزمة٪ 1 للوحدة٪ 2 ، جاري التثبيت ...
-mirai.cantInstallPackage = لا يمكن تثبيت الحزمة٪ 1 للوحدة النمطية٪ 2 ، الخطأ:٪ 3
-mirai.loadedPackage = تم تثبيت الحزمة بالكامل بنجاح للوحدة النمطية٪ 1
-mirai.loadedConfig = تم تثبيت التكوين بنجاح للوحدة النمطية٪ 1
-mirai.cantLoadConfig = لا يمكن تثبيت تكوين الوحدة النمطية٪ 1 ، الخطأ:٪ 2
-mirai.cantOnload = لا يمكن بدء إعداد الوحدة النمطية٪ 1 ، الخطأ:٪ 1
-mirai.successLoadModule = تم بنجاح تثبيت الوحدة النمطية٪ 1
-mirai.failLoadModule = لا يمكن تثبيت الوحدة النمطية٪ 1 ، الخطأ:٪ 2
-mirai.finishLoadModule = تم تثبيت أوامر الوحدة النمطية٪ 1 وأحداث الوحدة النمطية٪ 2 بنجاح
-mirai.foundPathAppstate = تم العثور على ملف appstate
-mirai.notFoundPathAppstate = لا يمكن العثور على ملف appstate
-mirai.checkListGban = تحليل قائمة المنع العالمية ...
-mirai.
-mirai.keyNotSameFormat = تنسيق خاطئ ، يجب أن يحتوي الرمز على 6 أرقام.
-mirai.codeInputExpired = رمزك خاطئ أو قديم.
-mirai.unbanDeviceSuccess = جهازك غير محظور الآن ، يرجى إعادة التشغيل للاستخدام.
-mirai.userBanned = تم حظرك من miraiproject عندما٪ 1 بسبب:٪ 2. يرجى الاتصال على facebook https://fb.me/PhamVanDien.User للحصول على مزيد من المعلومات!
-mirai.finishCheckListGban = فحص قائمة الحظر العالمية
-mirai.handleListenError = handleListene حدث خطأ غير متوقع ، الخطأ:٪ 1
-mirai.warningSourceCode = تم اكتشاف أن بنية شفرة المصدر قد تغيرت ، توقف الآن!
-mirai.refreshListen = مقبض محدث للاستماع ...
-mirai.successConnectDatabase = تم الاتصال بقاعدة البيانات بنجاح!
-mirai.failConnectDatabase = فشل الاتصال بقاعدة البيانات ، الخطأ:٪ 1
-
 # includes/listen.js
 
 listen.startLoadEnvironment = تابع تحميل متغير البيئة ...
@@ -74,6 +45,7 @@ handleCommand.commandError = حدث خطأ غير متوقع عند استخدا
 handleCommand.notMatched = ⚠ لا يتطلب هذا الأمر بادئة للبدء بها.
 handleCommand.noPrefix = لا يحتوي هذا الأمر على خاصية تكوين الأمر "usePrefix"
 handleCommand.commandNotFound = الأمر الذي استخدمته غير موجود.
+handleCommand.notFoundLanguage=لم يتم العثور على اللغة التي استخدمتها! يرجى التأكد من التحقق من اللغات المتاحة
 
 # includes/handle/handleCommandEvent.js
 

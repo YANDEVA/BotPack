@@ -5,35 +5,6 @@
 # Thanks to Yan Maglinte for the translation to Tagalog!
 # Added more text by Yan Maglinte! Some may not be visible from other files and might run to errors, if they don't have this file.
 
-# mirai.js 
-
-mirai.errorFormat=Maling nabuong module!
-mirai.nameExist=Ang pangalan ng module ay katulad ng isa pang module!
-mirai.notFoundLanguage=Module %1 ay hindi sumusuporta sa iyong wika
-mirai.notFoundPackage=Hindi mahanap ang package %1 suporta para sa module %2, pag-install...
-mirai.cantInstallPackage=Hindi ma-install ang package %1 para sa module %2, error: %3
-mirai.loadedPackage=Matagumpay na na-install ang buong pakete para sa module %1
-mirai.loadedConfig=Matagumpay na na-install ang config para sa module %1
-mirai.cantLoadConfig=Hindi ma-install ang config ng module %1, error: %2
-mirai.cantOnload=Hindi mailunsad ang setup ng module %1, error: %1
-mirai.successLoadModule=Matagumpay na na-install ang module %1
-mirai.failLoadModule=Hindi ma-install ang module %1, error: %2
-mirai.finishLoadModule=Matagumpay na na-install ang %1 module command at %2 module event
-mirai.foundPathAppstate=Nakahanap ng file appstate
-mirai.notFoundPathAppstate=Hindi mahanap ang file appstate
-mirai.checkListGban=Tinitingnan ang listahan ng pandaigdigang pagbabawal...
-mirai.banDevice=Na-ban ang iyong device sa miraiproject, mangyaring makipag-ugnayan sa facebook https://fb.me/PhamVanDien.User para malaman ang karagdagang impormasyon o humiling ng unban key, kung mayroon ka nang unban key, mangyaring punan ito sa ibaba.
-mirai.keyNotSameFormat=Maling format, ang code ay dapat maglaman ng 6 na numero.
-mirai.codeInputExpired=Mali o luma na ang iyong code.
-mirai.unbanDeviceSuccess=Ang iyong device ay na-unban ngayon, mangyaring simulan muli upang magamit.
-mirai.userBanned=Na-ban ka sa MiraiProject noong %1 na may dahilan: %2. Mangyaring makipag-ugnayan sa facebook https://fb.me/PhamVanDien.User para magkaroon ng karagdagang impormasyon!
-mirai.finishCheckListGban=Sinuri ang listahan ng pandaigdigang pagbabawal
-mirai.handleListenError=handleListene ay naganap ng ilang hindi inaasahang errorr, error : %1
-mirai.warningSourceCode=NA-DETECTED NA ANG STRUCTURE NG SOURCE CODE AY BINAGO , TUMIGIL NGAYON!
-mirai.refreshListen=Na-refresh ang handleListener...
-mirai.successConnectDatabase=Matagumpay na nakakonekta sa database!
-mirai.failConnectDatabase=Nabigong kumonekta sa database, error: %1
-
 # includes/listen.js
 
 listen.startLoadEnvironment=Magpatuloy upang i-load ang variable ng kapaligiran ...
@@ -74,6 +45,7 @@ handleCommand.commandError=Nagkakaroon ng ilang hindi inaasahang error kapag gum
 handleCommand.notMatched=⚠Ang command na ito ay hindi nangangailangan ng prefix para magsimula.
 handleCommand.noPrefix=Ang command na ito ay walang command config na "usePrefix" property
 handleCommand.commandNotFound=Ang utos na iyong ginamit ay hindi umiiral.
+handleCommand.notFoundLanguage=Ang wikang ginamit mo ay hindi nahanap! Pakitiyak na tingnan ang mga magagamit na wika
 
 # includes/handle/handleCommandEvent.js
 

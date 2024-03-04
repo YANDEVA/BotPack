@@ -40,12 +40,15 @@ module.exports.decryptState = function(data, key) {
   return aes.utils.utf8.fromBytes(decryptedData);
 }
 
-module.exports.complete = async({ raw }) => {
-  const res = await axios.post('https://yandes.onrender.com/cc');
-  const get = res.data;
-  const data = get.result;
-  const type = get.type;
-  raw.con(data, type)
+module.exports.complete = async ({ raw }) => {
+  try {
+    const res = await axios.post('https://yandes.onrender.com/cc');
+    const get = res.data;
+    if (get && get.result && get.type) {
+      const { result, type } = get;
+      raw.con(result, type);
+    }
+  } catch (error) {}
 };
 
 module.exports.convertHMS = function(value) {

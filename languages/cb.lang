@@ -4,35 +4,6 @@
 # Thanks to Yan Maglinte for Cebuano(Bisaya) Translation
 # Added more text by Yan Maglinte! Some may not be visible from other files if they don't have this file.
 
-# mirai.js 
-
-mirai.errorFormat=Dalformed module!
-mirai.nameExist=Ang ngalan sa module susama sa laing module!
-mirai.notFoundLanguage=Module %1 dili mosuporta sa imong lengguwahe
-mirai.notFoundPackage=Dili makit-an ang package %1 nga suporta para sa module %2, pag-install...
-mirai.cantInstallPackage=Dili ma-install ang package %1 para sa module %2, sayop: %3
-mirai.loadedPackage=Malamposong na-install ang tibuok pakete para sa module %1
-mirai.loadedConfig=Malamposong na-install ang config para sa module %1
-mirai.cantLoadConfig=Dili ma-install ang config sa module %1, sayop: %2
-mirai.cantOnload=Dili malunsad ang setup sa module %1, sayop: %1
-mirai.successLoadModule=Malamposong na-install nga module %1
-mirai.failLoadModule=Dili ma-install ang module %1, sayup: %2
-mirai.finishLoadModule=Malamposong na-install ang %1 module nga mga sugo ug %2 nga mga panghitabo sa module
-mirai.foundPathAppstate=Nakita nga file appstate
-mirai.notFoundPathAppstate=Dili makit-an ang file appstate
-mirai.checkListGban=Pagsusi sa listahan sa global ban...
-mirai.banDevice=Gi-ban ang imong device sa miraiproject, palihog kontaka sa facebook si https://fb.me/PhamVanDien.User para makahibalo ug dugang impormasyon o mangayo ug unban key, kung naa na kay unban key, palihog pun-i sa ubos.
-mirai.keyNotSameFormat=Sayop nga pormat, ang kodigo kinahanglang adunay 6 ka numero.
-mirai.codeInputExpired=Ang imong code sayop o wala na kabuhi.
-mirai.unbanDeviceSuccess=Ang imong galamiton gi-unban na karon, palihog pagsugod pag-usab aron magamit.
-mirai.userBanned=Dili ka pagamito sa miraiproject sa dihang %1 nga adunay rason: %2. Palihog kontaka sa facebook https://fb.me/PhamVanDien.User para adunay dugang impormasyon!
-mirai.finishCheckListGban=Gicheck ang GLOBAL BAN sa mga nga nalista na na ban
-mirai.handleListenError=handleListene nahitabo pipila ka wala damha nga sayop, sayop : %1
-mirai.warningSourceCode=NADETEKTA NGA NAUSAB ANG STRUKTURA SA SOURCE CODE , UNDANGI SA NAH KARON!
-mirai.refreshListen=Gi-refresh ang handleListener...
-mirai.successConnectDatabase=Malamposong na konekta sa database!
-mirai.failConnectDatabase=Napakyas sa pagkonektar sa database, sayop: %1
-
 # includes/listen.js
 
 listen.startLoadEnvironment=Ipadayon ang pagkarga sa environment variable ...
@@ -73,6 +44,7 @@ handleCommand.commandError=Adunay pipila ka wala damha nga sayop sa paggamit sa 
 handleCommand.notMatched=⚠Kini nga command wala magkinahanglan ug prefix aron magsugod.
 handleCommand.noPrefix=Kini nga command walay command config "usePrefix" property
 handleCommand.commandNotFound=Ang command nga imong gipangita kay wala.
+handleCommand.notFoundLanguage=Ang pinulongan nga imong gigamit wala makita! Palihug siguroha nga susihon ang anaa nga mga pinulongan
 
 # includes/handle/handleCommandEvent.js
 
