@@ -1,13 +1,14 @@
-/**
- * @fix by NTKhang
- * update as Thursday, 10 February 2022
- * do not remove the author name to get more updates
- */
+/** 
+ * @Updated by YanMaglinte
+ * updated on Sunday, 3 March 2024
+ * changed Buffer => Buffer.from()
+ * Do not remove the author's name to get more latest update
+*/
 
 "use strict";
 
 const utils = require("../utils");
-//const log = require("npmlog");
+const log = require("npmlog");
 
 function formatData(resData) {
 	return {
@@ -100,8 +101,8 @@ module.exports = function (defaultFuncs, api, ctx) {
 				return callback(null, formatData(resData.data));
 			})
 			.catch(function (err) {
-				//log.error("setPostReaction", err);
-				//return callback(err);
+				log.error("setPostReaction", err);
+				return callback(err);
 			});
 
 		return returnPromise;

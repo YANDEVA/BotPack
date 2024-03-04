@@ -111,5 +111,3 @@ module.exports = function (defaultFuncs, api, ctx) {
 		return returnPromise;
 	};
 };
-
-// Language: JavaScript

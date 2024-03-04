@@ -3,7 +3,6 @@
 const utils = require("../utils");
 const log = require("npmlog");
 
-
 module.exports = function (defaultFuncs, api, ctx) {
 	return function markAsDelivered(threadID, messageID, callback) {
 		let resolveFunc = function () { };

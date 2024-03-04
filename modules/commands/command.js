@@ -115,7 +115,7 @@ const loadCommand = function ({ moduleList, threadID, messageID }) {
 const unloadModule = function ({ moduleList, threadID, messageID }) {
     const { writeFileSync, unlinkSync } = global.nodemodule["fs-extra"];
     const { configPath, mainPath, api } = global.client;
-    const logger = require(mainPath + "/utils/log").loader;
+    const logger = require(mainPath + "/utils/log");
 
     delete require.cache[require.resolve(configPath)];
     var configValue = require(configPath);
@@ -126,7 +126,7 @@ const unloadModule = function ({ moduleList, threadID, messageID }) {
         global.client.eventRegistered = global.client.eventRegistered.filter(item => item !== nameModule);
         configValue["commandDisabled"].push(`${nameModule}.js`);
         global.config["commandDisabled"].push(`${nameModule}.js`);
-        logger(`Unloaded command ${nameModule}!`);
+        logger.loader(`Unloaded command ${nameModule}!`);
     }
 
     writeFileSync(configPath, JSON.stringify(configValue, null, 4), 'utf8');

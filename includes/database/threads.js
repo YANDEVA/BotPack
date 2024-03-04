@@ -137,7 +137,7 @@ module.exports = function ({ api }) {
                             if(dataUser.includes(singleData.id) || Users.hasOwnProperty(singleData.id)) continue
                             dataUser.push(singleData.id)
                             await Users.createData(singleData.id)
-                            logger(global.getText('handleCreateDatabase', 'newUser', singleData.id), 'DATABASE');
+                            logger.log(global.getText('handleCreateDatabase', 'newUser', singleData.id), 'DATABASE');
                         } catch(e) { console.log(e) };
                     }
                 }

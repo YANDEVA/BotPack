@@ -2,7 +2,7 @@
   "language": "en",
   "DeveloperMode": true,
   "autoCreateDB": true,
-  "allowInbox": true,
+  "allowInbox": false,
   "autoClean": true,
   "adminOnly": false,
   "encryptSt": true,
@@ -11,8 +11,10 @@
     "Package": true,
     "EXCLUDED": [
       "chalk",
-      "mqtt"
-    ]
+      "mqtt",
+      "https-proxy-agent"
+    ],
+    "Info": "This section manages the bot's automatic package updates. To disable this function, set 'Package' to false. If you only want to exclude specific packages, set them to true and add them in the 'EXCLUDED' list."
   },
   "commandDisabled": [],
   "eventDisabled": [],
@@ -34,7 +36,6 @@
   "APPSTATEPATH": "appstate.json",
   "DEL_FUNCTION": false,
   "ADD_FUNCTION": true,
-  "CONNECT_LOG": false,
   "FCAOption": {
     "forceLogin": false,
     "listenEvents": true,
@@ -45,7 +46,7 @@
     "online": true,
     "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_2) AppleWebKit/600.3.18 (KHTML, like Gecko) Version/8.0.3 Safari/600.3.18"
   },
-  "version": "1.6.0",
+  "version": "1.6.5",
   "daily": {
     "cooldownTime": 43200000,
     "rewardCoin": 500
@@ -66,9 +67,6 @@
     "autoUnsend": true,
     "sendNoti": true,
     "timeToUnsend": 10
-  },
-  "math": {
-    "WOLFRAM": "T8J8YV-H265UQ762K"
   },
   "sing": {
     "YOUTUBE_API": "AIzaSyCqox-KXEwDncsuo2HIpE0MF8J7ATln5Vc",

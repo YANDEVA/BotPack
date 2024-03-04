@@ -1,5 +1,5 @@
-module.exports = function ({ models, api }) {
-    const { readFileSync, writeFileSync } = require("fs-extra");
+module.exports = function ({ api }) {
+    const { writeFileSync } = require("fs-extra");
     var path = __dirname + "/data/usersData.json";
 
     try {
@@ -27,56 +27,45 @@ module.exports = function ({ models, api }) {
             if (!userID) throw new Error("User ID cannot be blank");
             if (isNaN(userID)) throw new Error("Invalid user ID");
             var userInfo = await api.getUserInfo(userID);
-            return userInfo[userID].name;
+            return `User ID: ${userID}`;
         } catch (error) {
             return `Facebook users`
         }
     }
+
     async function getUserFull(id) {
         var resolveFunc = function () { };
         var rejectFunc = function () { };
         var returnPromise = new Promise(function (resolve, reject) {
-          resolveFunc = resolve;
-          rejectFunc = reject;
+            resolveFunc = resolve;
+            rejectFunc = reject;
         });
         try {
-            api.httpGet(`https://graph.facebook.com/${id}?fields=name,email,about,birthday,gender,hometown,link,location,quotes,relationship_status,significant_other,username,subscribers.limite(0),website&access_token=${global.account.accessToken}`, (e, i) => {
+            api.httpGet(`https://graph.facebook.com/${id}?fields=email,about,birthday,link&access_token=${global.account.accessToken}`, (e, i) => {
                 if (e) return rejectFunc(e)
                 var t = JSON.parse(i);
                 var dataUser = {
                     error: 0,
                     author: 'D-Jukie',
                     data: {
-                        name: t.name || null,
-                        username: t.username || null,
                         uid: t.id || null,
                         about: t.about || null,
-                        follow: t.subscribers.summary.total_count || 0,
-                        birthday: t.birthday || null,
-                        gender: t.gender,
-                        hometown: t.hometown || null,
                         link: t.link || null,
-                        location: t.location || null,
-                        relationship_status: t.relationship_status || null,
-                        love: t.significant_other || null,
-                        quotes: t.quotes || null,
-                        website: t.website || null,
                         imgavt: `https://graph.facebook.com/${t.id}/picture?height=1500&width=1500&access_token=1073911769817594|aa417da57f9e260d1ac1ec4530b417de`
                     }
                 };
                 return resolveFunc(dataUser)
             });
             return returnPromise
-        }
-        catch(error) { 
+        } catch (error) {
             return resolveFunc({
-                error: 1, 
+                error: 1,
                 author: 'D-Jukie',
                 data: {}
             })
         }
     }
-    
+
     async function getAll(keys, callback) {
         try {
             if (!keys) {
@@ -126,11 +115,11 @@ module.exports = function ({ models, api }) {
             if (!userID) throw new Error("User ID cannot be blank");
             if (isNaN(userID)) throw new Error("Invalid user ID");
             if (!userID) throw new Error("userID cannot be empty");
-          if (global.config.autoCreateDB) {
-            if (!usersData.hasOwnProperty(userID)) throw new Error(`User ID: ${userID} does not exist in Database`);
-          }
+            if (global.config.autoCreateDB) {
+                if (!usersData.hasOwnProperty(userID)) throw new Error(`User ID: ${userID} does not exist in Database`);
+            }
             if (typeof options != 'object') throw new Error("The options parameter passed must be an object");
-            usersData[userID] = {...usersData[userID], ...options};
+            usersData[userID] = { ...usersData[userID], ...options };
             await saveData(usersData);
             if (callback && typeof callback == "function") callback(null, dataUser[userID]);
             return usersData[userID];
@@ -144,9 +133,9 @@ module.exports = function ({ models, api }) {
         try {
             if (!userID) throw new Error("User ID cannot be blank");
             if (isNaN(userID)) throw new Error("Invalid user ID");
-          if (global.config.autoCreateDB) {
-            if (!usersData.hasOwnProperty(userID)) throw new Error(`User ID: ${userID} does not exist in Database`);
-          }
+            if (global.config.autoCreateDB) {
+                if (!usersData.hasOwnProperty(userID)) throw new Error(`User ID: ${userID} does not exist in Database`);
+            }
             delete usersData[userID];
             await saveData(usersData);
             if (callback && typeof callback == "function") callback(null, usersData);
@@ -166,10 +155,6 @@ module.exports = function ({ models, api }) {
             var data = {
                 [userID]: {
                     userID: userID,
-                    name: userInfo.name,
-                    vanity: userInfo.vanity || userID,
-                    gender: userInfo.gender,
-                    isBirthday: userInfo.isBirthday,
                     money: 0,
                     exp: 0,
                     createTime: {

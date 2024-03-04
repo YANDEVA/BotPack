@@ -22,7 +22,7 @@ module.exports = async ({ api }) => {
   function autoRestart(config) {
     if (config.status) {
       cron.schedule(`*/${config.time} * * * *`, () => {
-        logger('Start rebooting the system!', 'Auto Restart');
+        logger.log('Start rebooting the system!', 'Auto Restart');
         process.exit(1);
       });
     }
@@ -84,7 +84,7 @@ module.exports = async ({ api }) => {
       }
     });
   }, {
-    scheduled: true, // Set this to false to turn it off
+    scheduled: false, // Set this to false to turn it off
     timezone: "Asia/Manila"
   });
 
@@ -128,7 +128,7 @@ module.exports = async ({ api }) => {
       }
     });
   }, {
-    scheduled: true, // Set this to false to turn it off
+    scheduled: false, // Set this to false to turn it off
     timezone: "Asia/Manila"
   });
 };

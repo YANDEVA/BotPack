@@ -1,10 +1,10 @@
 const fs = require('fs-extra');
-const pathFile = __dirname + '/cache/txt/autoseen.txt';
+const pathFile = __dirname + '/cache/autoseen.txt';
 
 module.exports.config = {
   name: "autoseen",
   version: "1.0.0",
-  hasPermssion: 2,
+  hasPermssion: 0,
   credits: "Yan Maglinte",
   description: "Turn on/off automatically seen when new messages are available",
   usePrefix: true,

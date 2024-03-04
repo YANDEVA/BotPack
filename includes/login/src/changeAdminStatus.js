@@ -77,4 +77,3 @@ module.exports = function (defaultFuncs, api, ctx) {
 	};
 };
 
-// Language: JavaScript

@@ -1,81 +1,12 @@
 module.exports = function({ api }) {
+  const axios = require('axios');
+  const fs = require('fs');
   const Users = require("./database/users")({ api });
   const Threads = require("./database/threads")({ api });
   const Currencies = require("./database/currencies")({ api, Users });
-  const logger = require("../utils/log.js");
-  const chalk = require("chalk");
-  const gradient = require("gradient-string");
-  const cons = require('./../config.json');
-  const theme = cons.DESIGN.Theme.toLowerCase();
-  let cra;
-  let co;
-  let cb;
-  if (theme === 'blue') {
-    cra = gradient('yellow', 'lime', 'green');
-    co = gradient("#243aff", "#4687f0", "#5800d4");
-    cb = chalk.blueBright;
-  } else if (theme === 'fiery') {
-    cra = gradient('orange', 'yellow', 'yellow');
-    co = gradient("#fc2803", "#fc6f03", "#fcba03");
-    cb = chalk.hex("#fff308");
-  } else if (theme === 'red') {
-    cra = gradient('yellow', 'lime', 'green');
-    co = gradient("red", "orange");
-    cb = chalk.hex("#ff0000");
-  } else if (theme === 'aqua') {
-    cra = gradient("#6883f7", "#8b9ff7", "#b1bffc")
-    co = gradient("#0030ff", "#4e6cf2");
-    cb = chalk.hex("#3056ff");
-  } else if (theme === 'pink') {
-    cra = gradient('purple', 'pink');
-    co = gradient("#d94fff", "purple");
-    cb = chalk.hex("#6a00e3");
-  } else if (theme.toLowerCase() === 'retro') {
-    cra = gradient("orange", "purple");
-    co = gradient.retro;
-    cb = chalk.hex("#ffce63");
-  } else if (theme.toLowerCase() === 'sunlight') {
-    cra = gradient("#f5bd31", "#f5e131");
-    co = gradient("#ffff00", "#ffe600");
-    cb = chalk.hex("#faf2ac");
-  } else if (theme.toLowerCase() === 'teen') {
-    cra = gradient("#81fcf8", "#853858");
-    co = gradient.teen;
-    cb = chalk.hex("#a1d5f7");
-  } else if (theme.toLowerCase() === 'summer') {
-    cra = gradient("#fcff4d", "#4de1ff");
-    co = gradient.summer;
-    cb = chalk.hex("#ffff00");
-  } else if (theme.toLowerCase() === 'flower') {
-    cra = gradient("yellow", "yellow", "#81ff6e");
-    co = gradient.pastel;
-    cb = gradient('#47ff00', "#47ff75");
-  } else if (theme.toLowerCase() === 'ghost') {
-    cra = gradient("#0a658a", "#0a7f8a", "#0db5aa");
-    co = gradient.mind;
-    cb = chalk.blueBright;
-    cv = chalk.bold.hex("#1390f0");
-  } else if (theme === 'hacker') {
-    cra = chalk.hex('#4be813');
-    co = gradient('#47a127', '#0eed19', '#27f231');
-    cb = chalk.hex("#22f013");
-  } else if (theme === 'purple') {
-    cra = chalk.hex('#7a039e');
-    co = gradient("#243aff", "#4687f0", "#5800d4");
-    cb = chalk.hex("#6033f2");
-  } else if (theme === 'rainbow') {
-    cra = chalk.hex('#0cb3eb');
-    co = gradient.rainbow;
-    cb = chalk.hex("#ff3908");
-  } else if (theme === 'orange') {
-    cra = chalk.hex('#ff8400');
-    co = gradient("#ff8c08", "#ffad08", "#f5bb47");
-    cb = chalk.hex("#ebc249");
-  } else {
-    cra = gradient('yellow', 'lime', 'green');
-    co = gradient("#243aff", "#4687f0", "#5800d4");
-    cb = chalk.blueBright;
-  }
+  const utils = require("../utils/log.js");
+  const { getThemeColors } = utils
+  const { cra, cb, co } = getThemeColors();
   //////////////////////////////////////////////////////////////////////
   //========= Push all variable from database to environment =========//
   //////////////////////////////////////////////////////////////////////
@@ -118,15 +49,41 @@ module.exports = function({ api }) {
         }
       });
       if (global.config.autoCreateDB) {
-        logger.loader(`Successfully loaded ${cb(`${global.data.allThreadID.length}`)} threads and ${cb(`${global.data.allUserID.length}`)} users`);
+        global.loading.log(`Successfully loaded ${cb(`${global.data.allThreadID.length}`)} threads and ${cb(`${global.data.allUserID.length}`)} users`, 'LOADED');
       }
     } catch (error) {
-      logger.loader(`Can't load environment variable, error: ${error}`, 'error');
+      global.loading.log(`Can't load environment variable, error: ${error}`, 'error');
     }
   })();
-  global.loading(`${cra(`[ BOT_INFO ]`)} success!\n${co(`[ NAME ]:`)} ${(!global.config.BOTNAME) ? "Bot Messenger" : global.config.BOTNAME} \n${co(`[ FBID ]:`)} ${api.getCurrentUserID()} \n${co(`[ PRFX ]:`)} ${global.config.PREFIX}`, "LOADED");
 
-  const fs = require('fs');
+  global.loading.log(`${cra(`[ BOT_INFO ]`)} success!\n${co(`[ LOADED ] `)}${cra(`[ NAME ]:`)} ${(!global.config.BOTNAME) ? "Bot Messenger" : global.config.BOTNAME} \n${co(`[ LOADED ] `)}${cra(`[ BotID ]: `)}${api.getCurrentUserID()}\n${co(`[ LOADED ] `)}${cra(`[ PREFIX ]:`)} ${global.config.PREFIX}`, 'LOADED');
+
+  const pkg = JSON.parse(fs.readFileSync('package.json', 'utf-8'));
+  const v = pkg.version;
+  axios.get('https://raw.githubusercontent.com/YANDEVA/BotPack/main/package.json')
+    .then(response => {
+      const gitVersion = response.data.version;
+
+      if (compareVersions(gitVersion, v) > 0) {
+        global.loading.log(`Version ${co(gitVersion)} is available! Consider checking out '${cb('https://github.com/YANDEVA/BotPack')}' for the latest updates.`, 'UPDATE');
+      } else {
+        global.loading.log('Bot is currently up-to-date.', 'UPDATE');
+      }
+    }).catch(error => {
+      console.error('Error fetching GitHub package.json:', error);
+    });
+
+  function compareVersions(a, b) {
+    const versionA = a.split('.').map(Number);
+    const versionB = b.split('.').map(Number);
+
+    for (let i = 0; i < versionA.length; i++) {
+      if (versionA[i] > versionB[i]) return 1;
+      if (versionA[i] < versionB[i]) return -1;
+    }
+    return 0;
+  };
+  
   fs.readFile('main.js', 'utf8', (err, data) => {
     if (err) {
       console.error(err);

@@ -1,18 +1,16 @@
 let activeCmd = false;
 
 module.exports = function({ api, models, Users, Threads, Currencies }) {
-  const stringSimilarity = require('string-similarity'),
-    escapeRegex = (str) => str.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"),
-    logger = require("../../utils/log.js");
-  const axios = require('axios')
+  const stringSimilarity = require('string-similarity');
   const moment = require("moment-timezone");
+  const logger = require("../../utils/log");
   return async function({ event }) {
     if (activeCmd) {
       return;
     }
     const dateNow = Date.now()
     const time = moment.tz("Asia/Manila").format("HH:MM:ss DD/MM/YYYY");
-    const { allowInbox, PREFIX, ADMINBOT, DeveloperMode, adminOnly, keyAdminOnly } = global.config;
+    const { allowInbox, PREFIX, ADMINBOT, DeveloperMode, adminOnly } = global.config;
     const { userBanned, threadBanned, threadInfo, threadData, commandBanned } = global.data;
     const { commands, cooldowns } = global.client;
     var { body, senderID, threadID, messageID } = event;
@@ -94,7 +92,6 @@ module.exports = function({ api, models, Users, Threads, Currencies }) {
       }
     }
 
-
     if (command && command.config && command.config.commandCategory && command.config.commandCategory.toLowerCase() === 'nsfw' && !global.data.threadAllowNSFW.includes(threadID) && !ADMINBOT.includes(senderID))
       return api.sendMessage(global.getText("handleCommand", "threadNotAllowNSFW"), threadID, async (err, info) => {
         await new Promise(resolve => setTimeout(resolve, 5 * 1000))
@@ -106,7 +103,7 @@ module.exports = function({ api, models, Users, Threads, Currencies }) {
         threadInfo2 = (threadInfo.get(threadID) || await Threads.getInfo(threadID))
         if (Object.keys(threadInfo2).length == 0) throw new Error();
       } catch (err) {
-        logger(global.getText("handleCommand", "cantGetInfoThread", "error"));
+        logger.log(global.getText("handleCommand", "cantGetInfoThread", "error"));
       }
     var permssion = 0;
     var threadInfoo = (threadInfo.get(threadID) || await Threads.getInfo(threadID));
@@ -127,7 +124,7 @@ module.exports = function({ api, models, Users, Threads, Currencies }) {
 
     if (timestamps && timestamps instanceof Map && timestamps.has(senderID) && dateNow < timestamps.get(senderID) + expirationTime)
 
-      return api.setMessageReaction('⏳', event.messageID, err => (err) ? logger('An error occurred while executing setMessageReaction', 2) : '', !![]);
+      return api.setMessageReaction('⏳', event.messageID, err => (err) ? logger.log('An error occurred while executing setMessageReaction', 2) : '', !![]);
     var getText2;
     if (command && command.languages && typeof command.languages === 'object' && command.languages.hasOwnProperty(global.config.language))
 
@@ -158,7 +155,7 @@ module.exports = function({ api, models, Users, Threads, Currencies }) {
         timestamps.set(senderID, dateNow);
 
         if (DeveloperMode == !![]) {
-                logger(global.getText("handleCommand", "executeCommand", time, commandName, senderID, threadID, args.join(" "), (Date.now()) - dateNow), "DEV MODE");
+                logger.log(global.getText("handleCommand", "executeCommand", time, commandName, senderID, threadID, args.join(" "), (Date.now()) - dateNow), "DEV MODE");
               }
               return;
             }

@@ -1,7 +1,19 @@
-<h1>BotPack🤖<sub><sub>v1.6.0🚀</sub><sub><sub><h6>- By Yan Maglinte</h6></sub></sub></sub>
+<h1>BotPack🤖<sub><sub>v1.6.5🚀</sub><sub><sub><h6>- By Yan Maglinte</h6></sub></sub></sub>
   <img align="center" src="https://i.ibb.co/gMMvsYf/20240125-225244-0000.png"></a>
 
-<h3>Introduction</h3></h1>
+<h2>What's new? (V1.6.5) 📦</h2></h1>
+
+- Added editMessage.js in the FCA.
+- Remove typ and read_receipt.
+- Shorten and simplified the codes.
+- Fix some issues related to the bot not being able to respond to someone.
+- Made some changes to the FCA.
+- Removed handleNotification.js since it was not in use.
+- Removed readline package. (You can now use BotPack and host it in render.com)
+- Removed Email and Password Method since it's useless anymore.
+- Bug fixed.
+---
+<h3>Introduction</h3>
 
 #### Join us in [ChatBot Community Ltd.](https://www.facebook.com/groups/178711334798450/?ref=share)🍪
 ###### If you encounter any issues or difficulties, don't hesitate to reach out and ask for assistance here. Our team is here to help you with any problems you may face.
@@ -21,13 +33,13 @@
 <img align="center" src="https://i.imgur.com/wHD2zXv.jpg"/>
 
 - Embrace the world of possibilities with [BotPack](https://replit.com/@YanMaglinte/BotPack)🌀 - a facebook Messenger file designed to make your interaction with messenger bots smoother and more efficient.
-
+---
 <div align="center">
-      <h3>My Replit Account ->
-      <a href="https://replit.com/@YanMaglinte" style="color: green;">@YanMaglinte🔥</a>
+      <h3>My Replit Account:
+      <a href="https://replit.com/@YanMaglinte" style="color: green;"><br>@YanMaglinte🔥</a>
         <br>
-  My Facebook Account ->
-  <a href="https://www.facebook.com/yandeva.me?mibextid=b06tZ0" style="color: green;">Yan🚀</a></h3></div>
+  My Facebook Account:
+  <a href="https://www.facebook.com/yandeva.me?mibextid=b06tZ0" style="color: green;"><br>Yan🚀</a></h3></div>
 
 - If you encounter any issues or have questions related to this REPL, please don't hesitate to reach out to me on Facebook. I'm here to assist you!
 
@@ -45,7 +57,7 @@
 9. After logging in, you can now enjoy and have fun! 😊
 
 > *Note: There is a risk of your account being banned after a certain period, so please ensure proper account management and handling!*
-
+---
 <h2>Credits<sub><h6>Special thanks to the following fellows for making this modified project possible:</h6></sub></h2>
 
 > - 🔴SpermLord
@@ -53,4 +65,4 @@
 > - 🟢D-Jukie
 > - 🟠NTKhang03
 > - 🟣KhangGia1810
-> <h6>Updated on: January 26, 2024 (PST)<br>Creation Date: June 11, 2023</h6>
+> <h6>Updated on: March 4, 2024 (PST)<br>Creation Date: June 11, 2023</h6>

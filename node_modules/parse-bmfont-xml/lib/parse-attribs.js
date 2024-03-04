@@ -5,6 +5,7 @@
 var GLYPH_DESIGNER_ERROR = 'chasrset'
 
 module.exports = function parseAttributes(obj) {
+  obj = Object.assign({}, obj)
   if (GLYPH_DESIGNER_ERROR in obj) {
     obj['charset'] = obj[GLYPH_DESIGNER_ERROR]
     delete obj[GLYPH_DESIGNER_ERROR]

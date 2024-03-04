@@ -4,11 +4,11 @@
  * @src Disme Project
  * @bug fixed by @YanMaglinte
  */
-module.exports = function ({ api, models, Users, Threads, Currencies }) {
+module.exports = function ({ api, Threads }) {
     const logger = require("../../utils/log.js");
     return async function ({ event }) {
         const { threadID, logMessageType, logMessageData } = event;
-        const { setData, getData, delData, createData } = Threads;
+        const { setData, getData, delData } = Threads;
         try {
             let dataThread = (await getData(threadID)).threadInfo;
             switch (logMessageType) {
@@ -20,12 +20,12 @@ module.exports = function ({ api, models, Users, Threads, Currencies }) {
                     } else if (logMessageData.ADMIN_EVENT == "remove_admin") {
                         dataThread.adminIDs = dataThread.adminIDs.filter(item => item.id != logMessageData.TARGET_ID);
                     }
-                    logger('Refresh the list of admins in the group ' + threadID, 'UPDATE DATA')
+                    logger.log('Refresh the list of admins in the group ' + threadID, 'UPDATE DATA')
                     await setData(threadID, { threadInfo: dataThread });
                     break;
                 }
                 case "log:thread-name": {
-                    logger('Update name in group ' + threadID, 'UPDATE DATA')
+                    logger.log('Update name in group ' + threadID, 'UPDATE DATA')
                     dataThread.threadName = event.logMessageData.name
                     await setData(threadID, { threadInfo: dataThread });
                     break;
@@ -36,12 +36,12 @@ module.exports = function ({ api, models, Users, Threads, Currencies }) {
                         dataThread.participantIDs.push(i.userFbId)
                     }
                     var data = await Threads.setData(event.threadID, {threadInfo: dataThread})
-                    logger('Perform more group data ' + threadID, 'ADD DATA')
+                    logger.log('Perform more group data ' + threadID, 'ADD DATA')
                     break;
                 }
                 case 'log:unsubscribe': {
                     if (logMessageData.leftParticipantFbId == api.getCurrentUserID()) {
-                        logger('Perform group data deletion ' + threadID, 'DELETE DATA')
+                        logger.log('Perform group data deletion ' + threadID, 'DELETE DATA')
                         const index = global.data.allThreadID.findIndex(item => item == threadID);
                         global.data.allThreadID.splice(index, 1);
                         await delData(threadID);
@@ -52,7 +52,7 @@ module.exports = function ({ api, models, Users, Threads, Currencies }) {
                         if (dataThread.adminIDs.find(i => i.id == logMessageData.leftParticipantFbId)) {
                             dataThread.adminIDs = dataThread.adminIDs.filter(item => item.id != logMessageData.leftParticipantFbId);
                         }
-                        logger('Perform user deletion ' + logMessageData.leftParticipantFbId, 'DELETE DATA')
+                        logger.log('Perform user deletion ' + logMessageData.leftParticipantFbId, 'DELETE DATA')
                         await setData(threadID, { threadInfo: dataThread });
                     }
                     break;

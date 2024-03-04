@@ -211,52 +211,52 @@ function logs() {
   return lines.join('\n');
 }
 
-  const logout = _.DESIGN.Theme.toLowerCase() || '';
+  const $__ = _.DESIGN.Theme.toLowerCase() || '';
   let ch;
   let cre;
-  if (logout === '\u0066'+'\u0069'+'\u0065'+'\u0072'+'\u0079') {
+  if ($__ === '\u0066'+'\u0069'+'\u0065'+'\u0072'+'\u0079') {
   ch = gr.fruit;
   cre = gr.fruit;
-} else if (logout === '\u0061' + '\u0071' + '\u0075' + '\u0061') {
+} else if ($__ === '\u0061' + '\u0071' + '\u0075' + '\u0061') {
   ch = gr("#2e5fff", "#466deb");
   cre = chalk.hex("#88c2f7");
-} else if (logout === '\u0068' + '\u0061' + '\u0063' + '\u006b' + '\u0065' + '\u0072') {
+} else if ($__ === '\u0068' + '\u0061' + '\u0063' + '\u006b' + '\u0065' + '\u0072') {
   ch = gr('#47a127', '#0eed19', '#27f231');
   cre = chalk.hex('#4be813');
-} else if (logout === '\u0070' + '\u0069' + '\u006e' + '\u006b') {
+} else if ($__ === '\u0070' + '\u0069' + '\u006e' + '\u006b') {
   ch = gr("#ab68ed", "#ea3ef0", "#c93ef0");
   cre = chalk.hex("#8c00ff");
-} else if (logout === '\u0062' + '\u006c' + '\u0075' + '\u0065') {
+} else if ($__ === '\u0062' + '\u006c' + '\u0075' + '\u0065') {
   ch = gr("#243aff", "#4687f0", "#5800d4");
   cre = chalk.blueBright;
-} else if (logout === '\u0073' + '\u0075' + '\u006e' + '\u006c' + '\u0069' + '\u0067' + '\u0068' + '\u0074') {
+} else if ($__ === '\u0073' + '\u0075' + '\u006e' + '\u006c' + '\u0069' + '\u0067' + '\u0068' + '\u0074') {
   ch = gr("#ffae00", "#ffbf00", "#ffdd00");
   cre = chalk.hex("#f6ff00");
-} else if (logout === '\u0072' + '\u0065' + '\u0064') {
+} else if ($__ === '\u0072' + '\u0065' + '\u0064') {
   ch = gr("#ff0000", "#ff0026");
   cre = chalk.hex("#ff4747");
-} else if (logout === '\u0072' + '\u0065' + '\u0074' + '\u0072' + '\u006f') {
+} else if ($__ === '\u0072' + '\u0065' + '\u0074' + '\u0072' + '\u006f') {
   ch = gr.retro;
   cre = chalk.hex("#7d02bf");
-} else if (logout === '\u0074' + '\u0065' + '\u0065' + '\u006e') {
+} else if ($__ === '\u0074' + '\u0065' + '\u0065' + '\u006e') {
   ch = gr.teen;
   cre = chalk.hex("#fa7f7f");
-} else if (logout === '\u0073' + '\u0075' + '\u006d' + '\u006d' + '\u0065' + '\u0072') {
+} else if ($__ === '\u0073' + '\u0075' + '\u006d' + '\u006d' + '\u0065' + '\u0072') {
   ch = gr.summer;
   cre = chalk.hex("#f7f565");
-} else if (logout === '\u0066' + '\u006c' + '\u006f' + '\u0077' + '\u0065' + '\u0072') {
+} else if ($__ === '\u0066' + '\u006c' + '\u006f' + '\u0077' + '\u0065' + '\u0072') {
   ch = gr.pastel;
   cre = chalk.hex("#6ded85");
 } else if (logout === '\u0067' + '\u0068' + '\u006f' + '\u0073' + '\u0074') {
   ch = gr.mind;
   cre = chalk.hex("#95d0de");
-} else if (logout === '\u0070'+'\u0075'+'\u0072'+'\u0070'+'\u006C'+'\u0065') {
+} else if ($__ === '\u0070'+'\u0075'+'\u0072'+'\u0070'+'\u006C'+'\u0065') {
   ch = gr("#380478", "#5800d4", "#4687f0");
   cre = chalk.hex('#7a039e');
-  } else if (logout === '\u0072'+'\u0061'+'\u0069'+'\u006E'+'\u0062'+'\u006F'+'\u0077') {
+  } else if ($__ === '\u0072'+'\u0061'+'\u0069'+'\u006E'+'\u0062'+'\u006F'+'\u0077') {
   ch = gr.rainbow
   cre = chalk.hex('#0cb3eb');
-  } else if (logout === '\u006F'+'\u0072'+'\u0061'+'\u006E'+'\u0067'+'\u0065') {
+  } else if ($__ === '\u006F'+'\u0072'+'\u0061'+'\u006E'+'\u0067'+'\u0065') {
   ch = gr("#ff8c08", "#ffad08", "#f5bb47");
   cre = chalk.hex('#ff8400');
   } else {

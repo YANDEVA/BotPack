@@ -9,7 +9,6 @@ const pkg = require('./package.json');
 const check = require('get-latest-version');
 const fs = require('fs')
 const semver = require('semver');
-const readline = require('readline');
 
 let configJson;
 let packageJson;
@@ -56,14 +55,14 @@ const PORT = getRandomPort();
 let currentPort = PORT;
 
 app.get('/', function(req, res) {
-  res.sendFile(path.join(__dirname, '/includes/login/cover/index.html'));
+  res.sendFile(path.join(__dirname, '/includes/cover/index.html'));
 });
 
 app.get('/', (req, res) => res.sendStatus(200));
 
   console.clear();
   console.log(chalk.bold.dim(` ${process.env.REPL_SLUG}`.toUpperCase() + `(v${pkg.version})`));
-  logger(`Getting Started!`, "STARTER");
+  logger.log(`Getting Started!`, "STARTER");
   startBot(0);
 
   async function isPortAvailable(port) {
@@ -83,7 +82,7 @@ app.get('/', (req, res) => res.sendStatus(200));
     });
 
     app.on('error', (error) => {
-      logger(`An error occurred while starting the server: ${error}`, "SYSTEM");
+      logger.error(`An error occurred while starting the server: ${error}`, "SYSTEM");
     });
   }
 
@@ -93,7 +92,7 @@ app.get('/', (req, res) => res.sendStatus(200));
     try {
       const isAvailable = await isPortAvailable(currentPort);
       if (!isAvailable) {
-        logger(`Retrying...`, "SYSTEM");
+        logger.warn(`Retrying...`, "SYSTEM");
         const newPort = getRandomPort();
         logger.loader(`Current port ${currentPort} is not available. Switching to new port ${newPort}.`);
         currentPort = newPort;
@@ -118,10 +117,10 @@ app.get('/', (req, res) => res.sendStatus(200));
       });
 
       child.on("error", (error) => {
-        logger(`An error occurred while starting the child process: ${error}`, "SYSTEM");
+        logger.error(`An error occurred while starting the child process: ${error}`, "SYSTEM");
       });
     } catch (err) {
-      logger(`Error while starting the bot: ${err}`, "SYSTEM");
+      logger.error(`Error while starting the bot: ${err}`, "SYSTEM");
     }
   }
 
@@ -181,52 +180,6 @@ async function checkAndUpdate() {
 
 setTimeout(() => {
   checkAndUpdate();
-}, 20000);
-
-const jsonFilePath = 'includes/database/data/threadsData.json';
-const userFile = 'includes/database/data/usersData.json';
-
-const rl = readline.createInterface({
-  input: process.stdin,
-  output: process.stdout
-});
-
-function clean() {
-  try {
-    const sign = '{}';
-    fs.writeFileSync(jsonFilePath, sign, { encoding: 'utf8', flag: 'w' });
-    fs.writeFileSync(userFile, sign, { encoding: 'utf8', flag: 'w' });
-    console.log(chalk.yellow(''), `Thread and User data cleared successfully.`);
-  } catch (error) {
-    console.error(`Error clearing contents: ${error.message}`);
-  }
-}
-
-function cleanState() {
-  try {
-    fs.writeFileSync(fbstate, sign, { encoding: 'utf8', flag: 'w' });
-    console.log(chalk.yellow(''),`Appstate cleared successfully! Try adding a new one as a replacement for the previous appstate.`);
-  } catch (error) {
-    console.error(`Error clearing contents: ${error.message}`);
-  }
-}
-
-function command() {
-  rl.question('', (answer) => {
-    if (answer.trim().toLowerCase() === '-clr' || answer.trim().toLowerCase() === '-clean') {
-      clean();
-    } else if (answer.trim().toLowerCase() === '-cap' || answer.trim().toLowerCase() === '-fbstate') {
-      cleanState();
-    } else {
-      console.log(chalk.yellow(''), chalk.whiteBright(`Invalid command!`));
-      command();
-    }
-    rl.close();
-  });
-}
-
-setTimeout(() => {
-  command();
 }, 20000);
 
   // __@YanMaglinte was Here__ //
