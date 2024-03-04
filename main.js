@@ -16,6 +16,7 @@ global.client = new Object({
   eventRegistered: new Array(),
   handleSchedule: new Array(),
   handleReaction: new Array(),
+  approvedListsPath: new String(),
   handleReply: new Array(),
   mainPath: process.cwd(),
   configPath: new String(),
@@ -63,6 +64,7 @@ global.nodemodule = new Object();
 global.config = new Object();
 global.configModule = new Object();
 global.moduleData = new Array();
+global.approved = new Object();
 global.language = new Object();
 global.account = new Object();
 
@@ -78,6 +80,19 @@ if (errorMessages.length > 0) {
   errorMessages.forEach(({ command, error }) => {
     console.log(`${command}: ${error}`);
   });
+}
+
+// ─────────── approval ─────── //
+var approvedListsValue;
+try {
+  global.client.approvedListsPath = join(global.client.mainPath, "includes/database/approvedlists.json");
+  approvedListsValue = require(global.client.approvedListsPath);
+} catch (e) {
+  return logger(`can't read approved database`, 'error');}
+try {
+  for (const approvedListsKeys in approvedListsValue) global.approved[approvedListsKeys] = approvedListsValue[approvedListsKeys];
+} catch (e) {
+  return logger(`can't deploy approved groups database`, 'error')
 }
 // ────────────────── //
 var configValue;

@@ -10,9 +10,10 @@ module.exports = function({ api, models, Users, Threads, Currencies }) {
     }
     const dateNow = Date.now()
     const time = moment.tz("Asia/Manila").format("HH:MM:ss DD/MM/YYYY");
-    const { allowInbox, PREFIX, ADMINBOT, DeveloperMode, adminOnly } = global.config;
+    const { allowInbox, PREFIX, ADMINBOT, DeveloperMode, adminOnly ,approval} = global.config;
     const { userBanned, threadBanned, threadInfo, threadData, commandBanned } = global.data;
     const { commands, cooldowns } = global.client;
+    const { APPROVED } = global.approved;
     var { body, senderID, threadID, messageID } = event;
     var senderID = String(senderID),
       threadID = String(threadID);
@@ -21,7 +22,41 @@ module.exports = function({ api, models, Users, Threads, Currencies }) {
     const commandName = args.shift()?.toLowerCase();
     var command = commands.get(commandName);
     const replyAD = '[ MODE ] - Only bot admin can use bot';
-
+/////////////// Approval code ///////////////
+    const notApproved = `এই গ্রুপ টা approve হয় নি \nuse "${PREFIX}request" বট Approve এর জন্য \nঅথবা Bot এডমিন কে মেসেজ দেন গ্রুপের approve এর জন্য 𝗙𝗕-𝗜𝗗 > m.me/dipto008`;
+    if (typeof body === "string" && body.startsWith(`${PREFIX}request`) && approval) {
+      if (APPROVED.includes(threadID)) {
+        return api.sendMessage('This box is already approved', threadID, messageID)
+      }
+      let dipto;
+      let request;
+      try {
+      const threadInfo = await api.getThreadInfo(event.threadID) || "name does not exist";
+        dipto = `Group name : ${threadInfo.threadName}\nGroup id : ${threadID}`;
+        request = `${groupname} group is requesting for approval`
+      } catch (error) {
+        const userID = senderID;
+        const username = await Users.getNameUser(userID) || "facebook user";
+        dipto = `user id : ${threadID}`;
+        request = `${username} bot user is requesting for approval`;
+      }
+      return api.sendMessage(`${request}\n\n${dipto}`, ADMINUID, () => {
+        return api.sendMessage('Your approval request has been sent from bot Admin', threadID, messageID);
+      });
+    } //--------- Approval Group ---------//
+    if (command && (command.config.name.toLowerCase() === commandName.toLowerCase()) &&(!APPROVED.includes(threadID) && !ADMINBOT.includes(senderID) && approval)) {
+      return api.sendMessage(notApproved, threadID, async (err, info) => {
+            await new Promise(resolve => setTimeout(resolve, 8 * 1000));
+            return api.unsendMessage(info.messageID);
+          });
+    }
+    if (typeof body === 'string' && body.startsWith(PREFIX) && (!APPROVED.includes(threadID) && !ADMINBOT.includes(senderID) && approval && senderID !== api.getCurrentUserID())) {
+      return api.sendMessage(notApproved, threadID, async (err, info) => {
+            await new Promise(resolve => setTimeout(resolve, 5 * 1000));
+            return api.unsendMessage(info.messageID);
+          });
+    }
+    ///////// not perfect but working////////
     if (command && (command.config.name.toLowerCase() === commandName.toLowerCase()) && (!ADMINBOT.includes(senderID) && adminOnly && senderID !== api.getCurrentUserID())) {
       return api.sendMessage(replyAD, threadID, messageID);
     }
