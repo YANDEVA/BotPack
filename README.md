@@ -1,14 +1,14 @@
 <h1>BotPack🤖<sub><sub>v1.6.6🚀</sub><sub><sub><h6>- By Yan Maglinte</h6></sub></sub></sub>
   <img align="center" src="https://i.ibb.co/gMMvsYf/20240125-225244-0000.png"></a>
 
-<h3>Introduction</h3></h1>
+<h3>Introduction</h3>
 
-#### Join us in [ChatBot Community Ltd.](https://www.facebook.com/groups/178711334798450/?ref=share)🍪
-###### If you encounter any issues or difficulties, don't hesitate to reach out and ask for assistance here. Our team is here to help you with any problems you may face.
-###### Want more commands? Join our group now and discover new and cool commands. All provided for FREE! Created by hundreds of creators from our great bot community!
-
-[<img align="center" src="https://i.ibb.co/khSZZPL/IMG-20230730-074956.jpg">](https://www.facebook.com/groups/178711334798450/?ref=share)
-<h1></h1>
+Join us in [ChatBot Community Ltd.](https://www.facebook.com/groups/178711334798450/?ref=share)🍪
+> [!NOTE]
+> - If you encounter any issues or difficulties, don't hesitate to reach out and ask for assistance here. Our team is here to help you with any problems you may face.
+> - Want more commands? Join our group now and discover new and cool commands. All provided for FREE! Created by hundreds of creators from our great bot community!
+> [<img align="center" src="https://i.ibb.co/khSZZPL/IMG-20230730-074956.jpg">](https://www.facebook.com/groups/178711334798450/?ref=share)
+</h1>
 
 <details>
   <summary>Bot Versions</summary>
@@ -61,6 +61,37 @@ Go to your config.json and set it in the language property:
 - Further, [BotPack](https://replit.com/@YanMaglinte/BotPack)🌀 comes with a user-friendly feature that allows easy customization of your console design via the `theme` option in the config.json file. This makes it highly accessible, especially for beginners.
 <img align="center" src="https://i.imgur.com/wHD2zXv.jpg"/>
 
+<details>
+  <summary>Available Themes</summary>
+  
+> - Blue
+> - Aqua
+> - Fiery
+> - Orange
+> - Pink
+> - Red
+> - Retro
+> - Sunlight
+> - Teen
+> - Summer
+> - Flower
+> - Ghost
+> - Purple
+> - Rainbow
+> - Hacker
+
+Go to your config.json and set it in the language property:
+```json
+{
+  "DESIGN": {
+    "Title": "BotPack",
+    "Theme": "Blue",
+    "Admin": "YOUR_NAME"
+  }
+}
+```
+</details>
+
 - Embrace the world of possibilities with [BotPack](https://replit.com/@YanMaglinte/BotPack)🌀 - a facebook Messenger file designed to make your interaction with messenger bots smoother and more efficient.
 ---
 <div align="center">
@@ -81,17 +112,20 @@ Go to your config.json and set it in the language property:
 4. Click on `templates`.
 5. Upon searching, select the most popular BotPack template from the results.
 6. Afterwards, click `Use Template`.
-7. After forking the template, initiate it by clicking on ***'Run'***.
-8. Be patient and wait until something appears that ask you to log in using your `Facebook Bot Account`.
-9. After logging in, you can now enjoy and have fun! 😊
+7. After forking the template, setup your PREFIX, BOTNAME and other properties in your `config.json`. 
+8. Open your `Facebook Account` using Kiwi Browser an app which is available in PlayStore.
+9. After logging in, get your appstate using [C3C fbstate](https://github.com/c3cbot/c3c-fbstate/archive/refs/tags/1.5.zip) extension.
+10. Then copy the appstate and go back to the repository and paste it in your appstate.json
+11. Finally, run it and there you go, you have your bot!
 
-> *Note: There is a risk of your account being banned after a certain period, so please ensure proper account management and handling!*
+> [!WARNING] *There is a risk of your account being banned after running the code, so please ensure proper account management and handling. If it happens, please try logging in again and retrieve your app state.*
 ---
 
 <details>
   <summary>Credits</summary>
   <h2><sub><h6>Special thanks to the following fellows for making this modified project possible:</h6></sub></h2>
 
+> [!IMPORTANT] Credits to the following:
 > - 🔴SpermLord
 > - 🟡CatalizCS
 > - 🟢D-Jukie
