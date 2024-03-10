@@ -7,6 +7,7 @@ Join us in [ChatBot Community Ltd.](https://www.facebook.com/groups/178711334798
 > [!NOTE]
 > - If you encounter any issues or difficulties, don't hesitate to reach out and ask for assistance here. Our team is here to help you with any problems you may face.
 > - Want more commands? Join our group now and discover new and cool commands. All provided for FREE! Created by hundreds of creators from our great bot community!
+
 [<img align="center" src="https://i.ibb.co/khSZZPL/IMG-20230730-074956.jpg">](https://www.facebook.com/groups/178711334798450/?ref=share)
 </h1>
 
@@ -80,7 +81,7 @@ Go to your config.json and set it in the language property:
 > - Rainbow
 > - Hacker
 
-Go to your config.json and set it in the language property:
+Go to your `config.json` and set it in the language property:
 ```json
 {
   "DESIGN": {
