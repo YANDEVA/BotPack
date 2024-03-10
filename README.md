@@ -99,8 +99,7 @@ Go to your `config.json` and set it in the language property:
       <h3>My Replit Account:
       <a href="https://replit.com/@YanMaglinte" style="color: green;"><br>@YanMaglinte🔥</a>
         <br>
-  My Facebook Account:
-  <a href="https://www.facebook.com/yandeva.me?mibextid=b06tZ0" style="color: green;"><br>Yan🚀</a></h3></div>
+        My Facebook Account:<a href="https://www.facebook.com/yandeva.me?mibextid=b06tZ0" style="color: green;"><br>Yan🚀</a></h3></div>
 
 - If you encounter any issues or have questions related to this REPL, please don't hesitate to reach out to me on Facebook. I'm here to assist you!
 
@@ -116,8 +115,8 @@ Go to your `config.json` and set it in the language property:
 7. After forking the template, setup your PREFIX, BOTNAME and other properties in your `config.json`. 
 8. Open your `Facebook Account` using Kiwi Browser an app which is available in PlayStore.
 9. After logging in, get your appstate using [C3C fbstate](https://github.com/c3cbot/c3c-fbstate/archive/refs/tags/1.5.zip) extension.
-10. Then copy the appstate and go back to the repository and paste it in your appstate.json
-11. Finally, run it and there you go, you have your bot!
+10. Copy the appstate, return to the repository, and paste it into your appstate.json.
+11. Now, run it, and there you have your bot!
 
 > [!WARNING]
 > *There is a risk of your account being banned after running the code, so please ensure proper account management and handling. If it happens, please try logging in again and retrieve your app state.*
@@ -125,14 +124,14 @@ Go to your `config.json` and set it in the language property:
 
 <details>
   <summary>Credits</summary>
-  <h2><sub><h6>Special thanks to the following fellows for making this modified project possible:</h6></sub></h2>
-
+  
 > [!IMPORTANT]
-> Credits to the following:
+> - Special thanks to the following fellows for making this modified project possible:
 > - 🔴SpermLord
 > - 🟡CatalizCS
 > - 🟢D-Jukie
 > - 🟠NTKhang03
 > - 🟣KhangGia1810
-> <h6>Updated on: March 4, 2024 (PST)<br>Creation Date: June 11, 2023</h6>
+>   
+> _Updated on: March 4, 2024 (PST)<br>Creation Date: June 11, 2023_
 </details>
