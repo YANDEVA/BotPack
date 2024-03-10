@@ -112,8 +112,8 @@ Go to your `config.json` and set it in the language property:
 4. Click on `templates`.
 5. Upon searching, select the most popular BotPack template from the results.
 6. Afterwards, click `Use Template`.
-7. After forking the template, setup your PREFIX, BOTNAME and other properties in your `config.json`. 
-8. Open your `Facebook Account` using Kiwi Browser an app which is available in PlayStore.
+7. After forking the template, setup your PREFIX, BOTNAME and other properties in your `config.json`.
+8. Open your `Facebook Account` that you want to turn into a chatbot.
 9. After logging in, get your appstate using [C3C fbstate](https://github.com/c3cbot/c3c-fbstate/archive/refs/tags/1.5.zip) extension.
 10. Copy the appstate, return to the repository, and paste it into your appstate.json.
 11. Now, run it, and there you have your bot!
@@ -132,3 +132,5 @@ Go to your `config.json` and set it in the language property:
 > - 🟣KhangGia1810
 >   
 > _Updated on: March 4, 2024 (PST)<br>Creation Date: June 11, 2023_
+
+Copyright © 2024 Yan Maglinte (YANDEVA), Philippines.<br>
