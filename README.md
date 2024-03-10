@@ -1,4 +1,4 @@
-<h1>BotPack🤖<sub><sub>v1.6.6🚀</sub><sub><sub><h6>- By Yan Maglinte</h6></sub></sub></sub>
+<h1>BotPack🤖<sub><sub>v1.6.6🚀</sub></sub>
   <img align="center" src="https://i.ibb.co/gMMvsYf/20240125-225244-0000.png"></a>
 
 <h3>Introduction</h3>
@@ -7,7 +7,7 @@ Join us in [ChatBot Community Ltd.](https://www.facebook.com/groups/178711334798
 > [!NOTE]
 > - If you encounter any issues or difficulties, don't hesitate to reach out and ask for assistance here. Our team is here to help you with any problems you may face.
 > - Want more commands? Join our group now and discover new and cool commands. All provided for FREE! Created by hundreds of creators from our great bot community!
-
+---
 [<img align="center" src="https://i.ibb.co/khSZZPL/IMG-20230730-074956.jpg">](https://www.facebook.com/groups/178711334798450/?ref=share)
 </h1>
 
@@ -122,9 +122,7 @@ Go to your `config.json` and set it in the language property:
 > *There is a risk of your account being banned after running the code, so please ensure proper account management and handling. If it happens, please try logging in again and retrieve your app state.*
 ---
 
-<details>
-  <summary>Credits</summary>
-  
+## Credits
 > [!IMPORTANT]
 > - Special thanks to the following fellows for making this modified project possible:
 > - 🔴SpermLord
@@ -134,4 +132,3 @@ Go to your `config.json` and set it in the language property:
 > - 🟣KhangGia1810
 >   
 > _Updated on: March 4, 2024 (PST)<br>Creation Date: June 11, 2023_
-</details>
