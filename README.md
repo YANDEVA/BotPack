@@ -7,7 +7,7 @@ Join us in [ChatBot Community Ltd.](https://www.facebook.com/groups/178711334798
 > [!NOTE]
 > - If you encounter any issues or difficulties, don't hesitate to reach out and ask for assistance here. Our team is here to help you with any problems you may face.
 > - Want more commands? Join our group now and discover new and cool commands. All provided for FREE! Created by hundreds of creators from our great bot community!
-> [<img align="center" src="https://i.ibb.co/khSZZPL/IMG-20230730-074956.jpg">](https://www.facebook.com/groups/178711334798450/?ref=share)
+[<img align="center" src="https://i.ibb.co/khSZZPL/IMG-20230730-074956.jpg">](https://www.facebook.com/groups/178711334798450/?ref=share)
 </h1>
 
 <details>
@@ -118,14 +118,16 @@ Go to your config.json and set it in the language property:
 10. Then copy the appstate and go back to the repository and paste it in your appstate.json
 11. Finally, run it and there you go, you have your bot!
 
-> [!WARNING] *There is a risk of your account being banned after running the code, so please ensure proper account management and handling. If it happens, please try logging in again and retrieve your app state.*
+> [!WARNING]
+> *There is a risk of your account being banned after running the code, so please ensure proper account management and handling. If it happens, please try logging in again and retrieve your app state.*
 ---
 
 <details>
   <summary>Credits</summary>
   <h2><sub><h6>Special thanks to the following fellows for making this modified project possible:</h6></sub></h2>
 
-> [!IMPORTANT] Credits to the following:
+> [!IMPORTANT]
+> Credits to the following:
 > - 🔴SpermLord
 > - 🟡CatalizCS
 > - 🟢D-Jukie
