@@ -2,14 +2,17 @@
 
 <img align="center" src="https://i.ibb.co/gMMvsYf/20240125-225244-0000.png"></a>
 
-<h3>Introduction</h3>
+<h3>About</h3>
 
-Join us in [ChatBot Community Ltd.](https://www.facebook.com/groups/178711334798450/?ref=share)🍪
+Hello there! Thank you for using BotPack! Join us at [ChatBot Community Ltd.](https://www.facebook.com/groups/178711334798450/?ref=share)🍪 if you wish to share and discover Mirai/BotPack commands created by other command creators!
+
 > [!NOTE]
 > - If you encounter any issues or difficulties, don't hesitate to reach out and ask for assistance here. Our team is here to help you with any problems you may face.
-> - Want more commands? Join our group now and discover new and cool commands. All provided for FREE! Created by hundreds of creators from our great bot community!
 ---
-[<img align="center" src="https://i.ibb.co/khSZZPL/IMG-20230730-074956.jpg">](https://www.facebook.com/groups/178711334798450/?ref=share)
+- If you have some issues related to render hosting! Try our newly created facebook group with render hosting discussions!
+- Im currently looking for companions and conversation starters who have some knowledge about hosting in render to become moderators.
+- Feel free to join us at [Render Community](https://www.facebook.com/groups/7389392131128817/?ref=share) on Facebook! See you there!
+[<img align="center" src="https://i.ibb.co/DMXyLm3/Picsart-24-02-14-12-25-06-014.jpg">](https://www.facebook.com/groups/7389392131128817/?ref=share&mibextid=NSMWBT)
 </h1>
 
 <details>
@@ -54,6 +57,8 @@ Go to your config.json and set it in the language property:
   "language": "en",
 }
 ```
+
+Looking for a French language translation done by a local French! Your contribution would be greatly appreciated, and credits will be provided!
 </details>
 
 ---
@@ -137,6 +142,6 @@ Go to your `config.json` and set it in the language property:
 > - 🟠NTKhang03
 > - 🟣KhangGia1810
 >   
-> _Updated on: March 4, 2024 (PST)<br>Creation Date: June 11, 2023_
+> _Updated on: March 30, 2024 (PST)<br>Creation Date: June 11, 2023_
 
 Copyright © 2024 Yan Maglinte (YANDEVA), Philippines.<br>
