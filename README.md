@@ -1,4 +1,4 @@
-<h1>BotPack🤖<sub><sub>v1.6.7🚀</sub></sub>
+<h1>BotPack🤖<sub><sub>v1.6.8🚀</sub></sub>
 
 <img align="center" src="https://i.ibb.co/gMMvsYf/20240125-225244-0000.png"></a>
 
@@ -17,6 +17,14 @@ Hello there! Thank you for using BotPack! Join us at [ChatBot Community Ltd.](ht
 
 <details>
   <summary>Bot Versions</summary>
+<h3>Render Problem Fixed! (V1.6.8) ⚡</h3>
+
+- Fixed the problem where duplicated response are sent when hosting from render.
+- Fixed Canvas problem libuuid.so.1.
+- Modified index.js and main.js
+- Retrieved index.html (I mistakenly removed it leaving it blank)
+- Removed annoying *npm install "${commandsPath}"*
+  
 <h3>Minor Changes (V1.6.7)</h3>
   
 - Remove unnecessary codes.
@@ -135,7 +143,7 @@ Go to your `config.json` and set it in the language property:
 
 ## Credits
 > [!IMPORTANT]
-> - Special thanks to the following fellows for making this modified project possible:
+> - Special thanks to the following fellows for their amazing projects making this modified project possible:
 > - 🔴SpermLord
 > - 🟡CatalizCS
 > - 🟢D-Jukie
