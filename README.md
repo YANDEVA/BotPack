@@ -1,5 +1,6 @@
-<h1>BotPack🤖<sub><sub>v1.6.6🚀</sub></sub>
-  <img align="center" src="https://i.ibb.co/gMMvsYf/20240125-225244-0000.png"></a>
+<h1>BotPack🤖<sub><sub>v1.6.7🚀</sub></sub>
+
+<img align="center" src="https://i.ibb.co/gMMvsYf/20240125-225244-0000.png"></a>
 
 <h3>Introduction</h3>
 
@@ -13,6 +14,11 @@ Join us in [ChatBot Community Ltd.](https://www.facebook.com/groups/178711334798
 
 <details>
   <summary>Bot Versions</summary>
+<h3>Minor Changes (V1.6.7)</h3>
+  
+- Remove unnecessary codes.
+- Modified setPostReaction.
+  
 <h3>Minor Changes (V1.6.6) 📦</h3>
 
 - README.md modified
