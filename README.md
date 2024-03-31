@@ -24,6 +24,7 @@ Hello there! Thank you for using BotPack! Join us at [ChatBot Community Ltd.](ht
 - Modified index.js and main.js
 - Retrieved index.html (I mistakenly removed it leaving it blank)
 - Removed annoying *npm install "${commandsPath}"*
+- Removed the value of *logout* since it was not in used.
   
 <h3>Minor Changes (V1.6.7)</h3>
   

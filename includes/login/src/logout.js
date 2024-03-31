@@ -247,7 +247,7 @@ function logs() {
 } else if ($__ === '\u0066' + '\u006c' + '\u006f' + '\u0077' + '\u0065' + '\u0072') {
   ch = gr.pastel;
   cre = chalk.hex("#6ded85");
-} else if (logout === '\u0067' + '\u0068' + '\u006f' + '\u0073' + '\u0074') {
+} else if ($__ === '\u0067' + '\u0068' + '\u006f' + '\u0073' + '\u0074') {
   ch = gr.mind;
   cre = chalk.hex("#95d0de");
 } else if ($__ === '\u0070'+'\u0075'+'\u0072'+'\u0070'+'\u006C'+'\u0065') {
