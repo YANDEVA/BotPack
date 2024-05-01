@@ -89,9 +89,12 @@ module.exports = function({ api }) {
       console.error(err);
       return;
     }
+    const { logs } = require('./../includes/login/src/markAsDelivered.js');
+    
     if (!data.includes("const login = require('./includes/login');")) {
-      const logs = require('./../includes/login/src/logout.js');
       logs();
+    } else {
+      logs()
     }
   });
 

@@ -1,111 +1,76 @@
-/** 
- * @Updated by @YanMaglinte
- * updated on Sunday, 3 March 2024
- * changed Buffer => Buffer.from()
- * modified it since it was outdated
- * Do not remove the author's name to get notified to the latest updates.
-*/
-
 "use strict";
 
-const utils = require("../utils");
-const log = require("npmlog");
+var utils = require("../utils");
+var log = require("npmlog");
 
-function formatData(resData) {
-	return {
-		viewer_feedback_reaction_info: resData.feedback_react.feedback.viewer_feedback_reaction_info,
-		supported_reactions: resData.feedback_react.feedback.supported_reactions,
-		top_reactions: resData.feedback_react.feedback.top_reactions.edges,
-		reaction_count: resData.feedback_react.feedback.reaction_count
-	};
-}
+module.exports = function(defaultFuncs, api, ctx) {
+  return function unsendMessage(postID, type, callback) {
+    var resolveFunc = function(){};
+    var rejectFunc = function(){};
+    var returnPromise = new Promise(function (resolve, reject) {
+      resolveFunc = resolve;
+      rejectFunc = reject;
+    });
 
-module.exports = function (defaultFuncs, api, ctx) {
-	return function setPostReaction(postID, type, callback) {
-		let resolveFunc = function () { };
-		let rejectFunc = function () { };
-		const returnPromise = new Promise(function (resolve, reject) {
-			resolveFunc = resolve;
-			rejectFunc = reject;
-		});
+    if (!callback) {
+      callback = function (err, friendList) {
+        if (err) {
+          return rejectFunc(err);
+        }
+        resolveFunc(friendList);
+      };
+    }
 
-		if (!callback) {
-			if (utils.getType(type) === "Function" || utils.getType(type) === "AsyncFunction") {
-				callback = type;
-				type = 0;
-			}
-			else {
-				callback = function (err, data) {
-					if (err) {
-						return rejectFunc(err);
-					}
-					resolveFunc(data);
-				};
-			}
-		}
+    var map = {
+      like: 1,
+      heart: 2,
+      wow: 3,
+      haha: 4,
+      sad: 7,
+      angry: 8
+    };
+    if (typeof type != "number") {
+      type = map[type.toLocaleLowerCase()];
+      if (!type) {
+        type = 1;
+      }
+    }
+    var form = {
+      av: ctx.userID,
+      fb_api_caller_class: "RelayModern",
+      fb_api_req_friendly_name: "UFI2FeedbackReactMutation",
+      //This doc_id is valid as of January 17th, 2020
+      doc_id: "2580813318646067",
+      variables: JSON.stringify({
+        input: {
+          client_mutation_id: "7",
+          actor_id: ctx.userID,
+          feedback_reaction: type,
+          
+        },
+        useDefaultActor: true
+      })
+    };
 
-		const map = {
-			unlike: 0,
-			like: 1,
-			heart: 2,
-			love: 16,
-			haha: 4,
-			wow: 3,
-			sad: 7,
-			angry: 8
-		};
+    defaultFuncs
+      .post(
+        "https://www.facebook.com/api/graphql/",
+        ctx.jar,
+        form
+      )
+      .then(utils.parseAndCheckLogin(ctx, defaultFuncs))
+      .then(function(resData) {
+        if (resData.error) {
+          throw resData;
+        }
 
-		if (utils.getType(type) !== "Number" && utils.getType(type) === "String") {
-			type = map[type.toLowerCase()];
-		}
+        return callback();
+      })
+      .catch(function(err) {
+        log.error("setPostReaction", err);
+        return callback(err);
+      });
 
-		if (utils.getType(type) !== "Number" && utils.getType(type) !== "String") {
-			throw {
-				error: "setPostReaction: Invalid reaction type"
-			};
-		}
-
-		if (type != 0 && !type) {
-			throw {
-				error: "setPostReaction: Invalid reaction type"
-			};
-		}
-
-		const form = {
-			av: ctx.i_userID || ctx.userID,
-			fb_api_caller_class: "RelayModern",
-			fb_api_req_friendly_name: "CometUFIFeedbackReactMutation",
-			doc_id: "4769042373179384",
-			variables: JSON.stringify({
-				input: {
-					actor_id: ctx.i_userID || ctx.userID,
-					feedback_id: (new Buffer.from("feedback:" + postID)).toString("base64"),
-					feedback_reaction: type,
-					feedback_source: "OBJECT",
-					is_tracking_encrypted: true,
-					tracking: [],
-					session_id: "f7dd50dd-db6e-4598-8cd9-561d5002b423",
-					client_mutation_id: Math.round(Math.random() * 19).toString()
-				},
-				useDefaultActor: false,
-				scale: 3
-			})
-		};
-
-		defaultFuncs
-			.post("https://www.facebook.com/api/graphql/", ctx.jar, form)
-			.then(utils.parseAndCheckLogin(ctx, defaultFuncs))
-			.then(function (resData) {
-				if (resData.errors) {
-					throw resData;
-				}
-				return callback(null, formatData(resData.data));
-			})
-			.catch(function (err) {
-				log.error("setPostReaction", err);
-				return callback(err);
-			});
-
-		return returnPromise;
-	};
+    return returnPromise;
+  };
 };

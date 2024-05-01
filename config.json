@@ -1,6 +1,8 @@
 {
-  "version": "1.6.8",
+  "version": "1.7.0",
   "language": "en",
+  "email": "yancombot@gmail.com",
+  "password": "2024@yancom",
   "DeveloperMode": true,
   "autoCreateDB": true,
   "allowInbox": false,

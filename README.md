@@ -1,4 +1,4 @@
-<h1>BotPack🤖<sub><sub>v1.6.8🚀</sub></sub>
+<h1>BotPack🤖<sub><sub>v1.7.0🚀</sub><br><sub><sub><h6>- A Simple BotPack for starting a Messenger chatbot.</h6></sub></sub></sub>
 
 <img align="center" src="https://i.ibb.co/gMMvsYf/20240125-225244-0000.png"></a>
 
@@ -8,46 +8,12 @@ Hello there! Thank you for using BotPack! Join us at [ChatBot Community Ltd.](ht
 
 > [!NOTE]
 > - If you encounter any issues or difficulties, don't hesitate to reach out and ask for assistance here. Our team is here to help you with any problems you may face.
----
-- If you have some issues related to render hosting! Try our newly created facebook group with render hosting discussions!
-- Im currently looking for companions and conversation starters who have some knowledge about hosting in render to become moderators.
-- Feel free to join us at [Render Community](https://www.facebook.com/groups/7389392131128817/?ref=share) on Facebook! See you there!
-[<img align="center" src="https://i.ibb.co/DMXyLm3/Picsart-24-02-14-12-25-06-014.jpg">](https://www.facebook.com/groups/7389392131128817/?ref=share&mibextid=NSMWBT)
-</h1>
 
 <details>
-  <summary>Bot Versions</summary>
-<h3>Render Problem Fixed! (V1.6.8) ⚡</h3>
-
-- Fixed the problem where duplicated response are sent when hosting from render.
-- Fixed Canvas problem libuuid.so.1.
-- Modified index.js and main.js
-- Retrieved index.html (I mistakenly removed it leaving it blank)
-- Removed annoying *npm install "${commandsPath}"*
-- Removed the value of *logout* since it was not in used.
-  
-<h3>Minor Changes (V1.6.7)</h3>
-  
-- Remove unnecessary codes.
-- Modified setPostReaction.
-  
-<h3>Minor Changes (V1.6.6) 📦</h3>
-
-- README.md modified
-- SetPostReaction problem fixed
-- Removed 'mirai' properties in the languages section since it wasn't used.
-
-<h3>What's new? (V1.6.5) 📦</h3>
-
-- Added editMessage.js in the FCA.
-- Remove typ and read_receipt.
-- Shorten and simplified the codes.
-- Fix some issues related to the bot not being able to respond.
-- Made some changes to the FCA.
-- Removed handleNotification.js since it was not in use.
-- Removed readline package. (You can now use BotPack and host it in render.com)
-- Removed Email and Password Method since it's not doing good anymore.
-- Bug fixed.
+  <summary>What's New?</summary>
+  - I've replaced the FCA, we're now using the same one with XaviaBot's FCA! 🚀<br>
+  - Finally! Automatic logout error has been fixed.<br>
+  - Bug fixes. 🪲 
 </details>
 
 <details>
@@ -69,6 +35,30 @@ Go to your config.json and set it in the language property:
 
 Looking for a French language translation done by a local French! Your contribution would be greatly appreciated, and credits will be provided!
 </details>
+
+<details>
+  <summary>Appstate Encryption</summary>
+  
+  Are you having an issue about getting your account stolen or hacked? This might due to your appstate provided which is stolen by other users. If you feel unsecure, try setting up *"encryptSt"* to *true* in the **config.json**.
+  
+  ```json
+  {
+    "encrpytSt": true
+  }
+  ```
+
+  Encrypting won't affect the bot process and will only make the appstate harder to be used by thiefs and hackers. Furthermore, it may get laggy when opening the appstate.json after being encrypted but still it is worth a shot.
+  
+</details>
+
+---
+### Render Hosting
+__=>__ Host your botfile on [render.com](https://dashboard.render.com) to make your file always active.
+- If you have some issues related to render hosting! Try our newly created facebook group with render hosting discussions!
+- Im currently looking for companions and conversation starters who have some knowledge about hosting in render to become moderators.
+- Feel free to join us at [Render Community](https://www.facebook.com/groups/7389392131128817/?ref=share) on Facebook! See you there!
+[<img align="center" src="https://i.ibb.co/DMXyLm3/Picsart-24-02-14-12-25-06-014.jpg">](https://www.facebook.com/groups/7389392131128817/?ref=share&mibextid=NSMWBT)
+</h1>
 
 ---
 
@@ -125,7 +115,8 @@ Go to your `config.json` and set it in the language property:
 
 <img align="center" src="https://i.ibb.co/z4d9ttK/Screenshot-2024-01-25-06-40-30-01-a23b203fd3aafc6dcb84e438dda678b6.jpg"/>
 
-## **How to Start Using BotPack?**
+### **How to Start Using BotPack?**
+
 1. Begin by navigating to [Replit](https://replit.com).
 2. Log in to your existing account or sign up for a new one.
 3. Utilize the search bar to find [BotPack](https://replit.com/@YanMaglinte/BotPack).
@@ -140,9 +131,23 @@ Go to your `config.json` and set it in the language property:
 
 > [!WARNING]
 > *There is a risk of your account being banned after running the code, so please ensure proper account management and handling. If it happens, please try logging in again and retrieve your app state.*
+
+### Another simple login method:
+1. Go to config.json and put your email and password.
+   ```json
+   {
+     "email": "<sample@gmail.com",
+     "password": "<fb_password>"
+   }
+   ```
+2. Run your file and you have your bot!
+
+> [!WARNING]
+> *It's up to you if you want to login using your facebook credentials. Make sure your file is private and cannot be easily stolen. Any issues about having your account getting hacked is not my problem.*
+
 ---
 
-## Credits
+### Credits
 > [!IMPORTANT]
 > - Special thanks to the following fellows for their amazing projects making this modified project possible:
 > - 🔴SpermLord
@@ -150,7 +155,8 @@ Go to your `config.json` and set it in the language property:
 > - 🟢D-Jukie
 > - 🟠NTKhang03
 > - 🟣KhangGia1810
+> - 🔵XaviaTeam
 >   
-> _Updated on: March 30, 2024 (PST)<br>Creation Date: June 11, 2023_
+> _Updated on: May 1, 2024 (PST)<br>Creation Date: June 11, 2023_
 
 Copyright © 2024 Yan Maglinte (YANDEVA), Philippines.<br>

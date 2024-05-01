@@ -142,7 +142,7 @@ module.exports = {
     }
   },
   error: (text, type) => {
-    process.stderr.write(chalk.hex("#ff0000")(`\r» ${type} « `) + text + '\n');
+    process.stderr.write(chalk.hex("#ff0000")(`\r[ ${type} ] `) + text + '\n');
   },
   err: (text, type) => {
     process.stderr.write(getThemeColors().co(`[ ${type} ] `) + text + '\n');

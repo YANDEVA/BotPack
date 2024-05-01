@@ -1,108 +1,32 @@
 /* eslint-disable no-prototype-builtins */
 "use strict";
 
-let request = promisifyPromise(require("request").defaults({ jar: true, proxy: process.env.FB_PROXY }));
-const stream = require("stream");
-const log = require("npmlog");
-const querystring = require("querystring");
-const url = require("url");
-
-class CustomError extends Error {
-  constructor(obj) {
-    if (typeof obj === 'string')
-      obj = { message: obj };
-    if (typeof obj !== 'object' || obj === null)
-      throw new TypeError('Object required');
-    obj.message ? super(obj.message) : super();
-    Object.assign(this, obj);
-  }
-}
-
-function callbackToPromise(func) {
-  return function (...args) {
-    return new Promise((resolve, reject) => {
-      func(...args, (err, data) => {
-        if (err)
-          reject(err);
-        else
-          resolve(data);
-      });
-    });
-  };
-}
-
-function isHasCallback(func) {
-  if (typeof func !== "function")
-    return false;
-  return func.toString().split("\n")[0].match(/(callback|cb)\s*\)/) !== null;
-}
-
-// replace for bluebird.promisify (but this only applies best to the `request` package)
-function promisifyPromise(promise) {
-  const keys = Object.keys(promise);
-  let promise_;
-  if (
-    typeof promise === "function"
-    && isHasCallback(promise)
-  )
-    promise_ = callbackToPromise(promise);
-  else
-    promise_ = promise;
-
-  for (const key of keys) {
-    if (!promise[key]?.toString)
-      continue;
-
-    if (
-      typeof promise[key] === "function"
-      && isHasCallback(promise[key])
-    ) {
-      promise_[key] = callbackToPromise(promise[key]);
-    }
-    else {
-      promise_[key] = promise[key];
-    }
-  }
-
-  return promise_;
-}
-
-// replace for bluebird.delay
-function delay(ms) {
-  return new Promise(resolve => setTimeout(resolve, ms));
-}
-
-// replace for bluebird.try
-function tryPromise(tryFunc) {
-  return new Promise((resolve, reject) => {
-    try {
-      resolve(tryFunc());
-    } catch (error) {
-      reject(error);
-    }
-  });
-}
+var bluebird = require("bluebird");
+var request = bluebird.promisify(require("request").defaults({ jar: true }));
+var stream = require("stream");
+var log = require("npmlog");
+var querystring = require("querystring");
+var url = require("url");
 
 function setProxy(url) {
-  if (typeof url == "undefined")
-    return request = promisifyPromise(require("request").defaults({
-      jar: true
+  if (typeof url == undefined)
+    return request = bluebird.promisify(require("request").defaults({
+      jar: true,
     }));
-  return request = promisifyPromise(require("request").defaults({
+  return request = bluebird.promisify(require("request").defaults({
     jar: true,
     proxy: url
   }));
 }
 
 function getHeaders(url, options, ctx, customHeader) {
-  const headers = {
+  var headers = {
     "Content-Type": "application/x-www-form-urlencoded",
     Referer: "https://www.facebook.com/",
     Host: url.replace("https://", "").split("/")[0],
     Origin: "https://www.facebook.com",
     "User-Agent": options.userAgent,
-    Connection: "keep-alive",
-    "sec-fetch-site": "same-origin"
+    Connection: "keep-alive"
   };
   if (customHeader) {
     Object.assign(headers, customHeader);
@@ -126,13 +50,13 @@ function isReadableStream(obj) {
 function get(url, jar, qs, options, ctx) {
   // I'm still confused about this
   if (getType(qs) === "Object") {
-    for (const prop in qs) {
+    for (var prop in qs) {
       if (qs.hasOwnProperty(prop) && getType(qs[prop]) === "Object") {
         qs[prop] = JSON.stringify(qs[prop]);
       }
     }
   }
-  const op = {
+  var op = {
     headers: getHeaders(url, options, ctx),
     timeout: 60000,
     qs: qs,
@@ -143,12 +67,12 @@ function get(url, jar, qs, options, ctx) {
   };
 
   return request(op).then(function (res) {
-    return Array.isArray(res) ? res[0] : res;
+    return res[0];
   });
 }
 
 function post(url, jar, form, options, ctx, customHeader) {
-  const op = {
+  var op = {
     headers: getHeaders(url, options, ctx, customHeader),
     timeout: 60000,
     url: url,
@@ -159,14 +83,14 @@ function post(url, jar, form, options, ctx, customHeader) {
   };
 
   return request(op).then(function (res) {
-    return Array.isArray(res) ? res[0] : res;
+    return res[0];
   });
 }
 
 function postFormData(url, jar, form, qs, options, ctx) {
-  const headers = getHeaders(url, options, ctx);
+  var headers = getHeaders(url, options, ctx);
   headers["Content-Type"] = "multipart/form-data";
-  const op = {
+  var op = {
     headers: headers,
     timeout: 60000,
     url: url,
@@ -178,7 +102,7 @@ function postFormData(url, jar, form, qs, options, ctx) {
   };
 
   return request(op).then(function (res) {
-    return Array.isArray(res) ? res[0] : res;
+    return res[0];
   });
 }
 
@@ -190,25 +114,30 @@ function padZeros(val, len) {
 }
 
 function generateThreadingID(clientID) {
-  const k = Date.now();
-  const l = Math.floor(Math.random() * 4294967295);
-  const m = clientID;
+  var k = Date.now();
+  var l = Math.floor(Math.random() * 4294967295);
+  var m = clientID;
   return "<" + k + ":" + l + "-" + m + "@mail.projektitan.com>";
 }
 
+function getCurrentTimestamp() {
+  const date = new Date();
+  const unixTime = date.getTime();
+  return unixTime;
+}
+
 function binaryToDecimal(data) {
-  let ret = "";
+  var ret = "";
   while (data !== "0") {
-    let end = 0;
-    let fullName = "";
-    let i = 0;
+    var end = 0;
+    var fullName = "";
+    var i = 0;
     for (; i < data.length; i++) {
       end = 2 * end + parseInt(data[i], 10);
       if (end >= 10) {
         fullName += "1";
         end -= 10;
-      }
-      else {
+      } else {
         fullName += "0";
       }
     }
@@ -219,16 +148,16 @@ function binaryToDecimal(data) {
 }
 
 function generateOfflineThreadingID() {
-  const ret = Date.now();
-  const value = Math.floor(Math.random() * 4294967295);
-  const str = ("0000000000000000000000" + value.toString(2)).slice(-22);
-  const msgs = ret.toString(2) + str;
+  var ret = Date.now();
+  var value = Math.floor(Math.random() * 4294967295);
+  var str = ("0000000000000000000000" + value.toString(2)).slice(-22);
+  var msgs = ret.toString(2) + str;
   return binaryToDecimal(msgs);
 }
 
-let h;
-const i = {};
-const j = {
+var h;
+var i = {};
+var j = {
   _: "%",
   A: "%2",
   B: "000",
@@ -260,8 +189,8 @@ const j = {
     "%2c%22sb%22%3a1%2c%22t%22%3a%5b%5d%2c%22f%22%3anull%2c%22uct%22%3a0%2c%22s%22%3a0%2c%22blo%22%3a0%7d%2c%22bl%22%3a%7b%22ac%22%3a"
 };
 (function () {
-  const l = [];
-  for (const m in j) {
+  var l = [];
+  for (var m in j) {
     i[j[m]] = m;
     l.push(j[m]);
   }
@@ -290,7 +219,7 @@ function presenceDecode(str) {
 }
 
 function generatePresence(userID) {
-  const time = Date.now();
+  var time = Date.now();
   return (
     "E" +
     presenceEncode(
@@ -316,7 +245,7 @@ function generatePresence(userID) {
 }
 
 function generateAccessiblityCookie() {
-  const time = Date.now();
+  var time = Date.now();
   return encodeURIComponent(
     JSON.stringify({
       sr: 0,
@@ -333,33 +262,18 @@ function generateAccessiblityCookie() {
 
 function getGUID() {
   /** @type {number} */
-  let sectionLength = Date.now();
+  var sectionLength = Date.now();
   /** @type {string} */
-  const id = "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, function (c) {
+  var id = "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, function (c) {
     /** @type {number} */
-    const r = Math.floor((sectionLength + Math.random() * 16) % 16);
+    var r = Math.floor((sectionLength + Math.random() * 16) % 16);
     /** @type {number} */
     sectionLength = Math.floor(sectionLength / 16);
     /** @type {string} */
-    const _guid = (c == "x" ? r : (r & 7) | 8).toString(16);
+    var _guid = (c == "x" ? r : (r & 7) | 8).toString(16);
     return _guid;
   });
   return id;
-}
-
-function getExtension(original_extension, fullFileName = "") {
-  if (original_extension) {
-    return original_extension;
-  }
-  else {
-    const extension = fullFileName.split(".").pop();
-    if (extension === fullFileName) {
-      return "";
-    }
-    else {
-      return extension;
-    }
-  }
 }
 
 function _formatAttachment(attachment1, attachment2) {
@@ -369,22 +283,15 @@ function _formatAttachment(attachment1, attachment2) {
   // data that you'd want so we merge them for convenience.
   // Instead of having a bunch of if statements guarding every access to image_data,
   // we set it to empty object and use the fact that it'll return undefined.
-  const fullFileName = attachment1.filename;
-  const fileSize = Number(attachment1.fileSize || 0);
-  const durationVideo = attachment1.genericMetadata ? Number(attachment1.genericMetadata.videoLength) : undefined;
-  const durationAudio = attachment1.genericMetadata ? Number(attachment1.genericMetadata.duration) : undefined;
-  const mimeType = attachment1.mimeType;
-
   attachment2 = attachment2 || { id: "", image_data: {} };
-  attachment1 = attachment1.mercury || attachment1;
-  let blob = attachment1.blob_attachment || attachment1.sticker_attachment;
-  let type =
+  attachment1 = attachment1.mercury ? attachment1.mercury : attachment1;
+  var blob = attachment1.blob_attachment;
+  var type =
     blob && blob.__typename ? blob.__typename : attachment1.attach_type;
   if (!type && attachment1.sticker_attachment) {
     type = "StickerAttachment";
     blob = attachment1.sticker_attachment;
-  }
-  else if (!type && attachment1.extensible_attachment) {
+  } else if (!type && attachment1.extensible_attachment) {
     if (
       attachment1.extensible_attachment.story_attachment &&
       attachment1.extensible_attachment.story_attachment.target &&
@@ -392,8 +299,7 @@ function _formatAttachment(attachment1, attachment2) {
       attachment1.extensible_attachment.story_attachment.target.__typename === "MessageLocation"
     ) {
       type = "MessageLocation";
-    }
-    else {
+    } else {
       type = "ExtensibleAttachment";
     }
 
@@ -429,28 +335,22 @@ function _formatAttachment(attachment1, attachment2) {
     case "file":
       return {
         type: "file",
-        ID: attachment2.id.toString(),
-        fullFileName: fullFileName,
         filename: attachment1.name,
-        fileSize: fileSize,
-        original_extension: getExtension(attachment1.original_extension, fullFileName),
-        mimeType: mimeType,
+        ID: attachment2.id.toString(),
         url: attachment1.url,
 
         isMalicious: attachment2.is_malicious,
         contentType: attachment2.mime_type,
 
-        name: attachment1.name // @Legacy
+        name: attachment1.name, // @Legacy
+        mimeType: attachment2.mime_type, // @Legacy
+        fileSize: attachment2.file_size // @Legacy
       };
     case "photo":
       return {
         type: "photo",
         ID: attachment1.metadata.fbid.toString(),
         filename: attachment1.fileName,
-        fullFileName: fullFileName,
-        fileSize: fileSize,
-        original_extension: getExtension(attachment1.original_extension, fullFileName),
-        mimeType: mimeType,
         thumbnailUrl: attachment1.thumbnail_url,
 
         previewUrl: attachment1.preview_url,
@@ -464,16 +364,13 @@ function _formatAttachment(attachment1, attachment2) {
         url: attachment1.metadata.url, // @Legacy
         width: attachment1.metadata.dimensions.split(",")[0], // @Legacy
         height: attachment1.metadata.dimensions.split(",")[1], // @Legacy
-        name: fullFileName // @Legacy
+        name: attachment1.fileName // @Legacy
       };
     case "animated_image":
       return {
         type: "animated_image",
         ID: attachment2.id.toString(),
         filename: attachment2.filename,
-        fullFileName: fullFileName,
-        original_extension: getExtension(attachment2.original_extension, fullFileName),
-        mimeType: mimeType,
 
         previewUrl: attachment1.preview_url,
         previewWidth: attachment1.preview_width,
@@ -486,6 +383,7 @@ function _formatAttachment(attachment1, attachment2) {
         name: attachment1.name, // @Legacy
         facebookUrl: attachment1.url, // @Legacy
         thumbnailUrl: attachment1.thumbnail_url, // @Legacy
+        mimeType: attachment2.mime_type, // @Legacy
         rawGifImage: attachment2.image_data.raw_gif_image, // @Legacy
         rawWebpImage: attachment2.image_data.raw_webp_image, // @Legacy
         animatedGifUrl: attachment2.image_data.animated_gif_url, // @Legacy
@@ -522,10 +420,6 @@ function _formatAttachment(attachment1, attachment2) {
         type: "video",
         ID: attachment1.metadata.fbid.toString(),
         filename: attachment1.name,
-        fullFileName: fullFileName,
-        original_extension: getExtension(attachment1.original_extension, fullFileName),
-        mimeType: mimeType,
-        duration: durationVideo,
 
         previewUrl: attachment1.preview_url,
         previewWidth: attachment1.preview_width,
@@ -535,6 +429,7 @@ function _formatAttachment(attachment1, attachment2) {
         width: attachment1.metadata.dimensions.width,
         height: attachment1.metadata.dimensions.height,
 
+        duration: attachment1.metadata.duration,
         videoType: "unknown",
 
         thumbnailUrl: attachment1.thumbnail_url // @Legacy
@@ -553,10 +448,6 @@ function _formatAttachment(attachment1, attachment2) {
         type: "photo",
         ID: blob.legacy_attachment_id,
         filename: blob.filename,
-        fullFileName: fullFileName,
-        fileSize: fileSize,
-        original_extension: getExtension(blob.original_extension, fullFileName),
-        mimeType: mimeType,
         thumbnailUrl: blob.thumbnail.uri,
 
         previewUrl: blob.preview.uri,
@@ -577,9 +468,6 @@ function _formatAttachment(attachment1, attachment2) {
         type: "animated_image",
         ID: blob.legacy_attachment_id,
         filename: blob.filename,
-        fullFileName: fullFileName,
-        original_extension: getExtension(blob.original_extension, fullFileName),
-        mimeType: mimeType,
 
         previewUrl: blob.preview_image.uri,
         previewWidth: blob.preview_image.width,
@@ -601,13 +489,8 @@ function _formatAttachment(attachment1, attachment2) {
     case "MessageVideo":
       return {
         type: "video",
-        ID: blob.legacy_attachment_id,
         filename: blob.filename,
-        fullFileName: fullFileName,
-        original_extension: getExtension(blob.original_extension, fullFileName),
-        fileSize: fileSize,
-        duration: durationVideo,
-        mimeType: mimeType,
+        ID: blob.legacy_attachment_id,
 
         previewUrl: blob.large_image.uri,
         previewWidth: blob.large_image.width,
@@ -617,6 +500,7 @@ function _formatAttachment(attachment1, attachment2) {
         width: blob.original_dimensions.x,
         height: blob.original_dimensions.y,
 
+        duration: blob.playable_duration_in_ms,
         videoType: blob.video_type.toLowerCase(),
 
         thumbnailUrl: blob.large_image.uri // @Legacy
@@ -624,27 +508,24 @@ function _formatAttachment(attachment1, attachment2) {
     case "MessageAudio":
       return {
         type: "audio",
-        ID: blob.url_shimhash,
         filename: blob.filename,
-        fullFileName: fullFileName,
-        fileSize: fileSize,
-        duration: durationAudio,
-        original_extension: getExtension(blob.original_extension, fullFileName),
-        mimeType: mimeType,
+        ID: blob.url_shimhash,
 
         audioType: blob.audio_type,
+        duration: blob.playable_duration_in_ms,
         url: blob.playable_url,
 
         isVoiceMail: blob.is_voicemail
       };
     case "StickerAttachment":
-    case "Sticker":
       return {
         type: "sticker",
         ID: blob.id,
         url: blob.url,
 
-        packID: blob.pack ? blob.pack.id : null,
+        packID: blob.pack
+          ? blob.pack.id
+          : null,
         spriteUrl: blob.sprite_image,
         spriteUrl2x: blob.sprite_image_2x,
         width: blob.width,
@@ -755,18 +636,16 @@ function _formatAttachment(attachment1, attachment2) {
     case "MessageFile":
       return {
         type: "file",
-        ID: blob.message_file_fbid,
-        fullFileName: fullFileName,
         filename: blob.filename,
-        fileSize: fileSize,
-        mimeType: blob.mimetype,
-        original_extension: blob.original_extension || fullFileName.split(".").pop(),
+        ID: blob.message_file_fbid,
 
         url: blob.url,
         isMalicious: blob.is_malicious,
         contentType: blob.content_type,
 
-        name: blob.filename
+        name: blob.filename,
+        mimeType: "",
+        fileSize: -1
       };
     default:
       throw new Error(
@@ -798,52 +677,55 @@ function formatAttachment(attachments, attachmentIds, attachmentMap, shareMap) {
 }
 
 function formatDeltaMessage(m) {
-  const md = m.delta.messageMetadata;
+  var md = m.delta.messageMetadata;
 
-  const mdata =
+  var mdata =
     m.delta.data === undefined
       ? []
       : m.delta.data.prng === undefined
         ? []
         : JSON.parse(m.delta.data.prng);
-  const m_id = mdata.map(u => u.i);
-  const m_offset = mdata.map(u => u.o);
-  const m_length = mdata.map(u => u.l);
-  const mentions = {};
-  for (let i = 0; i < m_id.length; i++) {
+  var m_id = mdata.map(u => u.i);
+  var m_offset = mdata.map(u => u.o);
+  var m_length = mdata.map(u => u.l);
+  var mentions = {};
+  var body = m.delta.body || "";
+  var args = body == "" ? [] : body.trim().split(/\s+/);
+  for (var i = 0; i < m_id.length; i++) {
     mentions[m_id[i]] = m.delta.body.substring(
       m_offset[i],
       m_offset[i] + m_length[i]
     );
   }
+
   return {
     type: "message",
     senderID: formatID(md.actorFbId.toString()),
-    body: m.delta.body || "",
     threadID: formatID(
       (md.threadKey.threadFbId || md.threadKey.otherUserFbId).toString()
     ),
+    args: args,
+    body: body,
     messageID: md.messageId,
     attachments: (m.delta.attachments || []).map(v => _formatAttachment(v)),
     mentions: mentions,
     timestamp: md.timestamp,
     isGroup: !!md.threadKey.threadFbId,
-    participantIDs: m.delta.participants || (md.cid ? md.cid.canonicalParticipantFbids : []) || []
+    participantIDs: m.delta.participants || []
   };
 }
 
 function formatID(id) {
   if (id != undefined && id != null) {
     return id.replace(/(fb)?id[:.]/, "");
-  }
-  else {
+  } else {
     return id;
   }
 }
 
 function formatMessage(m) {
-  const originalMessage = m.message ? m.message : m;
-  const obj = {
+  var originalMessage = m.message ? m.message : m;
+  var obj = {
     type: "message",
     senderName: originalMessage.sender_name,
     senderID: formatID(originalMessage.sender_fbid.toString()),
@@ -891,16 +773,15 @@ function formatMessage(m) {
 }
 
 function formatEvent(m) {
-  const originalMessage = m.message ? m.message : m;
-  let logMessageType = originalMessage.log_message_type;
-  let logMessageData;
+  var originalMessage = m.message ? m.message : m;
+  var logMessageType = originalMessage.log_message_type;
+  var logMessageData;
   if (logMessageType === "log:generic-admin-text") {
     logMessageData = originalMessage.log_message_data.untypedData;
     logMessageType = getAdminTextMessageType(
       originalMessage.log_message_data.message_type
     );
-  }
-  else {
+  } else {
     logMessageData = originalMessage.log_message_data;
   }
 
@@ -926,7 +807,7 @@ function getAdminTextMessageType(type) {
   switch (type) {
     case "change_thread_theme":
       return "log:thread-color";
-    case "change_thread_icon":
+    // case "change_thread_icon": deprecated
     case "change_thread_quick_reaction":
       return "log:thread-icon";
     case "change_thread_nickname":
@@ -946,8 +827,8 @@ function getAdminTextMessageType(type) {
 }
 
 function formatDeltaEvent(m) {
-  let logMessageType;
-  let logMessageData;
+  var logMessageType;
+  var logMessageData;
 
   // log:thread-color => {theme_color}
   // log:user-nickname => {participant_id, nickname}
@@ -958,8 +839,8 @@ function formatDeltaEvent(m) {
 
   switch (m.class) {
     case "AdminTextMessage":
-      logMessageData = m.untypedData;
       logMessageType = getAdminTextMessageType(m.type);
+      logMessageData = m.untypedData;
       break;
     case "ThreadName":
       logMessageType = "log:thread-name";
@@ -973,16 +854,6 @@ function formatDeltaEvent(m) {
       logMessageType = "log:unsubscribe";
       logMessageData = { leftParticipantFbId: m.leftParticipantFbId };
       break;
-    case "ApprovalQueue":
-      logMessageType = "log:approval-queue";
-      logMessageData = {
-        approvalQueue: {
-          action: m.action,
-          recipientFbId: m.recipientFbId,
-          requestSource: m.requestSource,
-          ...m.messageMetadata
-        }
-      };
   }
 
   return {
@@ -993,13 +864,11 @@ function formatDeltaEvent(m) {
         m.messageMetadata.threadKey.otherUserFbId
       ).toString()
     ),
-    messageID: m.messageMetadata.messageId.toString(),
     logMessageType: logMessageType,
     logMessageData: logMessageData,
     logMessageBody: m.messageMetadata.adminText,
-    timestamp: m.messageMetadata.timestamp,
     author: m.messageMetadata.actorFbId,
-    participantIDs: (m.participants || []).map(p => p.toString())
+    participantIDs: m.participants || []
   };
 }
 
@@ -1054,13 +923,13 @@ function formatRead(event) {
 }
 
 function getFrom(str, startToken, endToken) {
-  const start = str.indexOf(startToken) + startToken.length;
+  var start = str.indexOf(startToken) + startToken.length;
   if (start < startToken.length) return "";
 
-  const lastHalf = str.substring(start);
-  const end = lastHalf.indexOf(endToken);
+  var lastHalf = str.substring(start);
+  var end = lastHalf.indexOf(endToken);
   if (end === -1) {
-    throw new Error(
+    throw Error(
       "Could not find endTime `" + endToken + "` in the given string."
     );
   }
@@ -1068,7 +937,7 @@ function getFrom(str, startToken, endToken) {
 }
 
 function makeParsable(html) {
-  const withoutForLoop = html.replace(/for\s*\(\s*;\s*;\s*\)\s*;\s*/, "");
+  let withoutForLoop = html.replace(/for\s*\(\s*;\s*;\s*\)\s*;\s*/, "");
 
   // (What the fuck FB, why windows style newlines?)
   // So sometimes FB will send us base multiple objects in the same response.
@@ -1079,7 +948,7 @@ function makeParsable(html) {
   // It turns out that Facebook may insert random number of spaces before
   // next object begins (issue #616)
   //       rav_kr - 2018-03-19
-  const maybeMultipleObjects = withoutForLoop.split(/\}\r\n *\{/);
+  let maybeMultipleObjects = withoutForLoop.split(/\}\r\n *\{/);
   if (maybeMultipleObjects.length === 1) return maybeMultipleObjects;
 
   return "[" + maybeMultipleObjects.join("},{") + "]";
@@ -1109,13 +978,13 @@ function getSignatureID() {
 }
 
 function generateTimestampRelative() {
-  const d = new Date();
+  var d = new Date();
   return d.getHours() + ":" + padZeros(d.getMinutes());
 }
 
 function makeDefaults(html, userID, ctx) {
-  let reqCounter = 1;
-  const fb_dtsg = getFrom(html, 'name="fb_dtsg" value="', '"');
+  var reqCounter = 1;
+  var fb_dtsg = getFrom(html, 'name="fb_dtsg" value="', '"');
 
   // @Hack Ok we've done hacky things, this is definitely on top 5.
   // We totally assume the object is flat and try parsing until a }.
@@ -1132,11 +1001,11 @@ function makeDefaults(html, userID, ctx) {
   //   siteData = {};
   // }
 
-  let ttstamp = "2";
-  for (let i = 0; i < fb_dtsg.length; i++) {
+  var ttstamp = "2";
+  for (var i = 0; i < fb_dtsg.length; i++) {
     ttstamp += fb_dtsg.charCodeAt(i);
   }
-  const revision = getFrom(html, 'revision":', ",");
+  var revision = getFrom(html, 'revision":', ",");
 
   function mergeWithDefaults(obj) {
     // @TODO This is missing a key called __dyn.
@@ -1149,7 +1018,7 @@ function makeDefaults(html, userID, ctx) {
     // So far the API has been working without this.
     //
     //              Ben - July 15th 2017
-    const newObj = {
+    var newObj = {
       __user: userID,
       __req: (reqCounter++).toString(36),
       __rev: revision,
@@ -1173,7 +1042,7 @@ function makeDefaults(html, userID, ctx) {
 
     if (!obj) return newObj;
 
-    for (const prop in obj) {
+    for (var prop in obj) {
       if (obj.hasOwnProperty(prop)) {
         if (!newObj[prop]) {
           newObj[prop] = obj[prop];
@@ -1184,12 +1053,12 @@ function makeDefaults(html, userID, ctx) {
     return newObj;
   }
 
-  function postWithDefaults(url, jar, form, ctxx, customHeader = {}) {
-    return post(url, jar, mergeWithDefaults(form), ctx.globalOptions, ctxx || ctx, customHeader);
+  function postWithDefaults(url, jar, form, ctxx) {
+    return post(url, jar, mergeWithDefaults(form), ctx.globalOptions, ctxx || ctx);
   }
 
-  function getWithDefaults(url, jar, qs, ctxx, customHeader = {}) {
-    return get(url, jar, mergeWithDefaults(qs), ctx.globalOptions, ctxx || ctx, customHeader);
+  function getWithDefaults(url, jar, qs, ctxx) {
+    return get(url, jar, mergeWithDefaults(qs), ctx.globalOptions, ctxx || ctx);
   }
 
   function postFormDataWithDefault(url, jar, form, qs, ctxx) {
@@ -1210,33 +1079,24 @@ function makeDefaults(html, userID, ctx) {
   };
 }
 
-function parseAndCheckLogin(ctx, defaultFuncs, retryCount, sourceCall) {
+function parseAndCheckLogin(ctx, defaultFuncs, retryCount) {
   if (retryCount == undefined) {
     retryCount = 0;
   }
-  if (sourceCall == undefined) {
-    try {
-      throw new Error();
-    }
-    catch (e) {
-      sourceCall = e;
-    }
-  }
   return function (data) {
-    return tryPromise(function () {
+    return bluebird.try(function () {
       log.verbose("parseAndCheckLogin", data.body);
       if (data.statusCode >= 500 && data.statusCode < 600) {
         if (retryCount >= 5) {
-          throw new CustomError({
-            message: "Request retry failed. Check the `res` and `statusCode` property on this error.",
+          throw {
+            error:
+              "Request retry failed. Check the `res` and `statusCode` property on this error.",
             statusCode: data.statusCode,
-            res: data.body,
-            error: "Request retry failed. Check the `res` and `statusCode` property on this error.",
-            sourceCall: sourceCall
-          });
+            res: data.body
+          };
         }
         retryCount++;
-        const retryTime = Math.floor(Math.random() * 5000);
+        var retryTime = Math.floor(Math.random() * 5000);
         log.warn(
           "parseAndCheckLogin",
           "Got status code " +
@@ -1247,7 +1107,7 @@ function parseAndCheckLogin(ctx, defaultFuncs, retryCount, sourceCall) {
           retryTime +
           " milliseconds..."
         );
-        const url =
+        var url =
           data.request.uri.protocol +
           "//" +
           data.request.uri.hostname +
@@ -1256,7 +1116,8 @@ function parseAndCheckLogin(ctx, defaultFuncs, retryCount, sourceCall) {
           data.request.headers["Content-Type"].split(";")[0] ===
           "multipart/form-data"
         ) {
-          return delay(retryTime)
+          return bluebird
+            .delay(retryTime)
             .then(function () {
               return defaultFuncs.postFormData(
                 url,
@@ -1265,43 +1126,39 @@ function parseAndCheckLogin(ctx, defaultFuncs, retryCount, sourceCall) {
                 {}
               );
             })
-            .then(parseAndCheckLogin(ctx, defaultFuncs, retryCount, sourceCall));
-        }
-        else {
-          return delay(retryTime)
+            .then(parseAndCheckLogin(ctx, defaultFuncs, retryCount));
+        } else {
+          return bluebird
+            .delay(retryTime)
             .then(function () {
               return defaultFuncs.post(url, ctx.jar, data.request.formData);
             })
-            .then(parseAndCheckLogin(ctx, defaultFuncs, retryCount, sourceCall));
+            .then(parseAndCheckLogin(ctx, defaultFuncs, retryCount));
         }
       }
       if (data.statusCode !== 200)
-        throw new CustomError({
-          message: "parseAndCheckLogin got status code: " + data.statusCode + ". Bailing out of trying to parse response.",
-          statusCode: data.statusCode,
-          res: data.body,
-          error: "parseAndCheckLogin got status code: " + data.statusCode + ". Bailing out of trying to parse response.",
-          sourceCall: sourceCall
-        });
+        throw new Error(
+          "parseAndCheckLogin got status code: " +
+          data.statusCode +
+          ". Bailing out of trying to parse response."
+        );
 
-      let res = null;
+      var res = null;
       try {
         res = JSON.parse(makeParsable(data.body));
       } catch (e) {
-        throw new CustomError({
-          message: "JSON.parse error. Check the `detail` property on this error.",
-          detail: e,
-          res: data.body,
+        throw {
           error: "JSON.parse error. Check the `detail` property on this error.",
-          sourceCall: sourceCall
-        });
+          detail: e,
+          res: data.body
+        };
       }
 
       // In some cases the response contains only a redirect URL which should be followed
       if (res.redirect && data.request.method === "GET") {
         return defaultFuncs
           .get(res.redirect, ctx.jar)
-          .then(parseAndCheckLogin(ctx, defaultFuncs, undefined, sourceCall));
+          .then(parseAndCheckLogin(ctx, defaultFuncs));
       }
 
       // TODO: handle multiple cookies?
@@ -1315,8 +1172,8 @@ function parseAndCheckLogin(ctx, defaultFuncs, retryCount, sourceCall) {
           "_js_",
           ""
         );
-        const cookie = formatCookie(res.jsmods.require[0][3], "facebook");
-        const cookie2 = formatCookie(res.jsmods.require[0][3], "messenger");
+        var cookie = formatCookie(res.jsmods.require[0][3], "facebook");
+        var cookie2 = formatCookie(res.jsmods.require[0][3], "messenger");
         ctx.jar.setCookie(cookie, "https://www.facebook.com");
         ctx.jar.setCookie(cookie2, "https://www.messenger.com");
       }
@@ -1324,14 +1181,14 @@ function parseAndCheckLogin(ctx, defaultFuncs, retryCount, sourceCall) {
       // On every request we check if we got a DTSG and we mutate the context so that we use the latest
       // one for the next requests.
       if (res.jsmods && Array.isArray(res.jsmods.require)) {
-        const arr = res.jsmods.require;
-        for (const i in arr) {
+        var arr = res.jsmods.require;
+        for (var i in arr) {
           if (arr[i][0] === "DTSG" && arr[i][1] === "setToken") {
             ctx.fb_dtsg = arr[i][3][0];
 
             // Update ttstamp since that depends on fb_dtsg
             ctx.ttstamp = "2";
-            for (let j = 0; j < ctx.fb_dtsg.length; j++) {
+            for (var j = 0; j < ctx.fb_dtsg.length; j++) {
               ctx.ttstamp += ctx.fb_dtsg.charCodeAt(j);
             }
           }
@@ -1339,48 +1196,28 @@ function parseAndCheckLogin(ctx, defaultFuncs, retryCount, sourceCall) {
       }
 
       if (res.error === 1357001) {
-        throw new CustomError({
-          message: "Facebook blocked login. Please visit https://facebook.com and check your account.",
-          error: "Not logged in.",
-          res: res,
-          statusCode: data.statusCode,
-          sourceCall: sourceCall
-        });
+        throw { error: "Not logged in." };
       }
       return res;
     });
   };
 }
 
-function checkLiveCookie(ctx, defaultFuncs) {
-  return defaultFuncs
-    .get("https://m.facebook.com/me", ctx.jar)
-    .then(function (res) {
-      if (res.body.indexOf(ctx.i_userID || ctx.userID) === -1) {
-        throw new CustomError({
-          message: "Not logged in.",
-          error: "Not logged in."
-        });
-      }
-      return true;
-    });
-}
-
 function saveCookies(jar) {
   return function (res) {
-    const cookies = res.headers["set-cookie"] || [];
+    var cookies = res.headers["set-cookie"] || [];
     cookies.forEach(function (c) {
       if (c.indexOf(".facebook.com") > -1) {
         jar.setCookie(c, "https://www.facebook.com");
       }
-      const c2 = c.replace(/domain=\.facebook\.com/, "domain=.messenger.com");
+      var c2 = c.replace(/domain=\.facebook\.com/, "domain=.messenger.com");
       jar.setCookie(c2, "https://www.messenger.com");
     });
     return res;
   };
 }
 
-const NUM_TO_MONTH = [
+var NUM_TO_MONTH = [
   "Jan",
   "Feb",
   "Mar",
@@ -1394,15 +1231,15 @@ const NUM_TO_MONTH = [
   "Nov",
   "Dec"
 ];
-const NUM_TO_DAY = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+var NUM_TO_DAY = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 function formatDate(date) {
-  let d = date.getUTCDate();
+  var d = date.getUTCDate();
   d = d >= 10 ? d : "0" + d;
-  let h = date.getUTCHours();
+  var h = date.getUTCHours();
   h = h >= 10 ? h : "0" + h;
-  let m = date.getUTCMinutes();
+  var m = date.getUTCMinutes();
   m = m >= 10 ? m : "0" + m;
-  let s = date.getUTCSeconds();
+  var s = date.getUTCSeconds();
   s = s >= 10 ? s : "0" + s;
   return (
     NUM_TO_DAY[date.getUTCDay()] +
@@ -1473,7 +1310,7 @@ function formatProxyPresence(presence, userID) {
   return {
     type: "presence",
     timestamp: presence.lat * 1000,
-    userID: userID,
+    userID: userID || '',
     statuses: presence.p
   };
 }
@@ -1482,7 +1319,7 @@ function formatPresence(presence, userID) {
   return {
     type: "presence",
     timestamp: presence.la * 1000,
-    userID: userID,
+    userID: userID || '',
     statuses: presence.a
   };
 }
@@ -1491,7 +1328,41 @@ function decodeClientPayload(payload) {
   /*
   Special function which Client using to "encode" clients JSON payload
   */
-  return JSON.parse(String.fromCharCode.apply(null, payload));
+  function Utf8ArrayToStr(array) {
+    var out, i, len, c;
+    var char2, char3;
+    out = "";
+    len = array.length;
+    i = 0;
+    while (i < len) {
+      c = array[i++];
+      switch (c >> 4) {
+        case 0:
+        case 1:
+        case 2:
+        case 3:
+        case 4:
+        case 5:
+        case 6:
+        case 7:
+          out += String.fromCharCode(c);
+          break;
+        case 12:
+        case 13:
+          char2 = array[i++];
+          out += String.fromCharCode(((c & 0x1F) << 6) | (char2 & 0x3F));
+          break;
+        case 14:
+          char2 = array[i++];
+          char3 = array[i++];
+          out += String.fromCharCode(((c & 0x0F) << 12) | ((char2 & 0x3F) << 6) | ((char3 & 0x3F) << 0));
+          break;
+      }
+    }
+    return out;
+  }
+
+  return JSON.parse(Utf8ArrayToStr(payload));
 }
 
 function getAppState(jar) {
@@ -1501,7 +1372,6 @@ function getAppState(jar) {
     .concat(jar.getCookies("https://www.messenger.com"));
 }
 module.exports = {
-  CustomError,
   isReadableStream,
   get,
   post,
@@ -1540,5 +1410,5 @@ module.exports = {
   getAppState,
   getAdminTextMessageType,
   setProxy,
-  checkLiveCookie
+  getCurrentTimestamp
 };

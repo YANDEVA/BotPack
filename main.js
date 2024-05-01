@@ -89,7 +89,7 @@ global.data = new Object({
 });
 
 global.utils = require("./utils");
-global.loading = require("./utils/log");
+global.loading = require("./utils/log.js");
 global.nodemodule = new Object();
 global.config = new Object();
 global.configModule = new Object();
@@ -169,12 +169,18 @@ try {
   logger.loader("Found the bot's appstate.")
 } catch (e) {
   logger.loader("Can't find the bot's appstate.", "error");
-  return;
+ // return;
 }
 
 function onBot() {
-  const loginData = {};
-  loginData.appState = appState;
+  let loginData;
+  if (appState === null) {
+    loginData = {
+      email: config.email,
+      password: config.password
+    }
+  }
+  loginData = { appState: appState };
   login(loginData, async (err, api) => {
     if (err) {
       if (err.error == 'Error retrieving userID. This can be caused by a lot of things, including getting blocked by Facebook for logging in from an unknown location. Try logging in with a browser to verify.') {
@@ -405,7 +411,7 @@ app.get('/', function(req, res) {
 });
 
 app.listen(2024, () => {
-  global.loading.log(`${cra(`[ CONNECT ]`)} Bot is running on port: 2024`);
+  global.loading.log(`${cra(`[ CONNECT ]`)} Bot is running on port: 2024`, "DATABASE");
 });
 
 /* *

@@ -1,6 +1,6 @@
 {
   "name": "botpack",
-  "version": "1.6.8",
+  "version": "1.7.0",
   "description": "A Simple BotPack for starting a Messenger chatbot.",
   "main": "main.js",
   "scripts": {
@@ -24,6 +24,7 @@
   "dependencies": {
     "@distube/ytdl-core": "^4.13.3",
     "aes-js": "^3.1.2",
+    "ansi": "^0.3.1",
     "axios": "^1.6.8",
     "bluebird": "^3.7.2",
     "canvas": "^2.11.2",
@@ -38,6 +39,9 @@
     "hercai": "^12.2.0",
     "https-proxy-agent": "^7.0.2",
     "jimp": "^0.22.12",
+    "lodash.pad": "^4.5.1",
+    "lodash.padend": "^4.6.1",
+    "lodash.padstart": "^4.6.1",
     "moment": "^2.30.1",
     "moment-timezone": "^0.5.45",
     "mqtt": "^4.3.7",
