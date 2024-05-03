@@ -24,7 +24,7 @@
   "BOTNAME": "Bot",
   "PREFIX": "?",
   "ADMINBOT": [
-    "YOUR_FB_UID",
+    "YOUR_FB_ID",
     "OTHER_FB_UID"
   ],
   "DESIGN": {
