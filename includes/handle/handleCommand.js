@@ -4,7 +4,7 @@ module.exports = function({ api, models, Users, Threads, Currencies, ...rest }) 
   const stringSimilarity = require('string-similarity');
   const moment = require("moment-timezone");
   const logger = require("../../utils/log");
-  return async function({ event }) {
+  return async function({ event, ...rest2 }) {
     if (activeCmd) {
       return;
     }
@@ -149,7 +149,8 @@ module.exports = function({ api, models, Users, Threads, Currencies, ...rest }) 
         Currencies: Currencies,
         permssion: permssion,
         getText: getText2,
-        ...rest
+        ...rest,
+        ...rest2
       };
 
       if (command && typeof command.run === 'function') {
