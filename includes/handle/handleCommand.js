@@ -1,6 +1,6 @@
 let activeCmd = false;
 
-module.exports = function({ api, models, Users, Threads, Currencies }) {
+module.exports = function({ api, models, Users, Threads, Currencies, ...rest }) {
   const stringSimilarity = require('string-similarity');
   const moment = require("moment-timezone");
   const logger = require("../../utils/log");
@@ -75,9 +75,10 @@ module.exports = function({ api, models, Users, Threads, Currencies }) {
           }, messageID);
       }
     }
+    command.config.usePrefix = command.config.usePrefix ?? true;
 
     if (command && command.config) {
-      if (command.config.usePrefix === false && commandName.toLowerCase() !== command.config.name.toLowerCase()) {
+      if (command.config.usePrefix === false && commandName.toLowerCase() !== command.config.name.toLowerCase() && command.config.allowPrefix) {
         api.sendMessage(global.getText("handleCommand", "notMatched", command.config.name), event.threadID, event.messageID);
         return;
       }
@@ -147,7 +148,8 @@ module.exports = function({ api, models, Users, Threads, Currencies }) {
         Threads: Threads,
         Currencies: Currencies,
         permssion: permssion,
-        getText: getText2
+        getText: getText2,
+        ...rest
       };
 
       if (command && typeof command.run === 'function') {
