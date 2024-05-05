@@ -10,8 +10,11 @@ module.exports.config = {
   cooldowns: 5,
 };
 
-module.exports.run = async function({ api, event, args }) {
-  const reply = event.messageReply.body;
+module.exports.run = async function({ api, event, args, box }) {
+  if (!box) {
+    return api.sendMessage("Unsupported Version.", event.threadID);
+  }
+  const reply = event.messageReply?.body;
   const edit = `${args.join(" ")}`;
   
   if (!reply || !args || args.length === 0) {
@@ -20,7 +23,7 @@ module.exports.run = async function({ api, event, args }) {
   }
 
   try {
-    await api.editMessage(`${edit}`, event.messageReply.messageID);
+    await box.edit(`${edit}`, event.messageReply.messageID);
     api.setMessageReaction('✅', event.messageID, () => {}, true);
   } catch (error) {
     console.error("Error editing message", error);
