@@ -11,9 +11,14 @@ Hello there! Thank you for using BotPack! Join us at [ChatBot Community Ltd.](ht
 
 <details>
   <summary>What's New?</summary>
-  - I've replaced the FCA, we're now using the same one with XaviaBot's FCA! 🚀<br>
-  - Finally! Automatic logout error has been fixed.<br>
-  - Bug fixes. 🪲 
+  - New Box Feature for sending response using the bot.
+  ```js
+  const { messageID } = await box.reply(`Hello!`);
+  setTimeout(() => {
+    box.edit(`5 seconds later..`, measageID);
+  }, 5000);
+  ```
+  - New Env Credentials feature to hide your credentials.
 </details>
 
 <details>
@@ -165,7 +170,8 @@ Go to your `config.json` and set it in the language property:
 > - 🟠NTKhang03
 > - 🟣KhangGia1810
 > - 🔵XaviaTeam
+> - 🟣lianecagara
 >   
-> _Updated on: May 1, 2024 (PST)<br>Creation Date: June 11, 2023_
+> _Updated on: May 5, 2024 (PST)<br>Creation Date: June 11, 2023_
 
 Copyright © 2024 Yan Maglinte (YANDEVA), Philippines.<br>
