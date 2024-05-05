@@ -25,6 +25,7 @@ module.exports.run = async function({ api, args, event, box, Users, Threads, get
     await eval(code);
   } catch (error) {
     await box.reply(`❌ Error: ${error.message}`);
+    await box.react("❌");
     console.log(error);
   }
 }
