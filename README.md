@@ -137,10 +137,19 @@ Go to your `config.json` and set it in the language property:
    ```json
    {
      "email": "<sample@gmail.com",
-     "password": "<fb_password>"
+     "password": "<fb_password>",
+     "useEnvForCredentials": false
    }
    ```
-2. Run your file and you have your bot!
+   Or use process.env keys if you have configured a secret.
+   ```json
+   {
+     "email": "exampleEmailKey",
+     "password": "examplePassKey",
+     "useEnvForCredentials" true
+   }
+   ```
+3. Run your file and you have your bot!
 
 > [!WARNING]
 > *It's up to you if you want to login using your facebook credentials. Make sure your file is private and cannot be easily stolen. Any issues about having your account getting hacked is not my problem.*
