@@ -14,6 +14,9 @@ module.exports.config = {
 };
 
 module.exports.run = async function({ api, args, event, box, Users, Threads, getText }) {
+  if (!box) {
+    return api.sendMessage('Unsupported Version!', event.threadID);
+  }
   let code = args.join(" ");
   if (event.messageReply) {
     code = event.messageReply.body;
