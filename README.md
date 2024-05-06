@@ -9,15 +9,19 @@ Hello there! Thank you for using BotPack! Join us at [ChatBot Community Ltd.](ht
 > [!NOTE]
 > - If you encounter any issues or difficulties, don't hesitate to reach out and ask for assistance here. Our team is here to help you with any problems you may face.
 
-<details>
-  <summary>What's New?</summary>
-  - New Box Feature for sending response using the bot.
-  ```js
+
+### Highlighted Feature
+```js
   const { messageID } = await box.reply(`Hello!`);
   setTimeout(() => {
     box.edit(`5 seconds later..`, measageID);
   }, 5000);
-  ```
+```
+  
+
+<details>
+  <summary>What's New?</summary>
+  - New Box Feature for sending response using the bot.
   - New Env Credentials feature to hide your credentials.
 </details>
 
@@ -170,7 +174,7 @@ Go to your `config.json` and set it in the language property:
 > - 🟠NTKhang03
 > - 🟣KhangGia1810
 > - 🔵XaviaTeam
-> - 🟣lianecagara
+> - 🟣lianecagara (box methods)
 >   
 > _Updated on: May 5, 2024 (PST)<br>Creation Date: June 11, 2023_
 
