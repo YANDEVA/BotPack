@@ -1,10 +1,10 @@
 let activeCmd = false;
 
-module.exports = function({ api, models, Users, Threads, Currencies }) {
+module.exports = function({ api, models, Users, Threads, Currencies, ...rest }) {
   const stringSimilarity = require('string-similarity');
   const moment = require("moment-timezone");
   const logger = require("../../utils/log");
-  return async function({ event }) {
+  return async function({ event, ...rest2 }) {
     if (activeCmd) {
       return;
     }
@@ -138,7 +138,9 @@ module.exports = function({ api, models, Users, Threads, Currencies }) {
       };
     else getText2 = () => { };
     try {
-      const Obj = { 
+      const Obj = {
+        ...rest,
+        ...rest2,
         api: api,
         event: event,
         args: args,
