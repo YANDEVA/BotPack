@@ -9,11 +9,20 @@ Hello there! Thank you for using BotPack! Join us at [ChatBot Community Ltd.](ht
 > [!NOTE]
 > - If you encounter any issues or difficulties, don't hesitate to reach out and ask for assistance here. Our team is here to help you with any problems you may face.
 
+
+### Highlighted Feature
+```js
+  const { messageID } = await box.reply(`Hello!`);
+  setTimeout(() => {
+    box.edit(`5 seconds later..`, measageID);
+  }, 5000);
+```
+  
+
 <details>
   <summary>What's New?</summary>
-  - I've replaced the FCA, we're now using the same one with XaviaBot's FCA! 🚀<br>
-  - Finally! Automatic logout error has been fixed.<br>
-  - Bug fixes. 🪲 
+  - New Box Feature for sending response using the bot.
+  - New Env Credentials feature to hide your credentials.
 </details>
 
 <details>
@@ -137,10 +146,19 @@ Go to your `config.json` and set it in the language property:
    ```json
    {
      "email": "<sample@gmail.com",
-     "password": "<fb_password>"
+     "password": "<fb_password>",
+     "useEnvForCredentials": false
    }
    ```
-2. Run your file and you have your bot!
+   Or use process.env keys if you have configured a secret.
+   ```json
+   {
+     "email": "exampleEmailKey",
+     "password": "examplePassKey",
+     "useEnvForCredentials" true
+   }
+   ```
+3. Run your file and you have your bot!
 
 > [!WARNING]
 > *It's up to you if you want to login using your facebook credentials. Make sure your file is private and cannot be easily stolen. Any issues about having your account getting hacked is not my problem.*
@@ -156,7 +174,8 @@ Go to your `config.json` and set it in the language property:
 > - 🟠NTKhang03
 > - 🟣KhangGia1810
 > - 🔵XaviaTeam
+> - 🟣lianecagara (box methods)
 >   
-> _Updated on: May 1, 2024 (PST)<br>Creation Date: June 11, 2023_
+> _Updated on: May 5, 2024 (PST)<br>Creation Date: June 11, 2023_
 
 Copyright © 2024 Yan Maglinte (YANDEVA), Philippines.<br>

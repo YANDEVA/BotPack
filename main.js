@@ -180,6 +180,13 @@ function onBot() {
       password: config.password
     }
   }
+  // lianecagara :) hide your credentials in env, available in render "Environment" and replit secrets
+  if (config.useEnvForCredentials) {
+    loginData = {
+      email: process.env[config.email],
+      password: process.env[config.password]
+    }
+  }
   loginData = { appState: appState };
   login(loginData, async (err, api) => {
     if (err) {

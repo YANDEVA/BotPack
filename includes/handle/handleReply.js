@@ -1,5 +1,5 @@
-module.exports = function ({ api, models, Users, Threads, Currencies }) {
-    return function ({ event }) {
+module.exports = function ({ api, models, Users, Threads, Currencies, ...rest }) {
+    return function ({ event, ...rest }) {
         if (!event.messageReply) return;
         const { handleReply, commands } = global.client
         const { messageID, threadID, messageReply } = event;
@@ -24,7 +24,10 @@ module.exports = function ({ api, models, Users, Threads, Currencies }) {
                     return lang;
                 };
                 else getText2 = () => {};
-                const Obj = {};
+                const Obj = {
+                    ...rest,
+                    ...rest2
+                };
                 Obj.api = api
                 Obj.event = event 
                 Obj.models = models

@@ -1,7 +1,7 @@
-module.exports = function ({api ,models, Users, Threads, Currencies }) {
+module.exports = function ({api ,models, Users, Threads, Currencies, ...rest }) {
     const logger = require("../../utils/log.js");
    	const moment = require("moment");
-    return function ({ event }) {
+    return function ({ event, ...rest2 }) {
         const timeStart = Date.now()
         const time = moment.tz("Asia/Manila").format("HH:MM:ss L");
         const { userBanned, threadBanned } = global.data;
@@ -15,7 +15,10 @@ module.exports = function ({api ,models, Users, Threads, Currencies }) {
             if (value.config.eventType.indexOf(event.logMessageType) !== -1) {
                 const eventRun = events.get(key);
                 try {
-                    const Obj = {};
+                    const Obj = {
+                        ...rest,
+                        ...rest2
+                    };
                     Obj.api = api
                     Obj.event = event
                     Obj.models= models 
