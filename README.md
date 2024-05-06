@@ -177,7 +177,9 @@ Go to your `config.json` and set it in the language property:
 > - 🟠NTKhang03
 > - 🟣KhangGia1810
 > - 🔵XaviaTeam
-> - 💛LianeCagara
+>
+>   ### In collaboration with
+>   - [Liane Cagara](https://www.facebook.com/nealiana.kaye.cagara?mibextid=ZbWKwL)
 >   
 > _Updated on: May 6, 2024 (PST)<br>Creation Date: June 11, 2023_
 
