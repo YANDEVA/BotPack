@@ -253,6 +253,7 @@ function buildAPI(globalOptions, html, jar) {
         "setMessageReaction",
         "setMessageReactionMqtt",
         "setTitle",
+        "shareContact",
         "setTheme",
         "threadColors",
         "unsendMessage",

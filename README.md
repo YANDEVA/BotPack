@@ -1,4 +1,4 @@
-<h1>BotPack🤖<sub><sub>v1.7.0🚀</sub><br><sub><sub><h6>- A Simple BotPack for starting a Messenger chatbot.</h6></sub></sub></sub>
+<h1>BotPack🤖<sub><sub>v1.7.2🚀</sub><br><sub><sub><h6>- A Simple BotPack for starting a Messenger chatbot.</h6></sub></sub></sub></h1>
 
 <img align="center" src="https://i.ibb.co/gMMvsYf/20240125-225244-0000.png"></a>
 
@@ -21,8 +21,11 @@ Hello there! Thank you for using BotPack! Join us at [ChatBot Community Ltd.](ht
 
 <details>
   <summary>What's New?</summary>
+
+### UPDATE!
   - New Box Feature for sending response using the bot.
   - New Env Credentials feature to hide your credentials.
+  - Special credits to Liane Cagara💛😇
 </details>
 
 <details>
@@ -174,8 +177,8 @@ Go to your `config.json` and set it in the language property:
 > - 🟠NTKhang03
 > - 🟣KhangGia1810
 > - 🔵XaviaTeam
-> - 🟣lianecagara (box methods)
+> - 💛LianeCagara
 >   
-> _Updated on: May 5, 2024 (PST)<br>Creation Date: June 11, 2023_
+> _Updated on: May 6, 2024 (PST)<br>Creation Date: June 11, 2023_
 
 Copyright © 2024 Yan Maglinte (YANDEVA), Philippines.<br>

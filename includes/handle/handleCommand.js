@@ -1,10 +1,10 @@
 let activeCmd = false;
 
-module.exports = function({ api, models, Users, Threads, Currencies, ...rest }) {
+module.exports = function({ api, models, Users, Threads, Currencies }) {
   const stringSimilarity = require('string-similarity');
   const moment = require("moment-timezone");
   const logger = require("../../utils/log");
-  return async function({ event, ...rest2 }) {
+  return async function({ event }) {
     if (activeCmd) {
       return;
     }
@@ -75,10 +75,9 @@ module.exports = function({ api, models, Users, Threads, Currencies, ...rest }) 
           }, messageID);
       }
     }
-    command.config.usePrefix = command.config.usePrefix ?? true;
 
     if (command && command.config) {
-      if (command.config.usePrefix === false && commandName.toLowerCase() !== command.config.name.toLowerCase() && command.config.allowPrefix) {
+      if (command.config.usePrefix === false && commandName.toLowerCase() !== command.config.name.toLowerCase()) {
         api.sendMessage(global.getText("handleCommand", "notMatched", command.config.name), event.threadID, event.messageID);
         return;
       }
@@ -148,9 +147,7 @@ module.exports = function({ api, models, Users, Threads, Currencies, ...rest }) 
         Threads: Threads,
         Currencies: Currencies,
         permssion: permssion,
-        getText: getText2,
-        ...rest,
-        ...rest2
+        getText: getText2
       };
 
       if (command && typeof command.run === 'function') {

@@ -1,6 +1,6 @@
 {
   "name": "botpack",
-  "version": "1.7.0",
+  "version": "1.7.2",
   "description": "A Simple BotPack for starting a Messenger chatbot.",
   "main": "main.js",
   "scripts": {
