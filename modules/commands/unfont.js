@@ -1,4 +1,5 @@
 const { origin } = require("fontstyles");
+const chalk = require("chalk");
 
 module.exports.config = {
   name: "unfont",
