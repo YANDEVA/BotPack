@@ -73,6 +73,15 @@ __=>__ Host your botfile on [render.com](https://dashboard.render.com) to make y
 [<img align="center" src="https://i.ibb.co/DMXyLm3/Picsart-24-02-14-12-25-06-014.jpg">](https://www.facebook.com/groups/7389392131128817/?ref=share&mibextid=NSMWBT)
 </h1>
 
+<details>
+  <summary>Tutorials</summary>
+
+  ### How to Host BotPack on render.com?
+  Watch the tutorial [here!](https://www.facebook.com/share/v/JXGAppBJ6A9TNzjb/?mibextid=oFDknk)
+  [<img align="center" src="https://i.ibb.co/wKkZ6Lc/render.jpg">](https://www.facebook.com/share/v/JXGAppBJ6A9TNzjb/?mibextid=oFDknk)
+  
+</details>
+
 ---
 
 - Welcome to the [BotPack](https://replit.com/@YanMaglinte/BotPack)🌀 repository. This project is an unofficial bot file from the [Mirai](https://github.com/m1raibot/miraiv2) Repository, initially developed and maintained by [Phạm Văn Diện](https://github.com/D-Jukie/Disme-Bot.git), better known as [D-Jukie](https://github.com/D-Jukie). The base file for this project is sourced from the [Disme-Bot](https://github.com/D-Jukie/Disme-Bot.git) GitHub project.
@@ -158,6 +167,6 @@ Go to your `config.json` and set it in the language property:
 >   ### In collaboration with
 >   - [Liane Cagara 🎀](https://www.facebook.com/nealiana.kaye.cagara?mibextid=ZbWKwL)
 >   
-> _Updated on: May 6, 2024 (PST)<br>Creation Date: June 11, 2023_
+> _Updated on: May 12, 2024 (PST)<br>Creation Date: June 11, 2023_
 
 Copyright © 2024 Yan Maglinte (YANDEVA), Philippines.<br>
