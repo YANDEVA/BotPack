@@ -126,7 +126,7 @@ Go to your `config.json` and set it in the language property:
 
 - If you encounter any issues or have questions related to this REPL, please don't hesitate to reach out to me on Facebook. I'm here to assist you!
 
-<img align="center" src="https://i.ibb.co/xD4P1fk/yanmaglinte.jpg"/>
+<img align="center" src="https://i.ibb.co/pnm38zY/yanmaglinte.png"/>
 
 ### **How to Start Using BotPack?**
 
