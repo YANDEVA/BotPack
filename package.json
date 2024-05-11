@@ -1,6 +1,6 @@
 {
   "name": "botpack",
-  "version": "1.7.2",
+  "version": "1.7.5",
   "description": "A Simple BotPack for starting a Messenger chatbot.",
   "main": "main.js",
   "scripts": {
@@ -50,7 +50,7 @@
     "pastebin-api": "^7.0.0",
     "path": "^0.12.7",
     "request": "^2.88.2",
-    "semver": "^7.6.0",
+    "semver": "^7.6.2",
     "simple-youtube-api": "^5.2.1",
     "string-similarity": "^4.0.4",
     "websocket-stream": "^5.5.2",

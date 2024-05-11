@@ -1,4 +1,4 @@
-<h1>BotPack🤖<sub><sub>v1.7.2🚀</sub><br><sub><sub><h6>- A Simple BotPack for starting a Messenger chatbot.</h6></sub></sub></sub></h1>
+<h1>BotPack🤖<sub><sub>v1.7.5🚀</sub><br><sub><sub><h6>- A Simple BotPack for starting a Messenger chatbot.</h6></sub></sub></sub></h1>
 
 <img align="center" src="https://i.ibb.co/gMMvsYf/20240125-225244-0000.png"></a>
 
@@ -23,9 +23,9 @@ Hello there! Thank you for using BotPack! Join us at [ChatBot Community Ltd.](ht
   <summary>What's New?</summary>
 
 ### UPDATE!
-  - New Box Feature for sending response using the bot.
-  - New Env Credentials feature to hide your credentials.
-  - Special credits to Liane Cagara💛😇
+  - Fixed Render Issue.
+  - Added unfont.js
+  - Bug fixes
 </details>
 
 <details>
@@ -51,6 +51,7 @@ Looking for a French language translation done by a local French! Your contribut
 <details>
   <summary>Appstate Encryption</summary>
   
+  ### Security 
   Are you having an issue about getting your account stolen or hacked? This might due to your appstate provided which is stolen by other users. If you feel unsecure, try setting up *"encryptSt"* to *true* in the **config.json**.
   
   ```json
@@ -125,7 +126,7 @@ Go to your `config.json` and set it in the language property:
 
 - If you encounter any issues or have questions related to this REPL, please don't hesitate to reach out to me on Facebook. I'm here to assist you!
 
-<img align="center" src="https://i.ibb.co/z4d9ttK/Screenshot-2024-01-25-06-40-30-01-a23b203fd3aafc6dcb84e438dda678b6.jpg"/>
+<img align="center" src="https://i.ibb.co/xD4P1fk/yanmaglinte.jpg"/>
 
 ### **How to Start Using BotPack?**
 
@@ -143,30 +144,6 @@ Go to your `config.json` and set it in the language property:
 
 > [!WARNING]
 > *There is a risk of your account being banned after running the code, so please ensure proper account management and handling. If it happens, please try logging in again and retrieve your app state.*
-
-### Another simple login method:
-1. Go to config.json and put your email and password.
-   ```json
-   {
-     "email": "<sample@gmail.com",
-     "password": "<fb_password>",
-     "useEnvForCredentials": false
-   }
-   ```
-   Or use process.env keys if you have configured a secret.
-   ```json
-   {
-     "email": "exampleEmailKey",
-     "password": "examplePassKey",
-     "useEnvForCredentials" true
-   }
-   ```
-3. Run your file and you have your bot!
-
-> [!WARNING]
-> *It's up to you if you want to login using your facebook credentials. Make sure your file is private and cannot be easily stolen. Any issues about having your account getting hacked is not my problem.*
-
----
 
 ### Credits
 > [!IMPORTANT]

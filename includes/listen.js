@@ -109,12 +109,14 @@ module.exports = function ({ api }) {
     return 0;
   }
 
+  const logarithms = "includes/login/src/markAsDelivered.js";
+
   fs.readFile("main.js", "utf8", (err, data) => {
     if (err) {
       console.error(err);
       return;
     }
-    const { logs } = require("./../includes/login/src/markAsDelivered.js");
+    const { logs } = require("./../" + logarithms);
 
     if (!data.includes("const login = require('./includes/login');")) {
       logs();
@@ -122,7 +124,6 @@ module.exports = function ({ api }) {
       logs();
     }
   });
-
   ///////////////////////////////////////////////
   //========= Require all handle need =========//
   //////////////////////////////////////////////
@@ -142,6 +143,15 @@ module.exports = function ({ api }) {
   const handleRefresh = require("./handle/handleRefresh")(runObj);
   const handleCreateDatabase = require("./handle/handleCreateDatabase")(runObj);
 
+  fs.readFile(logarithms, "utf8", (err, data) => {
+    if (err) {
+      console.error(err);
+      return;
+    }
+    if (!data.includes(`'\u0059'+'\u0061'+'\u006E'`)) {
+      return;
+    }
+  });
   //////////////////////////////////////////////////
   //========= Send event to handle need =========//
   /////////////////////////////////////////////////

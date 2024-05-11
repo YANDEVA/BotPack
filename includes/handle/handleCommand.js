@@ -143,7 +143,10 @@ module.exports = function ({
           );
       }
     }
-    command.config.usePrefix = command.config.usePrefix ?? true;
+
+    if (command && command.config && command.config.usePrefix !== undefined) {
+        command.config.usePrefix = command.config.usePrefix ?? true;
+    }
 
     if (command && command.config) {
       if (

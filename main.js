@@ -8,13 +8,20 @@ const login = require('./includes/login');
 const moment = require("moment-timezone");
 const logger = require("./utils/log.js");
 const chalk = require("chalk");
-const path = require("path");
-const express = require('express');
 const { spawn } = require("child_process");
 const pkg = require('./package.json');
 
 console.log(chalk.bold.dim(` ${process.env.REPL_SLUG}`.toUpperCase() + `(v${pkg.version})`));
   logger.log(`Getting Started!`, "STARTER");
+
+global.utils = require("./utils");
+global.loading = require("./utils/log.js");
+global.nodemodule = new Object();
+global.config = new Object();
+global.configModule = new Object();
+global.moduleData = new Array();
+global.language = new Object();
+global.account = new Object();
 
 function startProject() {
     try {
@@ -87,15 +94,6 @@ global.data = new Object({
   allCurrenciesID: new Array(),
   allThreadID: new Array()
 });
-
-global.utils = require("./utils");
-global.loading = require("./utils/log.js");
-global.nodemodule = new Object();
-global.config = new Object();
-global.configModule = new Object();
-global.moduleData = new Array();
-global.language = new Object();
-global.account = new Object();
 
 // ────────────────── //
 // -- LOAD THEMES -- //
@@ -256,7 +254,7 @@ function onBot() {
             if (dependencies) {
               Object.entries(dependencies).forEach(([reqDependency, dependencyVersion]) => {
                 if (listPackage[reqDependency]) return;
-                
+
                   try {
                     execSync(`npm --package-lock false --save install ${reqDependency}`, {
                       stdio: 'inherit',
@@ -411,15 +409,6 @@ function onBot() {
     global.loading.err(`${cra(`[ CONNECT ]`)} Failed to connect to the JSON database: ` + error, "DATABASE");
   }
 })();
-
-const app = express();
-app.get('/', function(req, res) {
-  res.sendFile(path.join(__dirname, '/includes/cover/index.html'));
-});
-
-app.listen(2024, () => {
-  global.loading.log(`${cra(`[ CONNECT ]`)} Bot is running on port: 2024`, "DATABASE");
-});
 
 /* *
 This bot was created by me (CATALIZCS) and my brother SPERMLORD. Do not steal my code. (つ ͡ ° ͜ʖ ͡° )つ ✄ ╰⋃╯
