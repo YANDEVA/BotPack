@@ -2,9 +2,9 @@ const path = require('path');
 const fs = require('fs');
 const cacheDir = path.join(__dirname, 'cache');
 
-const rankpng = path.join(__dirname, 'modules', 'commands', 'cache', 'rankup');
+const rankpng = path.join(__dirname, 'cache', 'rankup');
 
-const avt = path.join(__dirname, 'modules', 'commands', 'Avtmot.png');
+const avt = path.join(__dirname, 'cache', 'Avtmot.png');
 
 if (!fs.existsSync(avt)) {
     fs.mkdirSync(avt, { recursive: true });

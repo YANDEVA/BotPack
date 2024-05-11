@@ -76,9 +76,9 @@ __=>__ Host your botfile on [render.com](https://dashboard.render.com) to make y
 <details>
   <summary>Tutorials</summary>
 
-  ### How to Host BotPack on render.com?
-  Watch the tutorial [here!](https://www.facebook.com/share/v/JXGAppBJ6A9TNzjb/?mibextid=oFDknk)
-  [<img align="center" src="https://i.ibb.co/wKkZ6Lc/render.jpg">](https://www.facebook.com/share/v/JXGAppBJ6A9TNzjb/?mibextid=oFDknk)
+ > ### How to Host BotPack on render.com?
+ > Watch the tutorial [here!](https://www.facebook.com/share/v/JXGAppBJ6A9TNzjb/?mibextid=oFDknk)
+ > [<img align="center" src="https://i.ibb.co/wKkZ6Lc/render.jpg">](https://www.facebook.com/share/v/JXGAppBJ6A9TNzjb/?mibextid=oFDknk)
   
 </details>
 
