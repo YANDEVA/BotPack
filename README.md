@@ -1,8 +1,8 @@
-<h1>BotPack🤖<sub><sub>v1.7.6🚀</sub><br><sub><sub><h6>- A Simple BotPack for starting a Messenger chatbot.</h6></sub></sub></sub></h1>
+# BotPack🤖<sub><sub>v1.7.6🚀</sub><br><sub><sub><h6> A Simple BotPack for starting a Messenger chatbot.</h6></sub></sub></sub>
 
 <img align="center" src="https://i.ibb.co/gMMvsYf/20240125-225244-0000.png"></a>
 
-<h3>About</h3>
+### About
 
 Hello there! Thank you for using BotPack! Join us at [ChatBot Community Ltd.](https://www.facebook.com/groups/178711334798450/?ref=share)🍪 if you wish to share and discover Mirai/BotPack commands created by other command creators!
 
@@ -78,7 +78,8 @@ __=>__ Host your botfile on [render.com](https://dashboard.render.com) to make y
 <details>
   <summary>Tutorials</summary>
 
- > ### How to Host BotPack on render.com?
+ > __How to Host BotPack on render.com?__
+ >
  > Watch the tutorial [here!](https://www.facebook.com/share/v/JXGAppBJ6A9TNzjb/?mibextid=oFDknk)
  > [<img align="center" src="https://i.ibb.co/wKkZ6Lc/render.jpg">](https://www.facebook.com/share/v/JXGAppBJ6A9TNzjb/?mibextid=oFDknk)
   
