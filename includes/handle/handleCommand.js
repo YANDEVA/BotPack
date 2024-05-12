@@ -1,30 +1,25 @@
 let activeCmd = false;
 
-module.exports = function ({
-  api,
-  models,
-  Users,
-  Threads,
-  Currencies,
-  ...rest
-}) {
+module.exports = function ({ api, models, Users, Threads, Currencies, ...rest }) {
   const stringSimilarity = require("string-similarity");
   const moment = require("moment-timezone");
   const logger = require("../../utils/log");
+
   return async function ({ event, ...rest2 }) {
     if (activeCmd) {
       return;
     }
+
     const dateNow = Date.now();
     const time = moment.tz("Asia/Manila").format("HH:MM:ss DD/MM/YYYY");
-    const { allowInbox, PREFIX, ADMINBOT, DeveloperMode, adminOnly } =
-      global.config;
-    const { userBanned, threadBanned, threadInfo, threadData, commandBanned } =
-      global.data;
+    const { allowInbox, PREFIX, ADMINBOT, DeveloperMode, adminOnly } = global.config;
+    const { userBanned, threadBanned, threadInfo, threadData, commandBanned } = global.data;
     const { commands, cooldowns } = global.client;
+
     var { body, senderID, threadID, messageID } = event;
     var senderID = String(senderID),
       threadID = String(threadID);
+
     const threadSetting = threadData.get(threadID) || {};
     const args = (body || "").trim().split(/ +/);
     const commandName = args.shift()?.toLowerCase();
@@ -40,6 +35,7 @@ module.exports = function ({
     ) {
       return api.sendMessage(replyAD, threadID, messageID);
     }
+
     if (
       typeof body === "string" &&
       body.startsWith(PREFIX) &&
@@ -49,6 +45,7 @@ module.exports = function ({
     ) {
       return api.sendMessage(replyAD, threadID, messageID);
     }
+
     if (
       userBanned.has(senderID) ||
       threadBanned.has(threadID) ||
@@ -109,6 +106,7 @@ module.exports = function ({
         }
       }
     }
+
     if (commandBanned.get(threadID) || commandBanned.get(senderID)) {
       if (!ADMINBOT.includes(senderID)) {
         const banThreads = commandBanned.get(threadID) || [],
@@ -165,6 +163,7 @@ module.exports = function ({
         return;
       }
     }
+
     if (command && command.config) {
       if (typeof command.config.usePrefix === "undefined") {
         api.sendMessage(
@@ -193,6 +192,7 @@ module.exports = function ({
         },
         messageID,
       );
+
     var threadInfo2;
     if (event.isGroup == !![])
       try {
@@ -204,6 +204,7 @@ module.exports = function ({
           global.getText("handleCommand", "cantGetInfoThread", "error"),
         );
       }
+
     var permssion = 0;
     var threadInfoo =
       threadInfo.get(threadID) || (await Threads.getInfo(threadID));
@@ -261,6 +262,7 @@ module.exports = function ({
             : "",
         !![],
       );
+
     var getText2;
     if (
       command &&
@@ -277,6 +279,7 @@ module.exports = function ({
         return lang;
       };
     else getText2 = () => {};
+
     try {
       const Obj = {
         ...rest,
