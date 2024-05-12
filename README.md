@@ -1,4 +1,5 @@
-# BotPack🤖<sub><sub>v1.7.6🚀</sub><br><sub><sub><h6> A Simple BotPack for starting a Messenger chatbot.</h6></sub></sub></sub>
+# BotPack🤖<sub><sub>v1.7.6🚀</sub></sub>
+A Simple BotPack for starting a Messenger chatbot.
 
 <img align="center" src="https://i.ibb.co/gMMvsYf/20240125-225244-0000.png"></a>
 
@@ -10,19 +11,18 @@ Hello there! Thank you for using BotPack! Join us at [ChatBot Community Ltd.](ht
 > - If you encounter any issues or difficulties, don't hesitate to reach out and ask for assistance here. Our team is here to help you with any problems you may face.
 
 
-### Highlighted Feature
+### Highlight
 ```js
   const { messageID } = await box.reply(`Hello!`);
   setTimeout(() => {
     box.edit(`5 seconds later..`, messageID);
   }, 5000);
 ```
-  
 
 <details>
   <summary>What's New?</summary>
-
-### UPDATE!
+  
+  __UPDATE!__
   - Fixed Render Issue.
   - Added unfont.js
   - Added sharecontact.js
@@ -79,8 +79,7 @@ __=>__ Host your botfile on [render.com](https://dashboard.render.com) to make y
   <summary>Tutorials</summary>
 
  > __How to Host BotPack on render.com?__
- >
- > Watch the tutorial [here!](https://www.facebook.com/share/v/JXGAppBJ6A9TNzjb/?mibextid=oFDknk)
+ ><br> Watch the tutorial [here!](https://www.facebook.com/share/v/JXGAppBJ6A9TNzjb/?mibextid=oFDknk)
  > [<img align="center" src="https://i.ibb.co/wKkZ6Lc/render.jpg">](https://www.facebook.com/share/v/JXGAppBJ6A9TNzjb/?mibextid=oFDknk)
   
 </details>
@@ -158,8 +157,8 @@ Go to your `config.json` and set it in the language property:
 > *There is a risk of your account being banned after running the code, so please ensure proper account management and handling. If it happens, please try logging in again and retrieve your app state.*
 
 ### Credits
+Special thanks to the following fellows for their amazing projects making this modified project possible:
 > [!IMPORTANT]
-> - Special thanks to the following fellows for their amazing projects making this modified project possible:
 > - 🔴SpermLord
 > - 🟡CatalizCS
 > - 🟢D-Jukie
