@@ -1,4 +1,4 @@
-<h1>BotPack🤖<sub><sub>v1.7.5🚀</sub><br><sub><sub><h6>- A Simple BotPack for starting a Messenger chatbot.</h6></sub></sub></sub></h1>
+<h1>BotPack🤖<sub><sub>v1.7.6🚀</sub><br><sub><sub><h6>- A Simple BotPack for starting a Messenger chatbot.</h6></sub></sub></sub></h1>
 
 <img align="center" src="https://i.ibb.co/gMMvsYf/20240125-225244-0000.png"></a>
 
@@ -14,7 +14,7 @@ Hello there! Thank you for using BotPack! Join us at [ChatBot Community Ltd.](ht
 ```js
   const { messageID } = await box.reply(`Hello!`);
   setTimeout(() => {
-    box.edit(`5 seconds later..`, measageID);
+    box.edit(`5 seconds later..`, messageID);
   }, 5000);
 ```
   
@@ -25,7 +25,9 @@ Hello there! Thank you for using BotPack! Join us at [ChatBot Community Ltd.](ht
 ### UPDATE!
   - Fixed Render Issue.
   - Added unfont.js
-  - Bug fixes
+  - Added sharecontact.js
+  - Bug fixed!
+  - HandleReply.js issue fixed!
 </details>
 
 <details>
