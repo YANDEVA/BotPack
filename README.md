@@ -3,7 +3,7 @@ A Simple BotPack for starting a Messenger chatbot.
 
 <img align="center" src="https://i.ibb.co/gMMvsYf/20240125-225244-0000.png"></a>
 
-### About
+### ABOUT
 
 Hello there! Thank you for using BotPack! Join us at [ChatBot Community Ltd.](https://www.facebook.com/groups/178711334798450/?ref=share)🍪 if you wish to share and discover Mirai/BotPack commands created by other command creators!
 
@@ -11,14 +11,15 @@ Hello there! Thank you for using BotPack! Join us at [ChatBot Community Ltd.](ht
 > - If you encounter any issues or difficulties, don't hesitate to reach out and ask for assistance here. Our team is here to help you with any problems you may face.
 
 
-### Highlight
+### HIGHLIGHT
 ```js
-  const { messageID } = await box.reply(`Hello!`);
-  setTimeout(() => {
-    box.edit(`5 seconds later..`, messageID);
-  }, 5000);
-```
+const { messageID } = await box.reply(`Hello!`);
 
+setTimeout(() => {
+  box.edit(`5 seconds later..`, messageID);
+}, 5000);
+```
+---
 <details>
   <summary>What's New?</summary>
   
@@ -67,7 +68,7 @@ Looking for a French language translation done by a local French! Your contribut
 </details>
 
 ---
-### Render Hosting
+### RENDER HOSTING
 __=>__ Host your botfile on [render.com](https://dashboard.render.com) to make your file always active.
 - If you have some issues related to render hosting! Try our newly created facebook group with render hosting discussions!
 - Im currently looking for companions and conversation starters who have some knowledge about hosting in render to become moderators.
@@ -139,7 +140,7 @@ Go to your `config.json` and set it in the language property:
 
 <img align="center" src="https://i.ibb.co/pnm38zY/yanmaglinte.png"/>
 
-### **How to Start Using BotPack?**
+### **HOW TO START USING BOTPACK?**
 
 1. Begin by navigating to [Replit](https://replit.com).
 2. Log in to your existing account or sign up for a new one.
@@ -156,19 +157,18 @@ Go to your `config.json` and set it in the language property:
 > [!WARNING]
 > *There is a risk of your account being banned after running the code, so please ensure proper account management and handling. If it happens, please try logging in again and retrieve your app state.*
 
-### Credits
+### CREDITS
 Special thanks to the following fellows for their amazing projects making this modified project possible:
-> [!IMPORTANT]
-> - 🔴SpermLord
-> - 🟡CatalizCS
-> - 🟢D-Jukie
-> - 🟠NTKhang03
-> - 🟣KhangGia1810
-> - 🔵XaviaTeam
->
->   ### In collaboration with
->   - [Liane Cagara 🎀](https://www.facebook.com/nealiana.kaye.cagara?mibextid=ZbWKwL)
->   
-> _Updated on: May 12, 2024 (PST)<br>Creation Date: June 11, 2023_
+- SpermLord
+- CatalizCS
+- D-Jukie
+- NTKhang03
+- KhangGia1810
+- XaviaTeam
+ <br><br> __In collaboration with__
+ - [Liane Cagara 🎀](https://www.facebook.com/nealiana.kaye.cagara?mibextid=ZbWKwL)
 
+_Updated on: May 12, 2024 (PST)<br>Creation Date: June 11, 2023_
+
+---
 Copyright © 2024 Yan Maglinte (YANDEVA), Philippines.<br>
