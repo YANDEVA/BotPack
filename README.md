@@ -1,16 +1,21 @@
 # BotPack🤖<sub><sub>v1.7.6🚀</sub></sub>
 <p align="center">
 	<a href="https://nodejs.org/dist/v16.20.0">
-		<img src="https://img.shields.io/badge/Nodejs%20Support-16.x-brightgreen.svg?style=flat-square" alt="Nodejs Support v16.x">
+		<img src="https://img.shields.io/badge/Nodejs%20Support-18.x-brightgreen.svg?style=flat-square" alt="Nodejs Support v18.x">
 	</a>
-  <img alt="size" src="https://img.shields.io/github/repo-size/YANDEVA/BotPack.svg?style=flat-square&label=size">
-  <img alt="code-version" src="https://img.shields.io/badge/dynamic/json?color=brightgreen&label=code%20version&prefix=v&query=%24.version&url=https://github.com/YANDEVA/BotPack/raw/main/package.json&style=flat-square">
-  <img alt="visitors" src="https://visitor-badge.laobi.icu/badge?style=flat-square&page_id=YANDEVA.BotPack">
-  <img alt="size" src="https://img.shields.io/badge/license-MIT-green?style=flat-square&color=brightgreen">
+  <img alt="Size" src="https://img.shields.io/github/repo-size/YANDEVA/BotPack.svg?style=flat-square&label=size">
+  <img alt="Version" src="https://img.shields.io/badge/dynamic/json?color=brightgreen&label=code%20version&prefix=v&query=%24.version&url=https://github.com/YANDEVA/BotPack/raw/main/package.json&style=flat-square">
+  <img alt="Visitors" src="https://visitor-badge.laobi.icu/badge?style=flat-square&page_id=YANDEVA.BotPack">
 </p>
 A Simple BotPack for starting a Messenger chatbot.
 
 <img align="center" src="https://i.ibb.co/gMMvsYf/20240125-225244-0000.png"></a>
+
+- [ABOUT](#-about)
+- [HIGHLIGHT](#-highlight)
+- [HOSTING](#-render-hosting)
+- [CREDITS](#-credits)
+- [START](#-how-to-start-using-botpack?)
 
 ### ABOUT
 
@@ -168,14 +173,15 @@ Go to your `config.json` and set it in the language property:
 
 ### CREDITS
 Special thanks to the following fellows for their amazing projects making this modified project possible:
-- SpermLord
-- CatalizCS
-- D-Jukie
-- NTKhang03
-- KhangGia1810
-- XaviaTeam
- <br><br> __In collaboration with__
- - [Liane Cagara 🎀](https://www.facebook.com/nealiana.kaye.cagara?mibextid=ZbWKwL)
+> - SpermLord
+> - CatalizCS
+> - D-Jukie
+> - NTKhang03
+> - KhangGia1810
+> - XaviaTeam
+>
+> - __In collaboration with__
+>  - [Liane Cagara 🎀](https://www.facebook.com/nealiana.kaye.cagara?mibextid=ZbWKwL)
 
 _Updated on: May 12, 2024 (PST)<br>Creation Date: June 11, 2023_
 
