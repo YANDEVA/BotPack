@@ -11,12 +11,6 @@ A Simple BotPack for starting a Messenger chatbot.
 
 <img align="center" src="https://i.ibb.co/gMMvsYf/20240125-225244-0000.png"></a>
 
-- [ABOUT](#-about)
-- [HIGHLIGHT](#-highlight)
-- [HOSTING](#-render-hosting)
-- [CREDITS](#-credits)
-- [START](#-how-to-start-using-botpack?)
-
 ### ABOUT
 
 Hello there! Thank you for using BotPack! Join us at [ChatBot Community Ltd.](https://www.facebook.com/groups/178711334798450/?ref=share)🍪 if you wish to share and discover Mirai/BotPack commands created by other command creators!
@@ -173,15 +167,14 @@ Go to your `config.json` and set it in the language property:
 
 ### CREDITS
 Special thanks to the following fellows for their amazing projects making this modified project possible:
-> - SpermLord
-> - CatalizCS
-> - D-Jukie
-> - NTKhang03
-> - KhangGia1810
-> - XaviaTeam
->
-> - __In collaboration with__
->  - [Liane Cagara 🎀](https://www.facebook.com/nealiana.kaye.cagara?mibextid=ZbWKwL)
+- SpermLord
+- CatalizCS
+- D-Jukie
+- NTKhang03
+- KhangGia1810
+- XaviaTeam
+<br><br> __In collaboration with__
+  - [Liane Cagara 🎀](https://www.facebook.com/nealiana.kaye.cagara?mibextid=ZbWKwL)
 
 _Updated on: May 12, 2024 (PST)<br>Creation Date: June 11, 2023_
 
