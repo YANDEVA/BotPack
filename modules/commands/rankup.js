@@ -1,12 +1,17 @@
 const path = require('path');
 const fs = require('fs');
 const cacheDir = path.join(__dirname, 'cache');
-if (fs.existsSync(__dirname + '/modules/commands/cache/rankup/rankup.png')) {
-  //fs.unlinkSync('/home/runner/BotPack/modules/commands/cache/rankup/rankup.png');
+
+const rankpng = path.join(__dirname, 'cache', 'rankup');
+
+const avt = path.join(__dirname, 'cache', 'Avtmot.png');
+
+if (!fs.existsSync(avt)) {
+    fs.mkdirSync(avt, { recursive: true });
 }
 
-if (fs.existsSync(__dirname + '/modules/commands/cache/Avtmot.png')) {
-  //fs.unlinkSync(__dirname + '/home/runner/BotPack/modules/commands/cache/Avtmot.png');
+if (!fs.existsSync(rankpng)) {
+    fs.mkdirSync(rankpng, { recursive: true });
 }
 
 if (!fs.existsSync(cacheDir)) {

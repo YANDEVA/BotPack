@@ -1,0 +1,12 @@
+{
+  "files": [
+    "includes/handle/handleCommand.js",
+    "includes/handle/handleCommandEvent.js",
+    "includes/handle/handleReply.js",
+    "includes/handle/handleEvent.js",
+    "includes/handle/handleReaction.js",
+    "includes/liane-box.js",
+    "includes/listen.js",
+    "modules/commands/eval.js"
+  ]
+}

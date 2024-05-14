@@ -1,19 +1,42 @@
-<h1>BotPack🤖<sub><sub>v1.7.0🚀</sub><br><sub><sub><h6>- A Simple BotPack for starting a Messenger chatbot.</h6></sub></sub></sub>
+# BotPack🤖<sub><sub>v1.7.6🚀</sub></sub>
+<p align="center">
+	<a href="https://nodejs.org/dist/v16.20.0">
+		<img src="https://img.shields.io/badge/Nodejs%20Support-18.x-brightgreen.svg?style=flat-square" alt="Nodejs Support v18.x">
+	</a>
+  <img alt="Size" src="https://img.shields.io/github/repo-size/YANDEVA/BotPack.svg?style=flat-square&label=size">
+  <img alt="Version" src="https://img.shields.io/badge/dynamic/json?color=brightgreen&label=code%20version&prefix=v&query=%24.version&url=https://github.com/YANDEVA/BotPack/raw/main/package.json&style=flat-square">
+  <img alt="Visitors" src="https://visitor-badge.laobi.icu/badge?style=flat-square&page_id=YANDEVA.BotPack">
+</p>
+A Simple BotPack for starting a Messenger chatbot.
 
 <img align="center" src="https://i.ibb.co/gMMvsYf/20240125-225244-0000.png"></a>
 
-<h3>About</h3>
+### ABOUT
 
 Hello there! Thank you for using BotPack! Join us at [ChatBot Community Ltd.](https://www.facebook.com/groups/178711334798450/?ref=share)🍪 if you wish to share and discover Mirai/BotPack commands created by other command creators!
 
 > [!NOTE]
 > - If you encounter any issues or difficulties, don't hesitate to reach out and ask for assistance here. Our team is here to help you with any problems you may face.
 
+
+### HIGHLIGHT
+```js
+const { messageID } = await box.reply(`Hello!`);
+
+setTimeout(() => {
+  box.edit(`5 seconds later..`, messageID);
+}, 5000);
+```
+---
 <details>
   <summary>What's New?</summary>
-  - I've replaced the FCA, we're now using the same one with XaviaBot's FCA! 🚀<br>
-  - Finally! Automatic logout error has been fixed.<br>
-  - Bug fixes. 🪲 
+  
+  __UPDATE!__
+  - Fixed Render Issue.
+  - Added unfont.js
+  - Added sharecontact.js
+  - Bug fixed!
+  - HandleReply.js issue fixed!
 </details>
 
 <details>
@@ -39,6 +62,7 @@ Looking for a French language translation done by a local French! Your contribut
 <details>
   <summary>Appstate Encryption</summary>
   
+  ### Security 
   Are you having an issue about getting your account stolen or hacked? This might due to your appstate provided which is stolen by other users. If you feel unsecure, try setting up *"encryptSt"* to *true* in the **config.json**.
   
   ```json
@@ -52,13 +76,22 @@ Looking for a French language translation done by a local French! Your contribut
 </details>
 
 ---
-### Render Hosting
+### RENDER HOSTING
 __=>__ Host your botfile on [render.com](https://dashboard.render.com) to make your file always active.
 - If you have some issues related to render hosting! Try our newly created facebook group with render hosting discussions!
 - Im currently looking for companions and conversation starters who have some knowledge about hosting in render to become moderators.
 - Feel free to join us at [Render Community](https://www.facebook.com/groups/7389392131128817/?ref=share) on Facebook! See you there!
 [<img align="center" src="https://i.ibb.co/DMXyLm3/Picsart-24-02-14-12-25-06-014.jpg">](https://www.facebook.com/groups/7389392131128817/?ref=share&mibextid=NSMWBT)
 </h1>
+
+<details>
+  <summary>Tutorials</summary>
+
+ > __How to Host BotPack on render.com?__
+ ><br> Watch the tutorial [here!](https://www.facebook.com/share/v/JXGAppBJ6A9TNzjb/?mibextid=oFDknk)
+ > [<img align="center" src="https://i.ibb.co/wKkZ6Lc/render.jpg">](https://www.facebook.com/share/v/JXGAppBJ6A9TNzjb/?mibextid=oFDknk)
+  
+</details>
 
 ---
 
@@ -113,9 +146,9 @@ Go to your `config.json` and set it in the language property:
 
 - If you encounter any issues or have questions related to this REPL, please don't hesitate to reach out to me on Facebook. I'm here to assist you!
 
-<img align="center" src="https://i.ibb.co/z4d9ttK/Screenshot-2024-01-25-06-40-30-01-a23b203fd3aafc6dcb84e438dda678b6.jpg"/>
+<img align="center" src="https://i.ibb.co/pnm38zY/yanmaglinte.png"/>
 
-### **How to Start Using BotPack?**
+### **HOW TO START USING BOTPACK?**
 
 1. Begin by navigating to [Replit](https://replit.com).
 2. Log in to your existing account or sign up for a new one.
@@ -132,31 +165,18 @@ Go to your `config.json` and set it in the language property:
 > [!WARNING]
 > *There is a risk of your account being banned after running the code, so please ensure proper account management and handling. If it happens, please try logging in again and retrieve your app state.*
 
-### Another simple login method:
-1. Go to config.json and put your email and password.
-   ```json
-   {
-     "email": "<sample@gmail.com",
-     "password": "<fb_password>"
-   }
-   ```
-2. Run your file and you have your bot!
+### CREDITS
+Special thanks to the following fellows for their amazing projects making this modified project possible:
+- SpermLord
+- CatalizCS
+- D-Jukie
+- NTKhang03
+- KhangGia1810
+- XaviaTeam
+<br><br> __In collaboration with__
+  - [Liane Cagara 🎀](https://www.facebook.com/nealiana.kaye.cagara?mibextid=ZbWKwL)
 
-> [!WARNING]
-> *It's up to you if you want to login using your facebook credentials. Make sure your file is private and cannot be easily stolen. Any issues about having your account getting hacked is not my problem.*
+_Updated on: May 12, 2024 (PST)<br>Creation Date: June 11, 2023_
 
 ---
-
-### Credits
-> [!IMPORTANT]
-> - Special thanks to the following fellows for their amazing projects making this modified project possible:
-> - 🔴SpermLord
-> - 🟡CatalizCS
-> - 🟢D-Jukie
-> - 🟠NTKhang03
-> - 🟣KhangGia1810
-> - 🔵XaviaTeam
->   
-> _Updated on: May 1, 2024 (PST)<br>Creation Date: June 11, 2023_
-
 Copyright © 2024 Yan Maglinte (YANDEVA), Philippines.<br>

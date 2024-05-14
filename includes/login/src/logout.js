@@ -1,13 +1,13 @@
 "use strict";
 
-var utils = require("../utils");
-var log = require("npmlog");
+const utils = require("../utils");
+const log = require("npmlog");
 
-module.exports = function(defaultFuncs, api, ctx) {
+module.exports = function (defaultFuncs, api, ctx) {
   return function logout(callback) {
-    var resolveFunc = function(){};
-    var rejectFunc = function(){};
-    var returnPromise = new Promise(function (resolve, reject) {
+    let resolveFunc = function () { };
+    let rejectFunc = function () { };
+    const returnPromise = new Promise(function (resolve, reject) {
       resolveFunc = resolve;
       rejectFunc = reject;
     });
@@ -21,7 +21,7 @@ module.exports = function(defaultFuncs, api, ctx) {
       };
     }
 
-    var form = {
+    const form = {
       pmid: "0"
     };
 
@@ -32,16 +32,16 @@ module.exports = function(defaultFuncs, api, ctx) {
         form
       )
       .then(utils.parseAndCheckLogin(ctx, defaultFuncs))
-      .then(function(resData) {
-        var elem = resData.jsmods.instances[0][2][0].filter(function(v) {
+      .then(function (resData) {
+        const elem = resData.jsmods.instances[0][2][0].filter(function (v) {
           return v.value === "logout";
         })[0];
 
-        var html = resData.jsmods.markup.filter(function(v) {
+        const html = resData.jsmods.markup.filter(function (v) {
           return v[0] === elem.markup.__m;
         })[0][1].__html;
 
-        var form = {
+        const form = {
           fb_dtsg: utils.getFrom(html, '"fb_dtsg" value="', '"'),
           ref: utils.getFrom(html, '"ref" value="', '"'),
           h: utils.getFrom(html, '"h" value="', '"')
@@ -51,7 +51,7 @@ module.exports = function(defaultFuncs, api, ctx) {
           .post("https://www.facebook.com/logout.php", ctx.jar, form)
           .then(utils.saveCookies(ctx.jar));
       })
-      .then(function(res) {
+      .then(function (res) {
         if (!res.headers) {
           throw { error: "An error occurred when logging out." };
         }
@@ -60,12 +60,12 @@ module.exports = function(defaultFuncs, api, ctx) {
           .get(res.headers.location, ctx.jar)
           .then(utils.saveCookies(ctx.jar));
       })
-      .then(function() {
+      .then(function () {
         ctx.loggedIn = false;
         log.info("logout", "Logged out successfully.");
         callback();
       })
-      .catch(function(err) {
+      .catch(function (err) {
         log.error("logout", err);
         return callback(err);
       });

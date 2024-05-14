@@ -1,129 +1,132 @@
 "use strict";
 
-var utils = require("../utils");
-var log = require("npmlog");
-var bluebird = require("bluebird");
+const utils = require("../utils");
+const log = require("npmlog");
 
-module.exports = function(defaultFuncs, api, ctx) {
-  function handleUpload(image, callback) {
-    var uploads = [];
+module.exports = function (defaultFuncs, api, ctx) {
+	function handleUpload(image, callback) {
+		const uploads = [];
 
-    var form = {
-      images_only: "true",
-      "attachment[]": image
-    };
+		const form = {
+			images_only: "true",
+			"attachment[]": image
+		};
 
-    uploads.push(
-      defaultFuncs
-        .postFormData(
-          "https://upload.facebook.com/ajax/mercury/upload.php",
-          ctx.jar,
-          form,
-          {}
-        )
-        .then(utils.parseAndCheckLogin(ctx, defaultFuncs))
-        .then(function(resData) {
-          if (resData.error) {
-            throw resData;
-          }
+		uploads.push(
+			defaultFuncs
+				.postFormData(
+					"https://upload.facebook.com/ajax/mercury/upload.php",
+					ctx.jar,
+					form,
+					{}
+				)
+				.then(utils.parseAndCheckLogin(ctx, defaultFuncs))
+				.then(function (resData) {
+					if (resData.error) {
+						throw resData;
+					}
 
-          return resData.payload.metadata[0];
-        })
-    );
+					return resData.payload.metadata[0];
+				})
+		);
 
-    // resolve all promises
-    bluebird
-      .all(uploads)
-      .then(function(resData) {
-        callback(null, resData);
-      })
-      .catch(function(err) {
-        log.error("handleUpload", err);
-        return callback(err);
-      });
-  }
+		// resolve all promises
+		Promise
+			.all(uploads)
+			.then(function (resData) {
+				callback(null, resData);
+			})
+			.catch(function (err) {
+				log.error("handleUpload", err);
+				return callback(err);
+			});
+	}
 
-  return function changeGroupImage(image, threadID, callback) {
-    if (
-      !callback &&
-      (utils.getType(threadID) === "Function" ||
-        utils.getType(threadID) === "AsyncFunction")
-    ) {
-      throw { error: "please pass a threadID as a second argument." };
-    }
+	return function changeGroupImage(image, threadID, callback) {
+		if (
+			!callback &&
+			(utils.getType(threadID) === "Function" ||
+				utils.getType(threadID) === "AsyncFunction")
+		) {
+			throw { error: "please pass a threadID as a second argument." };
+		}
 
-    var resolveFunc = function(){};
-    var rejectFunc = function(){};
-    var returnPromise = new Promise(function (resolve, reject) {
-      resolveFunc = resolve;
-      rejectFunc = reject;
-    });
+		if (!utils.isReadableStream(image)) {
+			throw { error: "please pass a readable stream as a first argument." };
+		}
 
-    if (!callback) {
-      callback = function(err) {
-        if (err) {
-          return rejectFunc(err);
-        }
-        resolveFunc();
-      };
-    }
+		let resolveFunc = function () { };
+		let rejectFunc = function () { };
+		const returnPromise = new Promise(function (resolve, reject) {
+			resolveFunc = resolve;
+			rejectFunc = reject;
+		});
 
-    var messageAndOTID = utils.generateOfflineThreadingID();
-    var form = {
-      client: "mercury",
-      action_type: "ma-type:log-message",
-      author: "fbid:" + ctx.userID,
-      author_email: "",
-      ephemeral_ttl_mode: "0",
-      is_filtered_content: false,
-      is_filtered_content_account: false,
-      is_filtered_content_bh: false,
-      is_filtered_content_invalid_app: false,
-      is_filtered_content_quasar: false,
-      is_forward: false,
-      is_spoof_warning: false,
-      is_unread: false,
-      log_message_type: "log:thread-image",
-      manual_retry_cnt: "0",
-      message_id: messageAndOTID,
-      offline_threading_id: messageAndOTID,
-      source: "source:chat:web",
-      "source_tags[0]": "source:chat",
-      status: "0",
-      thread_fbid: threadID,
-      thread_id: "",
-      timestamp: Date.now(),
-      timestamp_absolute: "Today",
-      timestamp_relative: utils.generateTimestampRelative(),
-      timestamp_time_passed: "0"
-    };
+		if (!callback) {
+			callback = function (err) {
+				if (err) {
+					return rejectFunc(err);
+				}
+				resolveFunc();
+			};
+		}
 
-    handleUpload(image, function(err, payload) {
-      if (err) {
-        return callback(err);
-      }
+		const messageAndOTID = utils.generateOfflineThreadingID();
+		const form = {
+			client: "mercury",
+			action_type: "ma-type:log-message",
+			author: "fbid:" + (ctx.i_userID || ctx.userID),
+			author_email: "",
+			ephemeral_ttl_mode: "0",
+			is_filtered_content: false,
+			is_filtered_content_account: false,
+			is_filtered_content_bh: false,
+			is_filtered_content_invalid_app: false,
+			is_filtered_content_quasar: false,
+			is_forward: false,
+			is_spoof_warning: false,
+			is_unread: false,
+			log_message_type: "log:thread-image",
+			manual_retry_cnt: "0",
+			message_id: messageAndOTID,
+			offline_threading_id: messageAndOTID,
+			source: "source:chat:web",
+			"source_tags[0]": "source:chat",
+			status: "0",
+			thread_fbid: threadID,
+			thread_id: "",
+			timestamp: Date.now(),
+			timestamp_absolute: "Today",
+			timestamp_relative: utils.generateTimestampRelative(),
+			timestamp_time_passed: "0"
+		};
 
-      form["thread_image_id"] = payload[0]["image_id"];
-      form["thread_id"] = threadID;
+		handleUpload(image, function (err, payload) {
+			if (err) {
+				return callback(err);
+			}
 
-      defaultFuncs
-        .post("https://www.facebook.com/messaging/set_thread_image/", ctx.jar, form)
-        .then(utils.parseAndCheckLogin(ctx, defaultFuncs))
-        .then(function(resData) {
-          // check for errors here
+			form["thread_image_id"] = payload[0]["image_id"];
+			form["thread_id"] = threadID;
 
-          if (resData.error) {
-            throw resData;
-          }
+			defaultFuncs
+				.post("https://www.facebook.com/messaging/set_thread_image/", ctx.jar, form)
+				.then(utils.parseAndCheckLogin(ctx, defaultFuncs))
+				.then(function (resData) {
+					// check for errors here
 
-          return callback();
-        })
-        .catch(function(err) {
-          log.error("changeGroupImage", err);
-          return callback(err);
-        });
-    });
+					if (resData.error) {
+						throw resData;
+					}
 
-    return returnPromise;
-  };
+					return callback();
+				})
+				.catch(function (err) {
+					log.error("changeGroupImage", err);
+					return callback(err);
+				});
+		});
+
+		return returnPromise;
+	};
 };

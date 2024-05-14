@@ -1,6 +1,6 @@
-module.exports = function ({ api, models, Users, Threads, Currencies }) {
+module.exports = function ({ api, models, Users, Threads, Currencies, ...rest }) {
     const logger = require("../../utils/log.js")
-    return function ({ event }) {
+    return function ({ event, ...rest2 }) {
         const { allowInbox } = global.config;
         const { userBanned, threadBanned } = global.data;
         const { commands, eventRegistered } = global.client;
@@ -26,7 +26,10 @@ module.exports = function ({ api, models, Users, Threads, Currencies }) {
             };
             else getText2 = () => {};
             try {
-                const Obj = {};
+                const Obj = {
+                    ...rest,
+                    ...rest2
+                };
                 Obj.event = event 
                 Obj.api = api
                 Obj.models = models
@@ -34,6 +37,7 @@ module.exports = function ({ api, models, Users, Threads, Currencies }) {
                 Obj.Threads = Threads 
                 Obj.Currencies = Currencies 
                 Obj.getText = getText2;
+                
                 if (cmd) cmd.handleEvent(Obj);
             } catch (error) {
                 logger.log(global.getText('handleCommandEvent', 'moduleError', cmd.config.name), 'error');
