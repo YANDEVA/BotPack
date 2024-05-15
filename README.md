@@ -21,25 +21,26 @@ Hello there! Thank you for using BotPack! Join us at [ChatBot Community Ltd.](ht
 ---
 
 ### BOT DETECTION
-- => Have you ever experienced this type of issue in facebook?
+__=>__ Have you ever experienced this type of issue in facebook?
+  
 <img align="center" src="https://i.ibb.co/4SChsvH/facebook.jpg">
-- Maybe, I can help you with that. So these are the things to do. Go to your **config.json** and look for **autoCreateDB**. If you found it, then simply replace true to false.
+
+Maybe, I can help you with that. So these are the things to do. Go to your **config.json** and look for **autoCreateDB**. If you found it, then simply replace true to false.
 <br><br>
-- __BEFORE:__
+__BEFORE:__
 ```json
 {
   "autoCreateDB": true,
 }
 ```
-- __AFTER:__
+__AFTER:__
 ```json
 {
  "autoCreateDB": false,
 }
 ```
 <br>
-
-- By setting this to false, some commands like checktt, rankup and other commands that needs database may not work but it has a good benefit making your bot last longer and might avoid being suspended for a long period of time.
+By setting this to false, some commands like checktt, rankup and other commands that needs database may not work but it has a good benefit making your bot last longer and might avoid being suspended for a long period of time.
 
 ---
 
