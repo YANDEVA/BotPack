@@ -159,9 +159,10 @@ module.exports = function ({ api }) {
   const Box = require("./liane-box");
   // abstraction! - lianecagara
   return (event) => {
+    const box = new Box(api, event, global.config.autoCensor || false);
     const listenObj = {
       event,
-      box: new Box(api, event),
+      box,
     };
     switch (event.type) {
       case "message":
@@ -192,4 +193,3 @@ THIZ BOT WAS MADE BY ME(CATALIZCS) AND MY BROTHER SPERMLORD - DO NOT STEAL MY CO
 THIZ FILE WAS MODIFIED BY ME(@YanMaglinte) - DO NOT STEAL MY CREDITS (つ ͡ ° ͜ʖ ͡° )つ ✄ ╰⋃╯
 THIZ FILE WAS MODIFIED BY ANOTHER PERSON(@lianecagara) - box MIT 🫨
 **/
-  
