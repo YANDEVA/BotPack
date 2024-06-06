@@ -32,7 +32,7 @@
     "cheerio": "^1.0.0-rc.12",
     "child_process": "^1.0.2",
     "express": "^4.19.2",
-    "fca-liane-utils": "^1.1.0",
+    "fca-liane-utils": "^1.2.6",
     "fontstyles": "^1.0.5",
     "form-data": "^4.0.0",
     "fs-extra": "^11.2.0",
