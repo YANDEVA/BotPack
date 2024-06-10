@@ -1,3 +1,6 @@
+process.on('unhandledRejection', error => console.log(error));
+process.on('uncaughtException', error => console.log(error));
+
 const { readdirSync, readFileSync, writeFileSync } = require("fs-extra");
 const { join, resolve } = require('path')
 const { execSync } = require('child_process');
@@ -10,6 +13,8 @@ const logger = require("./utils/log.js");
 const chalk = require("chalk");
 const { spawn } = require("child_process");
 const pkg = require('./package.json');
+
+process.env.BLUEBIRD_W_FORGOTTEN_RETURN = 0;
 
 console.log(chalk.bold.dim(` ${process.env.REPL_SLUG}`.toUpperCase() + `(v${pkg.version})`));
   logger.log(`Getting Started!`, "STARTER");
